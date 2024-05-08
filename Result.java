@@ -1,6 +1,6 @@
 import java.time.LocalDateTime;
 
-public class Competition{
+public class Result{
 
    //Atributer
    int length; 
@@ -9,7 +9,7 @@ public class Competition{
    LocalDateTime Date;
    String location;  
    
-   public Competition(int length, String swimmingStyle, int time, LocalDateTime date, String location) {
+   public Result(int length, String swimmingStyle, int time, LocalDateTime date, String location) {
     this.length = length;
     this.swimmingStyle = swimmingStyle;
     this.time = time;

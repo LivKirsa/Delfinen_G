@@ -10,6 +10,6 @@ import javax.swing.BoxLayout;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Swing {
+public class SwingChairman {
    
 }
