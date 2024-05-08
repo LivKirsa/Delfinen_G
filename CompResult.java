@@ -1,6 +1,6 @@
 import java.time.LocalDateTime;
 
-public class Competition{
+public class CompResult{
 
    //Atributer
    int length; 
