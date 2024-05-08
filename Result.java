@@ -12,8 +12,6 @@ public class Result{
     this.length = length;
     this.swimmingStyle = swimmingStyle;
     this.time = time;
-    this.date = date;
-    this.location = location;
    
       }
    
