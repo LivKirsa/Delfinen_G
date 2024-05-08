@@ -9,9 +9,12 @@ public class Competition{
    LocalDateTime Date;
    String location;  
    
-   public Competition(int Length, String swimmingStyle,int time,LocalDateTime Date,String location); {
-      System.out.print(Competition.length,Competition.swimmingStyle,Competition.time,Competition.date,Competition.location); 
-      
+   public Competition(int length, String swimmingStyle, int time, LocalDateTime date, String location) {
+    this.length = length;
+    this.swimmingStyle = swimmingStyle;
+    this.time = time;
+    this.date = date;
+    this.location = location;
    
       }
    
