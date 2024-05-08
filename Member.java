@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Member{
 
@@ -12,6 +13,8 @@ public class Member{
     private boolean isActiveMembership;
     private boolean isJuniorMembership;
     private boolean isCompetitiveSwimmer;
+    
+    static ArrayList <Result> bestTimesList = new ArrayList <Result>();
     
     // Constructor for Member Objects
     
