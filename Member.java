@@ -37,11 +37,19 @@ public class Member{
     // Method for printing Member
     public void printMember(){
       System.out.println("(" + memberID + ") " +
-      name + "\n Fødselsdag: " + birthday + "\n Aktivt medlemskab?: " + 
-      isActiveMembership + "\n Junior medlemskab?: " + isJuniorMembership + 
-      "\n Konkurrencesvømmer?: " + isCompetitiveSwimmer + "\n Mand?: " + isMan + 
-      "\n Har betalt?: " + isPaid + "\n Næste betalingsdato: " + registrationDate);
+      name + "\n Birthday: " + birthday + "\n Active Membership?: " + 
+      isActiveMembership + "\n Junior Membership?: " + isJuniorMembership + 
+      "\n Competitive Swimmer?: " + isCompetitiveSwimmer + "\n Man?: " + isMan + 
+      "\n Paid?: " + isPaid + "\n Next payment due: " + registrationDate); // Next payment due should show a year from last registration date. Is currently just showing registration date
       }
+    
+    // Method for constructing Member in GUI (I think?)
+    public Member addNewMember(String name, String birthday, boolean isActiveMembership, boolean isJuniorMembership, boolean isCompetitiveSwimmer, boolean isMan) {
+      Member newGUIMember = new Member(name, birthday, isActiveMembership, isJuniorMembership, isCompetitiveSwimmer, isMan);
+      counter++; // Im not sure if this works properly - Liv
+      return newGUIMember;
+    }
+      
     
     
     // Getter for name
