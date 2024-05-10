@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
 public class Member{
@@ -9,23 +10,26 @@ public class Member{
     private LocalDate birthday;
     private int memberID;
     private LocalDate registrationDate;
+    private LocalDate nextPayment;
     private boolean isPaid;
     private boolean isActiveMembership;
     private boolean isJuniorMembership;
     private boolean isCompetitiveSwimmer;
     private boolean isMan;
-    private int counter = 1;
+    private static int counter = 1;
+    private LocalDate now = LocalDate.now();
     
     static ArrayList <Result> bestTimesList = new ArrayList <Result>();
     
     // Constructor for Member Objects
-    
+
     public Member(String name, String birthday, boolean isActiveMembership, boolean isJuniorMembership, boolean isCompetitiveSwimmer, boolean isMan){
         this.name = name;
-        this.age = 0; // Calculate age based on birthday
+        this.age = calculateAge(LocalDate.parse(birthday), now);
         this.birthday = LocalDate.parse(birthday);
         this.memberID = counter; //Assign memberIDs
         this.registrationDate = LocalDate.now();
+        this.nextPayment = LocalDate.now().plusYears(1);
         this.isPaid = true;
         this.isActiveMembership = isActiveMembership;
         this.isJuniorMembership = isJuniorMembership;
@@ -33,15 +37,21 @@ public class Member{
         this.isMan = isMan;
         counter++;
         MemberList.addMember(this); // Adds the new Member to memberList automatically
+        TeamList.autoAssignToTeam(this); // Automatically adds the new Member to the appropriate team  
     }
     
     // Method for printing Member
     public void printMember(){
       System.out.println("(" + memberID + ") " +
-      name + "\n Birthday: " + birthday + "\n Active Membership?: " + 
+      name + "\n Age: " + age + "\n Birthday: " + birthday + "\n Active Membership?: " + 
       isActiveMembership + "\n Junior Membership?: " + isJuniorMembership + 
       "\n Competitive Swimmer?: " + isCompetitiveSwimmer + "\n Man?: " + isMan + 
-      "\n Paid?: " + isPaid + "\n Next payment due: " + registrationDate); // Next payment due should show a year from last registration date. Is currently just showing registration date
+      "\n Paid?: " + isPaid + "\n Next payment due: " + nextPayment); // Next payment due should show a year from last registration date. Is currently just showing registration date
+      }
+      
+      // Method for printing memberName
+      public void printMemberName(){
+         System.out.println(name);
       }
     
     // Method for constructing Member and returning Member Object
@@ -67,7 +77,11 @@ public class Member{
         return age;
     }
     
-    // Setter for age not relevant, as age is calculated elsewhere
+    // Calculator for age
+    public int calculateAge(LocalDate birthday, LocalDate now){
+    Period period = Period.between(birthday, now);
+      return period.getYears();
+   }
     
     // Getter for birthday
     public LocalDate getBirthday(){
@@ -101,6 +115,12 @@ public class Member{
     // Setter for isPaid
     public void setIsPaid(boolean isPaid){
         this.isPaid = isPaid;
+    }
+    
+    // Option to setPaid AND move the next due payment 1 year forward (When a member successfully pays for another year)
+    public void setIsPaidYear(Member member){
+      this.isPaid = isPaid;
+      this.nextPayment.plusYears(1);
     }
     
     // Getter for isActiveMembership
