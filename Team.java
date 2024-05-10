@@ -38,15 +38,17 @@ public class Team {
          }//end of for each loop.
          
          if (addDiscipline){//if the discipline doesnt exist yet:
-            System.out.print("ny disciplin oprettet: ");
-            result.printResult();
-            teamList.get(memberNumber).bestTimesList.add(result);//discipline added to members besttimes list if no former instances.
+            disciplineDoesntExist(memberNumber, result);//discipline added to members besttimes list if no former instances.
          }
          
       }else{//if besttimeslsit is entirely empty:
-         System.out.print("ny disciplin oprettet: ");
-         result.printResult();
-         teamList.get(memberNumber).bestTimesList.add(result);//discipline added to members besttimes list if no former instances.
+         disciplineDoesntExist(memberNumber, result);//discipline added to members besttimes list if no former instances.
       }
+   }
+   
+   public void disciplineDoesntExist(int memberNumber, Result result){
+      System.out.print("\nny disciplin oprettet: ");
+         result.printResult();
+         teamList.get(memberNumber).bestTimesList.add(result);
    }
 }
