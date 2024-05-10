@@ -6,7 +6,6 @@ public class Login{
       RunLoginUI();
    }
    
-   
    public void runChairManUI(){
    }
    
@@ -34,7 +33,15 @@ public class Login{
        panel.add(cddButton);
        frame.add(panel);
        frame.setVisible(true);
-       setLocationRelativeTo(null); 
+       centerFrameOnScreen(frame); 
+       }
+       //Method to set the window in the middle of the screen. 
+       private static void centerFrameOnScreen(JFrame frame){
+          Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); 
+          int centerX = (int) ((screenSize.getWidth() - frame.getWidth()) / 2);
+          int centerY = (int) ((screenSize.getHeight() - frame.getHeight()) / 2); 
+          frame.setLocation(centerX, centerY);   
+          }
+       
    
    }
-}
