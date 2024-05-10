@@ -46,11 +46,11 @@ public class Login{
          
        }
        //Method to set the window in the middle of the screen. 
-       private static void centerFrameOnScreen(JFrame frame){
+       public static void centerFrameOnScreen(JFrame frame){
           Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); 
           int centerX = (int) ((screenSize.getWidth() - frame.getWidth()) / 2);
           int centerY = (int) ((screenSize.getHeight() - frame.getHeight()) / 2); 
-          frame.setLocation(centerX, centerY);   
+          frame.setLocation(centerX, centerY);     
           }
           
           

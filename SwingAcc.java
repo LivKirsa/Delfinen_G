@@ -1,3 +1,3 @@
-public class SwingAcc{
+public class SwingAcc extends JFrame{
 
 }

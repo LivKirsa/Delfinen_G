@@ -35,7 +35,7 @@ public class SwingChairMan extends JFrame{
        swimmerFrame.setVisible(true); 
        swimmerFrame.setSize(300, 200);
        swimmerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-       centerFrameOnScreen(swimmerFrame);
+       Login.centerFrameOnScreen(swimmerFrame);
       
        JPanel panel = new JPanel();
       
@@ -91,13 +91,7 @@ public class SwingChairMan extends JFrame{
 });
         
        }
-       //Method to set the window in the middle of the screen. 
-       private static void centerFrameOnScreen(JFrame swimmerFrame){
-          Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); 
-          int centerX = (int) ((screenSize.getWidth() - swimmerFrame.getWidth()) / 2);
-          int centerY = (int) ((screenSize.getHeight() - swimmerFrame.getHeight()) / 2); 
-          swimmerFrame.setLocation(centerX, centerY);   
-          }  
+       
 
    
    }
