@@ -23,23 +23,24 @@ public class Login{
       
    JPanel panel = new JPanel();
    
-       JButton addButton = new JButton("Chairman");
-      addButton.setBackground(Color.BLUE);
+       JButton runChairManButton = new JButton("Chairman");
+      runChairManButton.setBackground(Color.BLUE);
       JButton bddButton = new JButton("Accaounten");
       bddButton.setBackground(Color.WHITE);
       JButton cddButton = new JButton("Couch");
       cddButton.setBackground(Color.RED);
       
-       panel.add(addButton);
+       panel.add(runChairManButton);
        panel.add(bddButton);
        panel.add(cddButton);
        frame.add(panel);
        frame.setVisible(true);
        centerFrameOnScreen(frame); 
        
-       addButton.addActionListener(new ActionListener() {
+       // this is the action
+       runChairManButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(frame, "Button Clicked!");
+            new ChairManUI(); 
          }
        });
          
