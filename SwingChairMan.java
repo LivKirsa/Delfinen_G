@@ -2,10 +2,10 @@ import javax.swing.* ;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-public class ChairManUI extends JFrame{
+public class SwingChairMan extends JFrame{
 
    
-   public ChairManUI() {
+   public SwingChairMan() {
       Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
        setExtendedState(getExtendedState() | MAXIMIZED_BOTH);  
        setDefaultCloseOperation(EXIT_ON_CLOSE);

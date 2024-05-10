@@ -40,7 +40,7 @@ public class Login{
        // this is the action
        runChairManButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-            new ChairManUI(); 
+            new SwingChairMan(); 
          }
        });
          
