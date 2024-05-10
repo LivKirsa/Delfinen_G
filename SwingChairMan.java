@@ -6,7 +6,7 @@ public class SwingChairMan extends JFrame{
 
    
    public SwingChairMan() {
-      Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+       Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
        setExtendedState(getExtendedState() | MAXIMIZED_BOTH);  
        setDefaultCloseOperation(EXIT_ON_CLOSE);
        setLayout(new BorderLayout());

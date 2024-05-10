@@ -25,22 +25,28 @@ public class Login{
    
        JButton runChairManButton = new JButton("Chairman");
       runChairManButton.setBackground(Color.BLUE);
-      JButton bddButton = new JButton("Accaounten");
-      bddButton.setBackground(Color.WHITE);
+      JButton runAccButton = new JButton("Accaounten");
+      runAccButton.setBackground(Color.WHITE);
       JButton cddButton = new JButton("Couch");
       cddButton.setBackground(Color.RED);
       
        panel.add(runChairManButton);
-       panel.add(bddButton);
+       panel.add(runAccButton);
        panel.add(cddButton);
        frame.add(panel);
        frame.setVisible(true);
        centerFrameOnScreen(frame); 
        
-       // this is the action
+       // this is the action to run chairman UI. 
        runChairManButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             new SwingChairMan(); 
+         }
+       });
+       // this is the action to run the accounten UI
+       runAccButton.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+            new SwingAcc();  
          }
        });
          
