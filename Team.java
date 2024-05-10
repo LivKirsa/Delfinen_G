@@ -1,9 +1,18 @@
 import java.util.*;
 
-public class Team {
+public class Team{
    
+   String teamName;
    String coachName;
-   ArrayList <Member> teamList = new ArrayList<Member>();
+   ArrayList<Member> teamMembers = new ArrayList<Member>();
+   
+   // Constructor for constructing teams
+   
+   public Team(String teamName, String coachName, ArrayList<Member> teamMembers){
+      this.teamName = teamName;
+      this.coachName = coachName;
+      this.teamMembers = teamMembers;
+   }
    
    public void updateTeamList(){
    }

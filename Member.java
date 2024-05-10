@@ -32,6 +32,7 @@ public class Member{
         this.isCompetitiveSwimmer = isCompetitiveSwimmer;
         this.isMan = isMan;
         counter++;
+        MemberList.addMember(this); // Adds the new Member to memberList automatically
     }
     
     // Method for printing Member
@@ -43,14 +44,13 @@ public class Member{
       "\n Paid?: " + isPaid + "\n Next payment due: " + registrationDate); // Next payment due should show a year from last registration date. Is currently just showing registration date
       }
     
-    // Method for constructing Member in GUI (I think?)
-    public Member addNewMember(String name, String birthday, boolean isActiveMembership, boolean isJuniorMembership, boolean isCompetitiveSwimmer, boolean isMan) {
-      Member newGUIMember = new Member(name, birthday, isActiveMembership, isJuniorMembership, isCompetitiveSwimmer, isMan);
+    // Method for constructing Member and returning Member Object
+    public Member addMemberReturnObject(String name, String birthday, boolean isActiveMembership, boolean isJuniorMembership, boolean isCompetitiveSwimmer, boolean isMan) {
+      Member newMember = new Member(name, birthday, isActiveMembership, isJuniorMembership, isCompetitiveSwimmer, isMan);
       counter++; // Im not sure if this works properly - Liv
-      return newGUIMember;
+      MemberList.addMember(this); // Adds the new Member to memberList automatically
+      return newMember;
     }
-      
-    
     
     // Getter for name
     public String getName(){
