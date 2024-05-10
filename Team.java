@@ -3,15 +3,18 @@ import java.util.*;
 public class Team{
    
    String teamName;
+   int teamNumber;
    String coachName;
-   ArrayList<Member> teamMembers = new ArrayList<Member>();
+   ArrayList<Member> teamMemberList = new ArrayList<Member>();
    
    // Constructor for constructing teams
    
-   public Team(String teamName, String coachName, ArrayList<Member> teamMembers){
+   public Team(String teamName, String coachName, ArrayList<Member> teamMemberList){
       this.teamName = teamName;
+      this.teamNumber = teamNumber;
       this.coachName = coachName;
-      this.teamMembers = teamMembers;
+      this.teamMemberList = teamMemberList;
+      TeamList.addTeam(this);
    }
    
    public void updateTeamList(){
@@ -21,3 +24,4 @@ public class Team{
       //teamList.add(new Result());
    }
 }
+
