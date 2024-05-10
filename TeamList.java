@@ -12,7 +12,8 @@ public class TeamList{
    public static void updateTeamList(){
    }
    
-   public static void assignCoachToTeam(int teamNumber, String coachName){
+   public static void assignCoachToTeam(int teamNumber, String coachName){ // The setter setCoach (String coachName) exixts in Team.class
+   
    }
    
    public static void assignMemberToTeam(int teamNumber, int memberNumber){
