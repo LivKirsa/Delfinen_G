@@ -1,4 +1,4 @@
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Member{
@@ -6,29 +6,42 @@ public class Member{
     // Attributes for each Member
     private String name;
     private int age;
-    private LocalDateTime birthday;
+    private LocalDate birthday;
     private int memberID;
-    private LocalDateTime registrationDate;
+    private LocalDate registrationDate;
     private boolean isPaid;
     private boolean isActiveMembership;
     private boolean isJuniorMembership;
     private boolean isCompetitiveSwimmer;
+    private boolean isMan;
+    private int counter = 1;
     
     static ArrayList <Result> bestTimesList = new ArrayList <Result>();
     
     // Constructor for Member Objects
     
-    public Member(String name, LocalDateTime birthday, boolean isActiveMembership, boolean isJuniorMembership, boolean isCompetitiveSwimmer){
+    public Member(String name, String birthday, boolean isActiveMembership, boolean isJuniorMembership, boolean isCompetitiveSwimmer, boolean isMan){
         this.name = name;
         this.age = 0; // Calculate age based on birthday
-        this.birthday = birthday;
-        this.memberID = 0; //Assign memberIDs somehow
-        this.registrationDate = LocalDateTime.now();
+        this.birthday = LocalDate.parse(birthday);
+        this.memberID = counter; //Assign memberIDs
+        this.registrationDate = LocalDate.now();
         this.isPaid = true;
         this.isActiveMembership = isActiveMembership;
         this.isJuniorMembership = isJuniorMembership;
         this.isCompetitiveSwimmer = isCompetitiveSwimmer;
+        this.isMan = isMan;
+        counter++;
     }
+    
+    // Method for printing Member
+    public void printMember(){
+      System.out.println("(" + memberID + ") " +
+      name + "\n Fødselsdag: " + birthday + "\n Aktivt medlemskab?: " + 
+      isActiveMembership + "\n Junior medlemskab?: " + isJuniorMembership + 
+      "\n Konkurrencesvømmer?: " + isCompetitiveSwimmer + "\n Mand?: " + isMan + 
+      "\n Har betalt?: " + isPaid + "\n Næste betalingsdato: " + registrationDate);
+      }
     
     
     // Getter for name
@@ -49,12 +62,12 @@ public class Member{
     // Setter for age not relevant, as age is calculated elsewhere
     
     // Getter for birthday
-    public LocalDateTime getBirthday(){
+    public LocalDate getBirthday(){
         return birthday;
     }
     
     // Setter for birthday
-    public void setBirthday(LocalDateTime birthday){
+    public void setBirthday(LocalDate birthday){
         this.birthday = birthday;
     }
     
@@ -66,7 +79,7 @@ public class Member{
     // Setter for memberID not relevant, as memberID is calculated elsewhere
     
     // Getter for registrationDate
-    public LocalDateTime getRegistrationDate(){
+    public LocalDate getRegistrationDate(){
         return registrationDate;
     }
     
@@ -110,5 +123,15 @@ public class Member{
     // Setter for isActiveMembership
     public void setIsCompetitiveSwimmer(boolean isCompetitiveSwimmer){
         this.isCompetitiveSwimmer = isCompetitiveSwimmer;
+    }
+    
+    // Getter for isMan
+    public boolean getIsMan(){
+      return isMan;
+    }
+    
+    // Setter for isMan
+    public void setIsMan(boolean isMan){
+      this.isMan = isMan;
     }
 }
