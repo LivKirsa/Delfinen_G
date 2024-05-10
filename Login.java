@@ -1,5 +1,7 @@
 import javax.swing.* ;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 public class Login{
 
    public Login(){
@@ -34,6 +36,13 @@ public class Login{
        frame.add(panel);
        frame.setVisible(true);
        centerFrameOnScreen(frame); 
+       
+       addButton.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(frame, "Button Clicked!");
+         }
+       });
+         
        }
        //Method to set the window in the middle of the screen. 
        private static void centerFrameOnScreen(JFrame frame){
@@ -42,6 +51,8 @@ public class Login{
           int centerY = (int) ((screenSize.getHeight() - frame.getHeight()) / 2); 
           frame.setLocation(centerX, centerY);   
           }
+          
+          
        
    
    }
