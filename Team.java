@@ -34,6 +34,14 @@ public class Team{
       Result result = new Result(length, swimmingStyle, time);//, date);//print Result.
       
       if (teamMemberList.get(memberNumber).bestTimesList.size() > 0){
+      comparePersonalResult(memberNumber, result);
+      }
+   }
+   
+   public void comparePersonalResult(int memberNumber, Result result){
+      result.member = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
+
+      if (teamMemberList.get(memberNumber).bestTimesList.size() > 0){       
          boolean addDiscipline = false;
          
          for(Result r : teamMemberList.get(memberNumber).bestTimesList){
