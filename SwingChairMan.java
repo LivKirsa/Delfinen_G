@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 public class SwingChairMan extends JFrame{
 
+private JTextArea textArea; // JTextArea declared as a class field
+
    
    public SwingChairMan() {
        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -23,7 +25,8 @@ public class SwingChairMan extends JFrame{
       //actions of the b1 button 
       b1.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-            SwimmerFrame();
+         PrintMemberlist(MemberList.memberList);
+            //SwimmerFrame();
          }
        });
        // size of the window 
@@ -92,24 +95,23 @@ public class SwingChairMan extends JFrame{
 });
         
        }
-       
-public class MemberListFrame extends JFrame {
-
-    private JTextArea textArea;
-
-    public MemberListFrame(ArrayList<String> memberList) {
-        setTitle("Members List");
+    public void PrintMemberlist(ArrayList<Member> memberList) {
+    
+        setTitle("Members List");     
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        textArea = new JTextArea(20, 40);
+        
+        textArea = new JTextArea(20,70);
         JScrollPane scrollPane = new JScrollPane(textArea);
         add(scrollPane, BorderLayout.CENTER);
-
-        //printArrayList(MemberList.memberList); 
-
-        pack();
+        StringBuilder sb = new StringBuilder();
+        
+        for (Member item : memberList) {
+            sb.append(item).append("\n");
+        }
+        
+        textArea.setText(sb.toString());
+        //pack();
         setLocationRelativeTo(null);
         setVisible(true);
     }
-}
 }
