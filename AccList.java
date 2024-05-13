@@ -1,4 +1,5 @@
 import java.util.*;
+import java.time.LocalDate;
 
 public class AccList {
    static ArrayList <Member> subsList = new ArrayList<Member> ();
@@ -6,14 +7,8 @@ public class AccList {
    static public void updateSubsList(){//update list whenever program starts.
    }
    
-   static public void togglePaid(int memberNumber){//changes isPaid status for a specific member.
-   Member member = MemberList.memberList.get(memberNumber);
-   member.setIsPaid(true);
+   // Method for renewing membership and setting isPaid = true
+   public void setRenewed(int memberID){
+      MemberList.memberList.get(memberID).renewMembership();
    }
-   
-    // Option to setPaid AND move the next due payment 1 year forward (When a member successfully pays for another year)
-    public void setIsPaidYear(Member member){
-      member.setIsPaid(true);
-      member.nextPayment.plusYears(1);
-    }
 }

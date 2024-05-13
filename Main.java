@@ -24,5 +24,9 @@ public class Main{
    TeamList.team1.addResult(0, 200, "Crawl", 60);
 
    andrea.printBestTimesList();
+   
+   andrea.printMember();
+   andrea.renewMembership();
+   andrea.printMember();
    }
 }

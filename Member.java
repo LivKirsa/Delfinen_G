@@ -10,8 +10,8 @@ public class Member{
     private LocalDate birthday;
     private int memberID;
     private int memberNumber;
-    private LocalDate registrationDate;
-    private LocalDate nextPayment;
+    private static LocalDate registrationDate;
+    private static LocalDate nextPayment;
     private boolean isPaid;
     private boolean isActiveMembership;
     private boolean isJuniorMembership;
@@ -171,6 +171,22 @@ public class Member{
       return memberNumber;
     }
     
+    // Getter for nextPayment
+    public LocalDate getNextPayment(){
+      return nextPayment;
+    }
+    
+    // Method for moving nextPayment a year forward (Used in AccList)
+    public void moveNextPayment(Member member){
+      member.nextPayment.plusYears(1);
+    }
+    
+    // Method to renew membership
+    public void renewMembership() {
+    this.isPaid = true;
+    this.nextPayment = this.nextPayment.plusYears(1);
+    }
+
     public void printBestTimesList(){
       System.out.println("\nBedste tider for " + name + ":");
        for (Result r: bestTimesList){
