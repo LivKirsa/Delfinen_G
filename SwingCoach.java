@@ -12,7 +12,7 @@ public class SwingCoach extends SwingAcc {
         setVisible(true);
       
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); 
-        JButton b1 = new JButton("Se Resistance");
+        JButton b1 = new JButton("Se hold");
         b1.setBackground(Color.RED);
         buttonPanel.add(b1);
         add(buttonPanel, BorderLayout.WEST);

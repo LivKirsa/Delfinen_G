@@ -27,12 +27,12 @@ public class Login{
       runChairManButton.setBackground(Color.BLUE);
       JButton runAccButton = new JButton("Accaounten");
       runAccButton.setBackground(Color.WHITE);
-      JButton cddButton = new JButton("Couch");
-      cddButton.setBackground(Color.RED);
+      JButton runCouchButton = new JButton("Couch");
+      runCouchButton.setBackground(Color.RED);
       
        panel.add(runChairManButton);
        panel.add(runAccButton);
-       panel.add(cddButton);
+       panel.add(runCouchButton);
        frame.add(panel);
        frame.setVisible(true);
        centerFrameOnScreen(frame); 
@@ -47,6 +47,13 @@ public class Login{
        runAccButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             new SwingAcc();  
+                  }
+       });
+            
+              // this is the action to runs the Coach UI
+            runCouchButton.addActionListener(new ActionListener() {
+               public void actionPerformed(ActionEvent e) {
+                  new SwingCoach();
          }
        });
          
@@ -57,9 +64,5 @@ public class Login{
           int centerX = (int) ((screenSize.getWidth() - frame.getWidth()) / 2);
           int centerY = (int) ((screenSize.getHeight() - frame.getHeight()) / 2); 
           frame.setLocation(centerX, centerY);     
-          }
-          
-          
-       
-   
+          }  
    }

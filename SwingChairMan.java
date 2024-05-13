@@ -2,6 +2,7 @@ import javax.swing.* ;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 public class SwingChairMan extends JFrame{
 
    
@@ -92,10 +93,23 @@ public class SwingChairMan extends JFrame{
         
        }
        
+public class MemberListFrame extends JFrame {
 
-   
-   }
+    private JTextArea textArea;
 
+    public MemberListFrame(ArrayList<String> memberList) {
+        setTitle("Members List");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        textArea = new JTextArea(20, 40);
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        add(scrollPane, BorderLayout.CENTER);
 
+        printArrayList(memberList); // Pass the memberList to the printArrayList method
 
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+}
+}
