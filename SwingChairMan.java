@@ -105,7 +105,7 @@ public class MemberListFrame extends JFrame {
         JScrollPane scrollPane = new JScrollPane(textArea);
         add(scrollPane, BorderLayout.CENTER);
 
-        printArrayList(memberList); // Pass the memberList to the printArrayList method
+        //printArrayList(MemberList.memberList); 
 
         pack();
         setLocationRelativeTo(null);
