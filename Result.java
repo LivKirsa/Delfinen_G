@@ -18,4 +18,4 @@ public class Result{
    public void printResult(){
       System.out.println(swimmingStyle  + ", " + length + "m: " + time + " sek");
    }
-   }
+}

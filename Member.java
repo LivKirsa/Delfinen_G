@@ -24,7 +24,7 @@ public class Member{
     
     // Constructor for Member Objects
 
-    public Member(String name, String birthday, boolean isActiveMembership, boolean isJuniorMembership, boolean isCompetitiveSwimmer, boolean isMan){
+    public Member(String name, String birthday, boolean isActiveMembership, boolean isCompetitiveSwimmer, boolean isMan){
         this.name = name;
         this.age = calculateAge(LocalDate.parse(birthday), now);
         this.birthday = LocalDate.parse(birthday);
@@ -33,8 +33,8 @@ public class Member{
         this.nextPayment = LocalDate.now().plusYears(1);
         this.isPaid = true;
         this.isActiveMembership = isActiveMembership;
-        this.isJuniorMembership = isJuniorMembership;
         this.isCompetitiveSwimmer = isCompetitiveSwimmer;
+        this.isJuniorMembership = getIsJuniorMembership(this);
         this.isMan = isMan;
         //this.teamNumber = autoAssignToTeam
         counter++;
@@ -57,8 +57,8 @@ public class Member{
       }
     
     // Method for constructing Member and returning Member Object
-    public Member addMemberReturnObject(String name, String birthday, boolean isActiveMembership, boolean isJuniorMembership, boolean isCompetitiveSwimmer, boolean isMan) {
-      Member newMember = new Member(name, birthday, isActiveMembership, isJuniorMembership, isCompetitiveSwimmer, isMan);
+    public Member addMemberReturnObject(String name, String birthday, boolean isActiveMembership, boolean isCompetitiveSwimmer, boolean isMan) {
+      Member newMember = new Member(name, birthday, isActiveMembership, isCompetitiveSwimmer, isMan);
       counter++; // Im not sure if this works properly - Liv
       MemberList.addMember(this); // Adds the new Member to memberList automatically
       return newMember;
@@ -135,9 +135,14 @@ public class Member{
         this.isActiveMembership = isActiveMembership;
     }
 
-    // Getter for isJuniorMembership
-    public boolean getIsJuniorMembership(){
-        return isJuniorMembership;
+    // Getter/calculator for isJuniorMembership
+    public boolean getIsJuniorMembership(Member member){
+      int age = member.getAge();
+      if (age <18 && isCompetitiveSwimmer == true){
+         return  true;
+      } else {
+        return false;
+      }
     }
     
     // Setter for isJuniorMembership
