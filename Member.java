@@ -162,4 +162,11 @@ public class Member{
     public void setIsMan(boolean isMan){
       this.isMan = isMan;
     }
+    
+    public void printBestTimesList(){
+      System.out.println("\nBedste tider for " + name + ":");
+       for (Result r: bestTimesList){
+          r.printResult();
+       }
+    }
 }

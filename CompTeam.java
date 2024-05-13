@@ -6,10 +6,11 @@ public class CompTeam extends Team{
    ArrayList <int[]> discTop5List;
    
    public void addCompResult(){
+      
    }
    
-   @Override
+   /*@Override
    public void addResult(){
-   }
+   }*/
    
 }
