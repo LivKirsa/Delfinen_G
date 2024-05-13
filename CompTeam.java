@@ -1,40 +1,29 @@
 import java.util.ArrayList;
+import java.util.*;
 
 public class CompTeam extends Team{
    ArrayList <CompMember> compList = new ArrayList <CompMember>();
+   ArrayList <Result[]> discTop5List= new ArrayList <Result[]>();
+   Result [] top5List;
    
-   ArrayList <Result[]> discTop5List;
-   
-   public void addCompResult(int memberNumber, int length, String swimmingStyle, int time, String location){
-      Result result = new CompResult(length, swimmingStyle, time, location);//, date);//print Result.
-      comparePersonalResult(memberNumber, result);
-      compareTeamResult(memberNumber, result);
+   public CompTeam(String teamName, int teamNumber, String coachName){
+      super(teamName, teamNumber, coachName);
    }
    
-   /*public void addResult(int memberNumber, int length, String swimmingStyle, int time){
-      super.addResult(memberNumber, length, swimmingStyle, time);
-      compareTeamResult(memberNumber, result);
-   }*/
+   public void addResult(int memberNumber, int length, String swimmingStyle, int time, ArrayList<Result> list){
+      super.addResult(memberNumber, length, swimmingStyle, time, list);//need to make this for compResult.
+      compareTeamResult();
+   }
    
-   public void compareTeamResult(int memberNumber, Result result){
-      discTop5List = new ArrayList <Result[]>();
-      Result [] top5List = new Result [5];
-      discTop5List.add(top5List);
-      top5List[0] = result;
-      
-      /*for( dList : discTop5List){
-         if (r.length == result.length && r.swimmingStyle.equalsIgnoreCase(result.swimmingStyle)){//compare disciplines. If same:
-         //if (teamList.get(memberNumber).bestTimesList.contains(
-            if(r.time > result.time){//comparing times. If new time < old time, new time is added. 
-              System.out.print("resultat opdateret: ");
-               result.printResult();
-               teamList.get(memberNumber).bestTimesList.set(teamList.get(memberNumber).bestTimesList.indexOf(r), result);//replace old time with new time.
-               break;
-            }
-         }else{
-            addDiscipline = true;          
+   public void compareTeamResult(){ 
+      for(Result[] dList : discTop5List){//for every disciplineList(dList) on teams best times list:
+         ArrayList< Result> tempArr = new ArrayList < Result>(Arrays.asList(dList)); //so we can use the array with compareResult(ArrayList<Result>)
+         if (!compareResult(tempArr)){//comparing result with former team results in same discipline. If false: discipline doesnt exist.
+            Result[] top5List = new Result [5];//creating and adding new array(discipline) to team best times list.
+            discTop5List.add(top5List);
+            top5List[0] = result;//addding result to disciplinelist.
          }
-      }//end of for each loop.*/
-
+      }//end of for each loop.
    }
+   
 }
