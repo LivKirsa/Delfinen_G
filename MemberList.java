@@ -12,7 +12,7 @@ public class MemberList {
       updateMemberList();
    }
    
-   // Method for printing memberList to console (For Liv's brain :))) )
+   // Method for printing memberList
    public static void printMemberList(){
       System.out.println("Member List: \n");
       for (Member member : memberList){

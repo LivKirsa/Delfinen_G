@@ -9,6 +9,7 @@ public class Member{
     private int age;
     private LocalDate birthday;
     private int memberID;
+    private int memberNumber;
     private LocalDate registrationDate;
     private LocalDate nextPayment;
     private boolean isPaid;
@@ -39,7 +40,8 @@ public class Member{
         //this.teamNumber = autoAssignToTeam
         counter++;
         MemberList.addMember(this); // Adds the new Member to memberList automatically
-        teamNumber = TeamList.autoAssignToTeam(this); // Automatically adds the new Member to the appropriate team  
+        this.memberNumber = MemberList.memberList.indexOf(this);
+        this.teamNumber = TeamList.autoAssignToTeam(this); // Automatically adds the new Member to the appropriate team  
     }
     
     // Method for printing Member
@@ -119,12 +121,6 @@ public class Member{
         this.isPaid = isPaid;
     }
     
-    // Option to setPaid AND move the next due payment 1 year forward (When a member successfully pays for another year)
-    public void setIsPaidYear(Member member){
-      this.isPaid = isPaid;
-      this.nextPayment.plusYears(1);
-    }
-    
     // Getter for isActiveMembership
     public boolean getIsActiveMembership(){
         return isActiveMembership;
@@ -168,6 +164,11 @@ public class Member{
     // Setter for isMan
     public void setIsMan(boolean isMan){
       this.isMan = isMan;
+    }
+    
+    // Getter for memberNumber
+    public int getMemberNumber(){
+      return memberNumber;
     }
     
     public void printBestTimesList(){

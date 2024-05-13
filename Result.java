@@ -2,14 +2,14 @@ import java.time.LocalDateTime;
 
 public class Result{
 
-   //Atributer
+   // Attributes
    int length; 
    String swimmingStyle; 
    int time;
    LocalDateTime Date;  
    
    // Constructor
-   public Result(int length, String swimmingStyle, int time){//LocalDateTime date) {
+   public Result(int length, String swimmingStyle, int time){//LocalDateTime date)
        this.length = length;
        this.swimmingStyle = swimmingStyle;
        this.time = time;

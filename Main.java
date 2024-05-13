@@ -16,7 +16,7 @@ public class Main{
    TeamList.team1.printTeam();
    TeamList.team2.printTeam();
    TeamList.team3.printTeam();
-      
+ 
    TeamList.team1.addResult(0, 500, "Crawl", 120);//date);
    TeamList.team1.addResult(0, 500, "Crawl", 110);
    TeamList.team1.addResult(0, 500, "Crawl", 130);
