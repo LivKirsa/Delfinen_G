@@ -18,8 +18,9 @@ public class Member{
     private boolean isMan;
     private static int counter = 1;
     private LocalDate now = LocalDate.now();
+    private int teamNumber;
     
-    static ArrayList <Result> bestTimesList = new ArrayList <Result>();
+    ArrayList <Result> bestTimesList = new ArrayList <Result>();
     
     // Constructor for Member Objects
 
@@ -35,9 +36,10 @@ public class Member{
         this.isJuniorMembership = isJuniorMembership;
         this.isCompetitiveSwimmer = isCompetitiveSwimmer;
         this.isMan = isMan;
+        //this.teamNumber = autoAssignToTeam
         counter++;
         MemberList.addMember(this); // Adds the new Member to memberList automatically
-        TeamList.autoAssignToTeam(this); // Automatically adds the new Member to the appropriate team  
+        teamNumber = TeamList.autoAssignToTeam(this); // Automatically adds the new Member to the appropriate team  
     }
     
     // Method for printing Member
