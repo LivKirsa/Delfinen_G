@@ -17,18 +17,37 @@ private JTextArea textArea; // JTextArea declared as a class field
        
          
        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); 
-        JButton b1 = new JButton("Add Swimmer");
+        JButton b1 = new JButton("Tilføj medlem");
+        JButton b2 = new JButton("Se Medlemmer"); 
+        JButton b3 = new JButton("Se Medlemmer");
         b1.setBackground(Color.BLUE);
         buttonPanel.add(b1);
+        b2.setBackground(Color.RED);
+        buttonPanel.add(b2);
+        b3.setBackground(Color.RED);
+        buttonPanel.add(b3);
       
+      //add Buttonpanel til WEST
        add(buttonPanel, BorderLayout.WEST);
-      //actions of the b1 button 
+      //actions of the Swimmer button 
       b1.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-         PrintMemberlist(MemberList.memberList);
             //SwimmerFrame();
          }
        });
+      //actions of the se medlem button 
+      b2.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+         Displaymember(MemberList.memberList);
+         }
+       });
+       //actions of the se medlem button 
+      b3.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+         Displaymember(MemberList.memberList);
+         }
+       });
+       
        // size of the window 
        setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
       }
@@ -95,17 +114,17 @@ private JTextArea textArea; // JTextArea declared as a class field
 });
         
        }
-    public void PrintMemberlist(ArrayList<Member> memberList) {
+    public void Displaymember(ArrayList<?> list) {
     
         setTitle("Members List");     
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         textArea = new JTextArea(20,70);
         JScrollPane scrollPane = new JScrollPane(textArea);
         add(scrollPane, BorderLayout.CENTER);
         StringBuilder sb = new StringBuilder();
         
-        for (Member item : memberList) {
+        for (Object item : list) {
             sb.append(item).append("\n");
         }
         
