@@ -6,12 +6,17 @@ public class CompTeam extends Team{
    ArrayList <Result[]> discTop5List= new ArrayList <Result[]>();
    Result [] top5List;
    
+   //constructor
    public CompTeam(String teamName, int teamNumber, String coachName){
       super(teamName, teamNumber, coachName);
    }
-   
-   public void addResult(int memberNumber, int length, String swimmingStyle, int time, ArrayList<Result> list){
-      super.addResult(memberNumber, length, swimmingStyle, time, list);//need to make this for compResult.
+         
+   //overload
+   public void addResult(int memberNumber, int length, String swimmingStyle, int time, String location){
+      result = new CompResult(length, swimmingStyle, time, location);//, date);
+      result.member = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
+      
+      comparePersonalResult(memberNumber);
       compareTeamResult();
    }
    

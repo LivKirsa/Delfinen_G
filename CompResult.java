@@ -8,4 +8,8 @@ public class CompResult extends Result{
       this.location = location;
    }
    
+   public void printResult(){
+      System.out.println(swimmingStyle  + ", " + length + "m: " + time + " sek, " + location);
+   }
+   
 }

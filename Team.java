@@ -19,24 +19,28 @@ public class Team{
       TeamList.addTeam(this);
    }
    
-   public void addResult(int memberNumber, int length, String swimmingStyle, int time, ArrayList<Result> list){//, LocalDateTime date){//(ikke CompResult).
+   public void addResult(int memberNumber, int length, String swimmingStyle, int time){//, LocalDateTime date){//(ikke CompResult).
       result = new Result(length, swimmingStyle, time);//, date);
       result.member = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
-      
+      comparePersonalResult(memberNumber);
+   }
+   
+   public void comparePersonalResult(int memberNumber){
       if (teamMemberList.get(memberNumber).bestTimesList.size() > 0){
          if (compareResult(teamMemberList.get(memberNumber).bestTimesList)){//Compare personalResult. if returns false = the discipline doesnt exist yet:
-            disciplineDoesntExist(list);//discipline added to members besttimes list if no former instances.
+            disciplineDoesntExist(teamMemberList.get(memberNumber).bestTimesList);//discipline added to members besttimes list if no former instances.
          }
       }else{//if besttimeslsit is entirely empty:
-         disciplineDoesntExist(list);//discipline added to members besttimes list if no former instances.
+         disciplineDoesntExist(teamMemberList.get(memberNumber).bestTimesList);//discipline added to members besttimes list if no former instances.
       }
    }
    
    public boolean compareResult(ArrayList<Result> list){//compare result with parameter - list. does discipline exist in list?= true/fasle.
       for(Result r : list){
          if (r.length == result.length && r.swimmingStyle.equalsIgnoreCase(result.swimmingStyle)){//compare disciplines. If same:
-            if(r.time > result.time){//comparing times. If new time < old time, new time is added to list 
-               
+            if(r.time > result.time){//comparing times. If new time(result) < old time(r), new time is added to list 
+               list.add(result);
+               break;
             }
          return true;//if discipline does exist: return true.
          }
