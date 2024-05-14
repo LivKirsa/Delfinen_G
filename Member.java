@@ -1,8 +1,9 @@
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Member{
+public class Member implements Serializable{
 
     // Attributes for each Member
     private String name;

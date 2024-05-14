@@ -9,6 +9,12 @@ public class CompTeam extends Team{
    //constructor
    public CompTeam(String teamName, int teamNumber, String coachName){
       super(teamName, teamNumber, coachName);
+      
+   }
+   
+   public void addResult(int memberNumber, int length, String swimmingStyle, int time){
+      super.addResult(memberNumber, length, swimmingStyle, time);
+      compareTeamResult();
    }
          
    //overload
