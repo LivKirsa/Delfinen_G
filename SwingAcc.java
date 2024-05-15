@@ -10,7 +10,7 @@ public class SwingAcc extends SwingChairMan{
       setExtendedState(getExtendedState() | MAXIMIZED_BOTH); 
       setDefaultCloseOperation(EXIT_ON_CLOSE);
       setLayout(new BorderLayout());
-      setVisible(true);
+      //setVisible(true);
       
       JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); 
         JButton b1 = new JButton("Se Resistance");

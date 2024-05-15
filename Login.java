@@ -4,6 +4,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 public class Login{
 
+   JFrame [] holdFrame = new JFrame[1];
+   
    public Login(){
       RunLoginUI();
    }
@@ -16,11 +18,15 @@ public class Login{
    
    public void runCoachUI(){
    }
-   public void RunLoginUI(){
+   
+         static boolean isFrameOpen = false;
+
+   public void RunLoginUI(){ 
    JFrame frame = new JFrame("login box"); 
    frame.setSize(300, 200);
    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
+      holdFrame[0] = frame;
    JPanel panel = new JPanel();
    
        JButton runChairManButton = new JButton("Chairman");
@@ -40,23 +46,30 @@ public class Login{
        // this is the action to run chairman UI. 
        runChairManButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-            new SwingChairMan(); 
+         
+            new SwingChairMan().setVisible(true);
+            
          }
        });
        // this is the action to run the accounten UI
        runAccButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-            new SwingAcc();  
+            if (!isFrameOpen){
+            //holdFrame[0] = new SwingAcc();
+            new SwingAcc().setVisible(true);  
+            }
                   }
        });
             
               // this is the action to runs the Coach UI
             runCouchButton.addActionListener(new ActionListener() {
                public void actionPerformed(ActionEvent e) {
-                  new SwingCoach();
+               //holdFrame[0] = new SwingCoach();
+                  new SwingCoach().setVisible(true);
          }
        });
-         
+                  holdFrame[0].setVisible(true);
+
        }
        //Method to set the window in the middle of the screen. 
        public static void centerFrameOnScreen(JFrame frame){

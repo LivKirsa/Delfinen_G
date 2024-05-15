@@ -3,19 +3,25 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+
 public class SwingChairMan extends JFrame{
 
 private JTextArea textArea; // JTextArea declared as a class field
 
+   SwingCoach sc = new SwingCoach();
    
    public SwingChairMan() {
        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
        setExtendedState(getExtendedState() | MAXIMIZED_BOTH);  
        setDefaultCloseOperation(EXIT_ON_CLOSE);
        setLayout(new BorderLayout());
-       setVisible(true);
+       //setVisible(true);
        
-         
+       //add(addButtonPanel());
+       tabManager();
+       }
+       
+   public JPanel addButtonPanel(){
        JPanel buttonPanel = new JPanel(new GridLayout(30,1)); 
         JButton b1 = new JButton("Tilføj medlem");
         JButton b2 = new JButton("Se Medlemmer"); 
@@ -28,7 +34,7 @@ private JTextArea textArea; // JTextArea declared as a class field
         buttonPanel.add(b3);
       
       //add Buttonpanel til WEST
-       add(buttonPanel, BorderLayout.WEST);
+       //add(buttonPanel, BorderLayout.WEST);
       //actions of the add Swimmer button 
       b1.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
@@ -38,19 +44,19 @@ private JTextArea textArea; // JTextArea declared as a class field
       //actions of the se medlem button 
       b2.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-         Displaymember(MemberList.memberList);
-         //AddButtonToDisplayMember(MemberList.memberList);
+         sc.displayMemberWithButtons(MemberList.memberList);         
          }
        });
        //actions of the add trainer to a team. 
       b3.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-         DisplayMemberWithButtons(MemberList.memberList);
+         Displaymember(MemberList.memberList);
          }
        });
        
        // size of the window 
        setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
+       return buttonPanel;
       }
        
        
@@ -116,41 +122,8 @@ private JTextArea textArea; // JTextArea declared as a class field
         
        }
        
-       //brug den her i en ny metode hvor du tilføjer. 
-    public void Displaymember2(ArrayList<?> list) {
-    
-        setTitle("Members List");     
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
-        textArea = new JTextArea(20,70);
-        JScrollPane scrollPane = new JScrollPane(textArea);
-        add(scrollPane, BorderLayout.CENTER);
-        StringBuilder sb = new StringBuilder();
-        
-        for (Object item : list) {
-            sb.append(item).append("\n");
-        }
-        
-        textArea.setText(sb.toString());
-        //pack();
-        setLocationRelativeTo(null);
-        setVisible(true);
-    }
-    public void AddButtonToDisplayMember(ArrayList<?> list){
-      JPanel buttonPanel = new JPanel(); 
-      //should add a column with to hold the buttons. 
-      buttonPanel.setLayout(new GridLayout(0, 1));
-      
-      for (Object item : list){
-      JButton listButton = new JButton ("tilføj tid"); 
-      listButton.addActionListener((ActionEvent e) -> {
-      System.out.println("hej"); 
-      }); 
-      buttonPanel.add(listButton);
-    }
-    add(buttonPanel, BorderLayout.EAST);   
-}
-public void DisplayMemberWithButtons(ArrayList<?> list) {
+    //brug den her i en ny metode hvor du tilføjer. 
+    public void Displaymember(ArrayList<?> list) {
     setTitle("Members List");
     setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     
@@ -165,11 +138,6 @@ public void DisplayMemberWithButtons(ArrayList<?> list) {
         JLabel label = new JLabel("     " + member.toString());
         rowPanel.add(label, BorderLayout.CENTER);
 
-        JButton button = new JButton("Add Time");
-        button.setPreferredSize(new Dimension(100, button.getPreferredSize().height));  
-        button.addActionListener(e -> System.out.println("Button clicked for " + member));
-        rowPanel.add(button, BorderLayout.EAST);
-
         listPanel.add(rowPanel);
     }
 
@@ -177,10 +145,16 @@ public void DisplayMemberWithButtons(ArrayList<?> list) {
     scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
     scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-    //getContentPane().setLayout(new BorderLayout());
   add(scrollPane, BorderLayout.CENTER);
 
     setLocationRelativeTo(null);
     setVisible(true);
-}
+    }
+    
+    public void tabManager(){
+    JTabbedPane tab = new JTabbedPane(); 
+    tab.addTab("Træner", sc.addMainPanel()); 
+      this.add(tab);
+    }
+    
 }
