@@ -27,12 +27,20 @@ public class FileHandling {
       }
    }
    
-   public void writeMemberFile(){
-      Member[]arr = new Member[MemberList.memberList.size()];//idunno .toArray() shoud work, but it doesnt.
-      for (int i = 0; i < arr.length; i++){
-         arr[i] = MemberList.memberList.get(0);
-         MemberList.memberList.remove(0);
+   public void writeFile(ArrayList<Object> list){
+      if (list instanceof ArrayList<Member>){
       }
+   }
+   
+   public void writeMemberFile(ArrayList <Member> list){
+      Member[]arr = new Member[list.size()];
+      list.toArray(arr);
+      F.saveObject(arr, "Memberlist save file");
+   }
+   
+   public void writeMemblerFile(){
+      Member[]arr = new Member[MemberList.memberList.size()];
+      MemberList.memberList.toArray(arr);
       F.saveObject(arr, "Memberlist save file");
    }
    
