@@ -152,8 +152,8 @@ private JTextArea textArea; // JTextArea declared as a class field
     }
     
     public void tabManager(){
-    JTabbedPane tab = new JTabbedPane(); 
-    tab.addTab("Træner", sc.addMainPanel()); 
+      JTabbedPane tab = new JTabbedPane(); 
+      tab.addTab("Træner", sc.addMainPanel()); 
       this.add(tab);
     }
     

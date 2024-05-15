@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 public class SwingCoach extends JFrame {
    static SwingChairMan scm = new SwingChairMan();
-   JPanel panel;
+   JPanel panel = new JPanel();
+  CardLayout cardManager = new CardLayout();
    
     public SwingCoach() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -19,9 +20,11 @@ public class SwingCoach extends JFrame {
    }
    
    public JPanel addMainPanel(){
-       panel = new JPanel();
+       //panel = new JPanel();
+       
       panel.setLayout(new BorderLayout());
       panel.add(addMenuPanel(), BorderLayout.WEST);
+      panel.add(cardManager, BorderLayout.CENTER);
       return panel;
    }
    
@@ -38,13 +41,17 @@ public class SwingCoach extends JFrame {
         b3.setBackground(Color.GREEN);
         buttonPanel.add(b3);
         
+        cardManager.addLayoutComponent(displayMemberWithButtons(TeamList.teamList), "holdoversigt");
+        cardManager.addLayoutComponent(b2, "nyt resultat");
+         cardManager.addLayoutComponent(b1, "top 5");
+
  //add Buttonpanel til WEST
        //component.add(buttonPanel, BorderLayout.WEST);
        
       //actions of the add Swimmer button 
       b1.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-            displayMemberWithButtons(TeamList.teamList);
+            panel.add(displayMemberWithButtons(TeamList.teamList), BorderLayout.CENTER);
             
          }
        });
@@ -66,7 +73,7 @@ public class SwingCoach extends JFrame {
        return buttonPanel;
 }
 //display metode med knapper. 
-public void displayMemberWithButtons(ArrayList<?> list) {
+public JScrollPane displayMemberWithButtons(ArrayList<?> list) {
     //setTitle("List with buttons");
     //setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     
@@ -95,11 +102,12 @@ public void displayMemberWithButtons(ArrayList<?> list) {
     JScrollPane scrollPane = new JScrollPane(listPanel);
     scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
     scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+      //scrollPane.setVisible(true);
+      //panel.add(scrollPane);//, BorderLayout.CENTER);
+          //setVisible(true);
 
-      panel.add(scrollPane, BorderLayout.CENTER);
-
+   return scrollPane;
     //setLocationRelativeTo(null);
-    //setVisible(true);
 }
 
 }
