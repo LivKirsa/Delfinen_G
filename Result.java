@@ -1,6 +1,7 @@
 import java.time.LocalDateTime;
+import java.io.Serializable;
 
-public class Result{
+public class Result implements Serializable{
 
    //Atributer
    int length; 

@@ -169,7 +169,10 @@ public class Member implements Serializable{
     public void printBestTimesList(){
       System.out.println("\nBedste tider for " + name + ":");
        for (Result r: bestTimesList){
-          r.printResult();
-       }
+
+            r.printResult();
+
+       }//end of for loop.
     }
+    
 }
