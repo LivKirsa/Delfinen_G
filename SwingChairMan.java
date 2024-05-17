@@ -4,32 +4,25 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
-public class SwingChairMan extends JFrame {
-
-private JPanel runTrainerPanel() {
-    JPanel trainerPanel = new JPanel();
-    trainerPanel.add(new JLabel(SwingCoach()));
-    return trainerPanel;
-}
+public class SwingChairMan extends JPanel {
 
     public SwingChairMan() {
+    JFrame f = new JFrame(); 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
-        setVisible(true);
+        f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
+        f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
+        f.setLayout(new BorderLayout());
+        f.setVisible(true);
         
         //Tabs work start here 
         JTabbedPane tabbedPane = new JTabbedPane();
         
-         //Create and add tabs
-        tabbedPane.add("Accounten",runTrainerPanel);
-        //tabbedPane.add("Trainer");
-       // tabbedPane.add("formand");
-        add(tabbedPane, BorderLayout.NORTH);
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
+        //signe
+        setBackground(new Color(255,200,200));
         
-        setLocationRelativeTo(null);
-        setVisible(true);
+        f.add(this);
 
         JPanel buttonPanel = new JPanel(new GridLayout(30, 1));
         JButton b1 = new JButton("Tilføj medlem");
@@ -43,7 +36,7 @@ private JPanel runTrainerPanel() {
         b3.setBackground(Color.GREEN);
         buttonPanel.add(b3);
 
-        add(buttonPanel, BorderLayout.WEST);
+        f.add(buttonPanel, BorderLayout.WEST);
 
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -63,7 +56,7 @@ private JPanel runTrainerPanel() {
             }
         });
 
-        setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
+        f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
     }
 
     public void swimmerFrame() {
@@ -125,30 +118,35 @@ private JPanel runTrainerPanel() {
     }
 
     public void displayList(ArrayList<?> list) {
-        setTitle("Members List");
-
+        //f.setTitle("Members List");
+         
         JPanel listPanel = new JPanel();
         listPanel.setLayout(new GridLayout(list.size(), 1));
-
+         listPanel.setBackground(Color.BLACK);
+         
         for (Object item : list) {
             JPanel rowPanel = new JPanel(new BorderLayout());
             JLabel label = new JLabel("     " + item.toString());
             rowPanel.add(label, BorderLayout.CENTER);
             listPanel.add(rowPanel);
         }
-
+        
         JScrollPane scrollPane = new JScrollPane(listPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-
         add(scrollPane, BorderLayout.CENTER);
+        setLayout(new BorderLayout());
+        this.removeAll(); 
+        this.add(scrollPane, BorderLayout.CENTER);
+        this.revalidate(); 
+        this.repaint();
 
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
         setVisible(true);
     }
 
     public void displayListWithButtons(ArrayList<?> list) {
-        setTitle("List with buttons");
+        //setTitle("List with buttons");
 
         JPanel listPanel = new JPanel();
         listPanel.setLayout(new GridLayout(list.size(), 1));
@@ -156,8 +154,8 @@ private JPanel runTrainerPanel() {
         for (Object item : list) {
             JPanel rowPanel = new JPanel(new BorderLayout());
 
-            JLabel label = new JLabel("     " + item.toString());
-            rowPanel.add(label, BorderLayout.CENTER);
+            JLabel label = new JLabel("     " + item.toString() + "\n");
+            rowPanel.add(label, BorderLayout.WEST);
 
             JButton button = new JButton("Add Time");
             button.setPreferredSize(new Dimension(100, button.getPreferredSize().height));
@@ -166,14 +164,17 @@ private JPanel runTrainerPanel() {
 
             listPanel.add(rowPanel);
         }
-
         JScrollPane scrollPane = new JScrollPane(listPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-
         add(scrollPane, BorderLayout.CENTER);
+        setLayout(new BorderLayout());
+        this.removeAll(); 
+        this.add(scrollPane, BorderLayout.CENTER);
+        this.revalidate(); 
+        this.repaint();
 
-        setLocationRelativeTo(null);
+     //   setLocationRelativeTo(null);
         setVisible(true);
     }
      

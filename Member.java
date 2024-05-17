@@ -24,6 +24,7 @@ public class Member{
     ArrayList <Result> bestTimesList = new ArrayList <Result>();
     
     public String toString() {
+         //System.out.println("hej");
         return "Navn:" + this.name +"." + " " + "Fødseldag: "+ this.birthday+"." + " " + ", Alder:"+ this.age+"." + " " + "ID:" + this.memberID +"." + " " + "Betalt:"+ this.isPaid +"." + " " +"Aktiv:"+ this.isActiveMembership+"." + " " +"Junior:" + this.isJuniorMembership+"." + " " +"Mand:" + this.isMan+"." +" " +"Team:" +this.teamNumber +"."  ; 
     }
     

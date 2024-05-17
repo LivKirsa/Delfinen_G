@@ -47,7 +47,7 @@ public class Login{
        runChairManButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
          
-            new SwingChairMan().setVisible(true);
+            new SwingChairMan();//.setVisible(true);
             
          }
        });
