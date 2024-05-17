@@ -17,12 +17,18 @@ public class SwingChairMan extends JPanel {
         //Tabs work start here 
         JTabbedPane tabbedPane = new JTabbedPane();
         
+        tabbedPane.addTab("Couch",openCoach());
+        tabbedPane.addTab("formand", new JPanel());
+        
+        f.add(tabbedPane, BorderLayout.NORTH);
+        
+        
         f.setLocationRelativeTo(null);
         f.setVisible(true);
         //signe
         setBackground(new Color(255,200,200));
         
-        f.add(this);
+        //f.add(this);
 
         JPanel buttonPanel = new JPanel(new GridLayout(30, 1));
         JButton b1 = new JButton("Tilføj medlem");
@@ -36,7 +42,7 @@ public class SwingChairMan extends JPanel {
         b3.setBackground(Color.GREEN);
         buttonPanel.add(b3);
 
-        f.add(buttonPanel, BorderLayout.WEST);
+        add(buttonPanel, BorderLayout.WEST);
 
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -58,7 +64,14 @@ public class SwingChairMan extends JPanel {
 
         f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
     }
-
+    //tabs here 
+    private JPanel openCoach() {
+        JPanel panel = new JPanel();
+        panel.setBackground(new Color(255, 200, 200)); 
+        //SwingChairMan swingChairMan = new SwingChairMan();
+        panel.add(this);//swingChairMan, BorderLayout.CENTER);
+        return panel;
+    }
     public void swimmerFrame() {
         JFrame swimmerFrame = new JFrame();
         swimmerFrame.setVisible(true);
@@ -130,7 +143,6 @@ public class SwingChairMan extends JPanel {
             rowPanel.add(label, BorderLayout.CENTER);
             listPanel.add(rowPanel);
         }
-        
         JScrollPane scrollPane = new JScrollPane(listPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -140,7 +152,6 @@ public class SwingChairMan extends JPanel {
         this.add(scrollPane, BorderLayout.CENTER);
         this.revalidate(); 
         this.repaint();
-
         //setLocationRelativeTo(null);
         setVisible(true);
     }
