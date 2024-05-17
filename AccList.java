@@ -1,11 +1,14 @@
 import java.util.*;
+import java.time.LocalDate;
 
 public class AccList {
-   static ArrayList <Member> unpaidSubsList = new ArrayList<Member> ();
+   static ArrayList <Member> subsList = new ArrayList<Member> ();
    
-   static public void updateUnPaidSubsList(){//update list whenever program starts.
+   static public void updateSubsList(){//update list whenever program starts.
    }
    
-   static public void togglePaidSubStatus(int memberNumber){//changes isPaid status for a specific member.
+   // Method for renewing membership and setting isPaid = true
+   public void setRenewed(int memberID){
+      MemberList.memberList.get(memberID).renewMembership();
    }
 }
