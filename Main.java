@@ -1,16 +1,22 @@
 public class Main{
-
-   //static Member jens = new Member("Jens Jensen", "1999-08-20", true, true, true, true);
-   //static Member grete = new Member("Grete Gregersen", "1800-05-13", false, false, false, false);
+   static Member jens = new Member("Jens Jensen", "1999-08-20", true, true, true);
+   static Member grete = new Member("Grete Gregersen", "1800-05-13", false, false, false);
+   static Member andrea = new Member("Andrea Andreassen", "1991-12-12", true, false, false); // Hold 1
+   //static Member grete = new Member("Grete Gregersen", "1800-05-13", true, false, false); // Hold 1
+   static Member morten = new Member("Morten Mortensen", "2010-09-30", true, true, true); // Hold 2
+   static Member julie = new Member("Julie Juliussen", "2009-09-30", true, true, false); // Hold 2
+   static Member ole = new Member("Ole Olesen", "2010-03-25", true, true, true); // Hold 2
+   static Member carl = new Member("Carl Carlsen", "1989-10-01", true, true, true); // Hold 3
+   //static Member jens = new Member("Jens Jensen", "1999-08-20", true, true, true); // Hold 3
    
    public static void main (String [] args){
       
-      Member jens = new Member("Jens Jensen", "1999-08-20", true, true, true, true);
-      Member grete = new Member("Grete Gregersen", "1800-05-13", false, false, false, false);
+      //Member jens = new Member("Jens Jensen", "1999-08-20", true, true, true, true);
+      //Member grete = new Member("Grete Gregersen", "1800-05-13", false, false, false, false);
       
       for (Member m : MemberList.memberList){
          System.out.print("Hold: " + TeamList.autoAssignToTeam(m) + ", ");
-         System.out.println(m.getName() + ", " + m.getAge() + ", aktiv:" + m.getIsActiveMembership() + ", comp:" + m.getIsCompetitiveSwimmer() + ", junior: " + m.getIsJuniorMembership() + "\n");
+         System.out.println(m.getName() + ", " + m.getAge() + ", aktiv:" + m.getIsActiveMembership() + ", comp:" + m.getIsCompetitiveSwimmer());// + ", junior: " + m.getIsJuniorMembership() + "\n");
       }
 
       FileHandling filehandling = new FileHandling();

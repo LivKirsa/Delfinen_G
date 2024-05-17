@@ -2,7 +2,7 @@ import java.time.LocalDateTime;
 
 public class Result{
 
-   //Atributer
+   // Attributes
    int length; 
    String swimmingStyle; 
    int time;
@@ -10,7 +10,7 @@ public class Result{
    int member;
    
    // Constructor
-   public Result(int length, String swimmingStyle, int time){//LocalDateTime date) {
+   public Result(int length, String swimmingStyle, int time){//LocalDateTime date)
        this.length = length;
        this.swimmingStyle = swimmingStyle;
        this.time = time;
@@ -19,4 +19,4 @@ public class Result{
    public void printResult(){
       System.out.println(swimmingStyle  + ", " + length + "m: " + time + " sek");
    }
-   }
+}
