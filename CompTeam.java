@@ -8,7 +8,6 @@ public class CompTeam extends Team{
    //constructor
    public CompTeam(String teamName, int teamNumber, String coachName){
       super(teamName, teamNumber, coachName);
-      
    }
    
    @Override
@@ -27,48 +26,42 @@ public class CompTeam extends Team{
       
       compareTeamResult();
       System.out.println("Compared compResult with personal and team's best times lists");
-      
    }
    
    public void compareTeamResult(){
-      if (discTop5List.size() > 0){
+      boolean discinlist = false;
+      ArrayList < Result> rList = new ArrayList <Result>();
+      if (discTop5List.size() > 0){//if discipline list isn't empty:
          for(ArrayList<Result> dList : discTop5List){
-            if (!compareResult(dList, false)) {
-               disciplineDoesntExist();
-               break;
+            if (compareDiscipline(dList) >= 0) {//if discipline doesn't exist:
+             discinlist = true;
+             rList = dList;
+             break;
+               /**/
                
             }else {
-               dList.remove(dList.size() - 1);
-            }
-         }//end of for each loop*/
-         
-         for(ArrayList<Result> dList : discTop5List){//for every disciplineList(dList) on teams best times list:
-            for (Result r : dList){
-               if (!dList.contains(result)){
-                  compareResult(dList, false);
-                  break;
-               }
-            }//end of inner for each loop.
-            
-            
-            //Makes dList max length 5:
-            if (dList.size() > 5){
-               int slowestTime = dList.get(0).time;
+            disciplineDoesntExist();
+               System.out.println("wahhaha");
                
-               for (Result r : dList){
-                  if (r.time >= slowestTime) slowestTime = r.time;
-               }
-               for (Result r : dList){
-                  if (r.time == slowestTime) dList.remove(r);
-                  break;
-               }
-            }//end of while
-            
-         }//end of outer for each loop.
+                          }
+         }//end of for each loop*/
+         if (discinlist){
+            compareTeamResult(rList, 5);//add result to dList.
+         }
       }else{
          disciplineDoesntExist();
          System.out.println("boohoo");
       }//end of if statement.
+   }
+   
+   public void compareTeamResult(ArrayList<Result> list, int listSize){
+      for(Result r : list){
+          compareResultTimes(list, r);
+          break;
+      }
+      if (list.size()< listSize){
+         list.remove(listSize + 1);
+      }
    }
    
    public void disciplineDoesntExist(){//adds new discipline (dList) to discTop5List.
@@ -81,11 +74,18 @@ public class CompTeam extends Team{
    }
    
    public void printDiscTop5List(){
+      System.out.println(boo());
+   }
+   
+   public String boo(){
+      String string = "\n";
       for (ArrayList<Result> dList : discTop5List){
+         string += ("\n" + dList.get(0).swimmingStyle + ", " + dList.get(0).length + " m\n");
          for (Result r: dList){
-            r.printResult();
+             string += (r.time + " sek\n");
          }
-         System.out.println();
+         
       }
+      return string;
    }
 }

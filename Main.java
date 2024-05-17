@@ -1,4 +1,6 @@
 public class Main{
+
+   
    static Member jens = new Member("Jens Jensen", "1999-08-20", true, true, true);
    static Member grete = new Member("Grete Gregersen", "1800-05-13", false, false, false);
    static Member andrea = new Member("Andrea Andreassen", "1991-12-12", true, false, false); // Hold 1
@@ -11,8 +13,8 @@ public class Main{
    
    public static void main (String [] args){
       
-      //Member jens = new Member("Jens Jensen", "1999-08-20", true, true, true, true);
-      //Member grete = new Member("Grete Gregersen", "1800-05-13", false, false, false, false);
+      Member jens = new Member("Jens Jensen", "1999-08-20", true, true, true);
+      Member grete = new Member("Grete Gregersen", "1800-05-13", false, false, false);
       
       for (Member m : MemberList.memberList){
          System.out.print("Hold: " + TeamList.autoAssignToTeam(m) + ", ");
@@ -34,16 +36,16 @@ public class Main{
       
       ((CompTeam)TeamList.team3).addResult(0, 400, "Crawl", 300, "Aarhus Stadion");
       
-      System.out.println(((CompTeam)TeamList.teamList.get(2)).discTop5List);
+      //System.out.println(((CompTeam)TeamList.teamList.get(2)).discTop5List);
       ((CompTeam)TeamList.team3).printDiscTop5List();
       jens.printBestTimesList();
       
       
-         //filehandling.writeFile();
+      filehandling.writeFile();
       
       MemberList.memberList.get(0).setName("Peddersen");//won't be saved.
       
-         //filehandling.readFile();
+      filehandling.readFile();
       
       for(Team t : TeamList.teamList){
          t.printTeam();
@@ -52,7 +54,7 @@ public class Main{
       
       
       
-      System.out.println("MemberList: " + MemberList.memberList + ", TeamList: " + TeamList.teamList + ", member best: " +  MemberList.memberList.get(0).bestTimesList + ", team top 5: " + ((CompTeam)TeamList.teamList.get(2)).discTop5List);
+      System.out.println("MemberList: " + MemberList.memberList + ", TeamList: " + TeamList.teamList + ", member best: " +  MemberList.memberList.get(0).bestTimesList + ", team top 5: " + ((CompTeam)TeamList.teamList.get(2)).boo());
       
       
       //jens.printMember();

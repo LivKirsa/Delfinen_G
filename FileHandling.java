@@ -52,6 +52,9 @@ public class FileHandling {
       Object tObj = F.loadObject("Teamlist save file");
       readMemberList(mObj);
       readTeamList(tObj);
+      for(Team t : TeamList.teamList){
+      //   t.teamMemberList.clear();
+      }
       
       reconstructTeamLists();
       

@@ -17,7 +17,11 @@ public class Result implements Serializable{
        this.time = time;
    }
    
+   public String toString(){
+      return (swimmingStyle  + ", " + length + "m: " + time + " sek");
+   }
+      
    public void printResult(){
-      System.out.println(swimmingStyle  + ", " + length + "m: " + time + " sek");
+      System.out.println(toString());
    }
 }
