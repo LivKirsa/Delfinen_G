@@ -1,7 +1,8 @@
 import java.util.*;
 import java.time.LocalDateTime;
+import java.io.Serializable;
 
-public class Team{
+public class Team implements Serializable{
    
    String teamName;
    int teamNumber;
@@ -27,20 +28,33 @@ public class Team{
    
    public void comparePersonalResult(int memberNumber){
       if (teamMemberList.get(memberNumber).bestTimesList.size() > 0){
-         if (compareResult(teamMemberList.get(memberNumber).bestTimesList)){//Compare personalResult. if returns false = the discipline doesnt exist yet:
+         if (!compareResult(teamMemberList.get(memberNumber).bestTimesList, true)){//if Compare personalResult returns false = the discipline doesnt exist yet:
+            System.out.println("disciplin findes ikke.");
             disciplineDoesntExist(teamMemberList.get(memberNumber).bestTimesList);//discipline added to members besttimes list if no former instances.
+            
+         }else{
+            System.out.println("disciplin findes");
+            
          }
       }else{//if besttimeslsit is entirely empty:
+         System.out.println("ingen discipliner oprettet");
          disciplineDoesntExist(teamMemberList.get(memberNumber).bestTimesList);//discipline added to members besttimes list if no former instances.
+         
       }
+      System.out.println();
    }
    
-   public boolean compareResult(ArrayList<Result> list){//compare result with parameter - list. does discipline exist in list?= true/fasle.
+   public boolean compareResult(ArrayList<Result> list, boolean replace){//compare result with parameter - list. does discipline exist in list?= true/fasle.
       for(Result r : list){
          if (r.length == result.length && r.swimmingStyle.equalsIgnoreCase(result.swimmingStyle)){//compare disciplines. If same:
-            if(r.time > result.time){//comparing times. If new time(result) < old time(r), new time is added to list 
-               list.add(result);
-               break;
+            if(r.time >= result.time){//comparing times. If new time(result) < old time(r), old time is overwritten:
+               if(replace){
+                  list.set(list.indexOf(r), result);
+                  System.out.println("Result added.");
+               }else{
+                  list.add(result);
+               }
+               result.printResult();
             }
          return true;//if discipline does exist: return true.
          }
@@ -48,10 +62,11 @@ public class Team{
       return false;//if discipline doesnt exist: return false.
    }
    
-   public void disciplineDoesntExist(ArrayList<Result> list){//if discipline doesnt exist, add result to parameter-list. 
+   public void disciplineDoesntExist(ArrayList<Result> list){//if discipline doesnt exist: add result to parameter-list. 
       System.out.print("\nNy disciplin oprettet: ");
       result.printResult();
       list.add(result);
+      //System.out.println("Result added.");
    }
    
    // Setter for coachName

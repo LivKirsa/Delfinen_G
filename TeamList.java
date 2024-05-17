@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class TeamList{
+public class TeamList implements Serializable{
    static ArrayList<Team> teamList = new ArrayList <Team>();
    
    // Method for adding teams to teamList
