@@ -6,11 +6,29 @@ import java.util.ArrayList;
 
 public class SwingChairMan extends JFrame {
 
+private JPanel runTrainerPanel() {
+    JPanel trainerPanel = new JPanel();
+    trainerPanel.add(new JLabel(SwingCoach()));
+    return trainerPanel;
+}
+
     public SwingChairMan() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+        setVisible(true);
+        
+        //Tabs work start here 
+        JTabbedPane tabbedPane = new JTabbedPane();
+        
+         //Create and add tabs
+        tabbedPane.add("Accounten",runTrainerPanel);
+        //tabbedPane.add("Trainer");
+       // tabbedPane.add("formand");
+        add(tabbedPane, BorderLayout.NORTH);
+        
+        setLocationRelativeTo(null);
         setVisible(true);
 
         JPanel buttonPanel = new JPanel(new GridLayout(30, 1));
@@ -29,7 +47,7 @@ public class SwingChairMan extends JFrame {
 
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SwimmerFrame();
+                swimmerFrame();
             }
         });
 
@@ -48,7 +66,7 @@ public class SwingChairMan extends JFrame {
         setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
     }
 
-    public void SwimmerFrame() {
+    public void swimmerFrame() {
         JFrame swimmerFrame = new JFrame();
         swimmerFrame.setVisible(true);
         swimmerFrame.setSize(300, 200);
@@ -158,4 +176,5 @@ public class SwingChairMan extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
+     
 }
