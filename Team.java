@@ -22,27 +22,27 @@ public class Team implements Serializable{
    
    public void addResult(int memberNumber, int length, String swimmingStyle, int time){//, LocalDateTime date){//(ikke CompResult).
       result = new Result(length, swimmingStyle, time);//, date);
-      result.member = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
+      result.memberID = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
       comparePersonalResult(memberNumber);
    }
    
    public void comparePersonalResult(int memberNumber){
       if (teamMemberList.get(memberNumber).bestTimesList.size() > 0){
          if (compareDiscipline(teamMemberList.get(memberNumber).bestTimesList) < 0){//!compareResult(teamMemberList.get(memberNumber).bestTimesList, true)){//if Compare personalResult returns false = the discipline doesnt exist yet:
-            System.out.println("disciplin findes ikke.");
+            //System.out.println("disciplin findes ikke.");
             disciplineDoesntExist(teamMemberList.get(memberNumber).bestTimesList);//discipline added to members besttimes list if no former instances.
             
          }else{
-            System.out.println("disciplin findes");
+            //System.out.println("disciplin findes");
             teamMemberList.get(memberNumber).bestTimesList.set(teamMemberList.get(memberNumber).bestTimesList.size() -1, result);
             
          }
       }else{//if besttimeslsit is entirely empty:
-         System.out.println("ingen discipliner oprettet");
+         //System.out.println("ingen discipliner oprettet");
          disciplineDoesntExist(teamMemberList.get(memberNumber).bestTimesList);//discipline added to members besttimes list if no former instances.  
       }
       
-      System.out.println();
+      //System.out.println();
    } 
    
    //returns index of discipline matching result in list.
@@ -55,15 +55,8 @@ public class Team implements Serializable{
       return -1;//if discipline doesnt exist: return false.
    }
    
-   
-   public void compareResultTimes(ArrayList<Result> list, Result r){
-      if (result.time <= r.time){
-         list.add(result);
-      }
-   }
-   
    public void disciplineDoesntExist(ArrayList<Result> list){//if discipline doesnt exist: add result to parameter-list. 
-      System.out.print("\nNy disciplin oprettet: ");
+      System.out.print("Ny disciplin oprettet: ");
       result.printResult();
       list.add(result);
       //System.out.println("Result added.");

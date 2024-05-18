@@ -8,7 +8,7 @@ public class Result implements Serializable{
    String swimmingStyle; 
    int time;
    LocalDateTime Date;  
-   int member;
+   int memberID;
    
    // Constructor
    public Result(int length, String swimmingStyle, int time){//LocalDateTime date)

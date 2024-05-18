@@ -15,55 +15,55 @@ public class CompTeam extends Team{
       super.addResult(memberNumber, length, swimmingStyle, time);
       
       compareTeamResult();
-      //System.out.println("Compared result with personal and team's best times lists");
    }
          
    //overload
    public void addResult(int memberNumber, int length, String swimmingStyle, int time, String location){
       result = new CompResult(length, swimmingStyle, time, location);//, date);
-      result.member = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
+      result.memberID = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
       comparePersonalResult(memberNumber);
       
       compareTeamResult();
-      System.out.println("Compared compResult with personal and team's best times lists");
    }
    
    public void compareTeamResult(){
-      boolean discinlist = false;
-      ArrayList < Result> rList = new ArrayList <Result>();
+      boolean resultsCompared = false;
       if (discTop5List.size() > 0){//if discipline list isn't empty:
          for(ArrayList<Result> dList : discTop5List){
-            if (compareDiscipline(dList) >= 0) {//if discipline doesn't exist:
-             discinlist = true;
-             rList = dList;
-             break;
-               /**/
-               
-            }else {
-            disciplineDoesntExist();
-               System.out.println("wahhaha");
-               
-                          }
+            if(compareDiscipline(dList) == 0){//if result == discipline in dList:
+               compareTeamTimes(dList, 5);//comparing times.
+               resultsCompared = true;
+               break;           
+            }
          }//end of for each loop*/
-         if (discinlist){
-            compareTeamResult(rList, 5);//add result to dList.
-         }
+         
+         if (!resultsCompared) {//if results haven't been compared, that means the discipline doesn't exist yet.
+            disciplineDoesntExist();
+         } 
       }else{
-         disciplineDoesntExist();
-         System.out.println("boohoo");
+         disciplineDoesntExist();//no disciplines exist yet.
       }//end of if statement.
    }
    
-   public void compareTeamResult(ArrayList<Result> list, int listSize){
+   public void compareTeamTimes(ArrayList<Result> list, int listSize){
+      //list.add(new Result(5,"beep boop", 10000));
+      list.add(result);
       for(Result r : list){
-          compareResultTimes(list, r);
-          break;
-      }
-      if (list.size()< listSize){
-         list.remove(listSize + 1);
+         //System.out.println("heehooheehoo");
+         if (result.time <= r.time){
+            list.add(list.indexOf(r), result);
+            list.remove(list.size() - 1);
+            break;
+         }else{
+            
+         }
+      }//end of for each loop.
+      
+      if (list.size()> listSize){
+         list.remove(listSize);
       }
    }
-   
+      
    public void disciplineDoesntExist(){//adds new discipline (dList) to discTop5List.
       ArrayList<Result> top5List = new ArrayList<Result>();
       
@@ -74,15 +74,20 @@ public class CompTeam extends Team{
    }
    
    public void printDiscTop5List(){
-      System.out.println(boo());
+      System.out.println(printTeamResultList());
    }
    
-   public String boo(){
+   public String printTeamResultList(){
       String string = "\n";
       for (ArrayList<Result> dList : discTop5List){
-         string += ("\n" + dList.get(0).swimmingStyle + ", " + dList.get(0).length + " m\n");
+         string += ("\n" + dList.get(0).swimmingStyle + ", " + dList.get(0).length + " m:\n");
          for (Result r: dList){
-             string += (r.time + " sek\n");
+             string += (r.memberID + ", " + teamMemberList.get(r.memberID).getName());//hmm probably need a for each loop with members to find right member from memberID.
+             string += (r.time + " sek");
+             if (r instanceof CompResult){
+               string += (", " + ((CompResult)r).location);
+             }
+             string += ("\n");
          }
          
       }

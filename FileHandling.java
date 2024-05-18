@@ -52,29 +52,15 @@ public class FileHandling {
       Object tObj = F.loadObject("Teamlist save file");
       readMemberList(mObj);
       readTeamList(tObj);
-      for(Team t : TeamList.teamList){
-      //   t.teamMemberList.clear();
-      }
       
       reconstructTeamLists();
-      
-      //System.out.println(TeamList.teamList.get(0).coachName);
-        // System.out.println(MemberList.memberList);
-         //reconstructTeamLists(); 
-         /*
-         for (Team t : TeamList.teamList){
-            t.printTeam();
-         }*/
-
    }
    
    public void readMemberList(Object obj){   
       if(obj instanceof Member[]){
          ArrayList<Member> tempArr = new ArrayList <Member> (Arrays.asList((Member[])obj));//ArrList temparr = obj cast as a list.
-         MemberList.memberList = tempArr;//set MemberList.memberList to loaded array.
          
-         /*reconstructTeamLists();
-         System.out.println(MemberList.memberList);*/
+         MemberList.memberList = tempArr;//set MemberList.memberList to loaded array.
          System.out.println("Succesfully cast loaded object as ArrayList<Member>");
    
       } 
