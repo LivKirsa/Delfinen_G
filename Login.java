@@ -8,6 +8,6 @@ public class Login{
    public void runAccUI(){
    }
    
-   public void runCoachUI(){
+   public void runCouchUI(){
    }
 }

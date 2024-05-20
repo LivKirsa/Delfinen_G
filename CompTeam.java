@@ -2,10 +2,9 @@ import java.util.ArrayList;
 import java.util.*;
 
 public class CompTeam extends Team{
-   ArrayList <CompMember> compList = new ArrayList <CompMember>();//??
    ArrayList <ArrayList<Result>> discTop5List= new ArrayList <ArrayList<Result>>();
    
-   //constructor
+   // Constructor for competitive Teams
    public CompTeam(String teamName, int teamNumber, String coachName){
       super(teamName, teamNumber, coachName);
    }
@@ -18,8 +17,8 @@ public class CompTeam extends Team{
    }
          
    //overload
-   public void addResult(int memberNumber, int length, String swimmingStyle, int time, String location){
-      result = new CompResult(length, swimmingStyle, time, location);//, date);
+   public void addResult(int memberNumber, int length, String swimmingStyle, int time, String location, int placement){
+      result = new CompResult(length, swimmingStyle, time, location, placement);
       result.memberID = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
       comparePersonalResult(memberNumber);
       

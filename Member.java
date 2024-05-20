@@ -58,14 +58,6 @@ public class Member implements Serializable{
          System.out.println(name);
       }
     
-    // Method for constructing Member and returning Member Object
-    public Member addMemberReturnObject(String name, String birthday, boolean isActiveMembership, boolean isCompetitiveSwimmer, boolean isMan) {
-      Member newMember = new Member(name, birthday, isActiveMembership, isCompetitiveSwimmer, isMan);
-      counter++; // Im not sure if this works properly - Liv
-      MemberList.addMember(this); // Adds the new Member to memberList automatically
-      return newMember;
-    }
-    
     // Getter for name
     public String getName(){
         return name;
@@ -174,11 +166,6 @@ public class Member implements Serializable{
     // Getter for nextPayment
     public LocalDate getNextPayment(){
       return nextPayment;
-    }
-    
-    // Method for moving nextPayment a year forward (Used in AccList)
-    public void moveNextPayment(Member member){
-      member.nextPayment.plusYears(1);
     }
     
     // Method to renew membership

@@ -20,7 +20,7 @@ public class Main{
       TeamList.team3.addResult(0, 500, "Crawl", 400);
       TeamList.team3.addResult(0, 500, "Crawl", 200);
       
-      ((CompTeam)TeamList.team3).addResult(0, 400, "Crawl", 300, "Aarhus Stadion");
+      ((CompTeam)TeamList.team3).addResult(0, 400, "Crawl", 300, "Aarhus Stadion", 3);
       
       ((CompTeam)TeamList.team3).printDiscTop5List();
       jens.printBestTimesList();
