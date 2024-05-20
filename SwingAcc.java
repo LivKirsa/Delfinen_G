@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class SwingAcc extends SwingChairMan{
+public class SwingAcc extends JFrame{
 
    public SwingAcc(){
       Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

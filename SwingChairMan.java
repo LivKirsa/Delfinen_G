@@ -19,6 +19,7 @@ public class SwingChairMan extends JPanel {
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.addTab("formand",openChairman());
         tabbedPane.addTab("Couch",openCoach());
+        tabbedPane.addTab("Accounten",openAcc());
         f.add(tabbedPane, BorderLayout.NORTH);
         
         
@@ -83,7 +84,16 @@ public class SwingChairMan extends JPanel {
         SwingCoach swingCoach = new SwingCoach(); 
         panel.add(swingCoach.getContentPane(), BorderLayout.CENTER); 
         return panel;
+        }
+        
+        private JPanel openAcc() {
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.setBackground(new Color(255, 200, 200));
+        SwingAcc SwingAcc = new SwingAcc(); 
+        panel.add(SwingAcc.getContentPane(), BorderLayout.CENTER); 
+        return panel;
     }
+    
     public void swimmerFrame() {
         JFrame swimmerFrame = new JFrame();
         swimmerFrame.setVisible(true);
