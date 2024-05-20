@@ -54,11 +54,11 @@ public class Login{
        // this is the action to run the accounten UI
        runAccButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-            if (!isFrameOpen){
+            //if (!isFrameOpen){
             //holdFrame[0] = new SwingAcc();
             new SwingAcc().setVisible(true);  
             }
-                  }
+                  
        });
             
               // this is the action to runs the Coach UI

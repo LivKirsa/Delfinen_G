@@ -18,7 +18,7 @@ public class SwingChairMan extends JPanel {
         //Tabs work start here 
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.addTab("formand",openChairman());
-        tabbedPane.addTab("Couch",openCoach());
+        tabbedPane.addTab("Couch", new JPanel());//openCoach());
         tabbedPane.addTab("Accounten",openAcc());
         f.add(tabbedPane, BorderLayout.NORTH);
         
