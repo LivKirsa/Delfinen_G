@@ -56,7 +56,7 @@ public class Login{
          public void actionPerformed(ActionEvent e) {
             //if (!isFrameOpen){
             //holdFrame[0] = new SwingAcc();
-            new SwingAcc().setVisible(true);  
+            new SwingAcc(true);  
             }
                   
        });
@@ -65,7 +65,7 @@ public class Login{
             runCouchButton.addActionListener(new ActionListener() {
                public void actionPerformed(ActionEvent e) {
                //holdFrame[0] = new SwingCoach();
-                  new SwingCoach().setVisible(true);
+                  new SwingCoach(true);//.setVisible(true);
          }
        });
                   holdFrame[0].setVisible(true);

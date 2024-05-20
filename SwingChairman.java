@@ -80,18 +80,19 @@ public class SwingChairMan extends JPanel {
         return panel;
         } 
         private JPanel openCoach() {
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBackground(new Color(255, 200, 200));
-        SwingCoach swingCoach = new SwingCoach(); 
-        panel.add(swingCoach.getContentPane(), BorderLayout.CENTER); 
-        return panel;
+           JPanel panel = new JPanel(new BorderLayout());
+           panel.setBackground(new Color(255, 200, 200));
+           panel.add(new SwingCoach(false));
+           //SwingCoach swingCoach = new SwingCoach(); 
+           //panel.add(swingCoach.getContentPane(), BorderLayout.CENTER); 
+           return panel;
         }
         
         private JPanel openAcc() {
         JPanel panel = new JPanel(new BorderLayout());
-        panel.setBackground(new Color(255, 200, 200));
-        SwingAcc SwingAcc = new SwingAcc(); 
-        panel.add(SwingAcc.getContentPane(), BorderLayout.CENTER); 
+           panel.setBackground(new Color(255, 200, 200));
+           panel.add(new SwingAcc(false));
+ 
         return panel;
     }
     

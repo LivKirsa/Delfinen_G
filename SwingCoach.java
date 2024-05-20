@@ -3,19 +3,32 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class SwingCoach extends JFrame {
-
-    public SwingCoach() {
+public class SwingCoach extends JPanel {
+   JFrame f = new JFrame(); 
+   
+    public SwingCoach(boolean visible) {
+      setLayout(new BorderLayout());
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setExtendedState(getExtendedState() | MAXIMIZED_BOTH); 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
-        //setVisible(true);
+        f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
+        f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
+        f.setLayout(new BorderLayout());
+        f.setTitle("Couch");
+        f.setVisible(visible);
+        f.add(this);
+        buttonPanel();
+      }
       
+   /*public SwingCoach(boolean bwa){
+   setLayout(new BorderLayout());
+      buttonPanel();
+      f.setVisible(false);
+   }*/
+      
+      public void buttonPanel(){
         JPanel buttonPanel = new JPanel(new GridLayout(30,1)); 
         JButton b1 = new JButton("Se Holdlister");
         JButton b2 = new JButton("Indtast svømmeresultater"); 
-        JButton b3 = new JButton("se hurtigste svømmere");
+        JButton b3 = new JButton("Holdoversigt");
         b1.setBackground(Color.BLUE);
         buttonPanel.add(b1);
         b2.setBackground(Color.RED);
@@ -45,7 +58,7 @@ public class SwingCoach extends JFrame {
        });
        
        // size of the window 
-       setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
+       f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
 }
 public  void displayListWithButtons(ArrayList<?> list) {
         //setTitle("List with buttons");
@@ -53,7 +66,7 @@ public  void displayListWithButtons(ArrayList<?> list) {
         JPanel listPanel = new JPanel();
         listPanel.setLayout(new GridLayout(list.size(), 1));
 
-        for (Object item : list) {
+        for (Object item : list) {//instantiating new rowPanel.
             JPanel rowPanel = new JPanel(new BorderLayout());
 
             JLabel label = new JLabel("     " + item.toString() + "\n");
@@ -70,14 +83,14 @@ public  void displayListWithButtons(ArrayList<?> list) {
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         add(scrollPane, BorderLayout.CENTER);
-        setLayout(new BorderLayout());
-        this.removeAll(); 
-        this.add(scrollPane, BorderLayout.CENTER);
+        //setLayout(new BorderLayout());
+        //this.removeAll(); 
+        //this.add(scrollPane, BorderLayout.CENTER);
         this.revalidate(); 
         this.repaint();
 
      //   setLocationRelativeTo(null);
-        setVisible(true);
+        //setVisible(true);
     }
 
 

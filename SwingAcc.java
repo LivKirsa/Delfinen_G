@@ -3,15 +3,22 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class SwingAcc extends JFrame{
-
-   public SwingAcc(){
-      Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-      //setExtendedState(getExtendedState() | MAXIMIZED_BOTH); 
-      //setDefaultCloseOperation(EXIT_ON_CLOSE);
+public class SwingAcc  extends JPanel {
+   JFrame f = new JFrame(); 
+   
+    public SwingAcc(boolean visible) {
       setLayout(new BorderLayout());
-      //setVisible(true);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
+        f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
+        f.setLayout(new BorderLayout());
+        f.setTitle("Couch");
+        f.setVisible(visible);
+        f.add(this);
+        buttonPanel();
+      }
       
+      public void buttonPanel(){
       JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); 
         JButton b1 = new JButton("Se Resistance");
         b1.setBackground(Color.RED);
@@ -23,7 +30,8 @@ public class SwingAcc extends JFrame{
             
          }
        });
-
+      
+      add(buttonPanel);
 
 
 }
