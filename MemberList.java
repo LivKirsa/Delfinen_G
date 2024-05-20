@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class MemberList {
+public class MemberList implements Serializable {
    static ArrayList <Member> memberList = new ArrayList <Member>();
    
    static public void updateMemberList(){
