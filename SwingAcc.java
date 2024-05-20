@@ -7,8 +7,8 @@ public class SwingAcc extends SwingChairMan{
 
    public SwingAcc(){
       Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-      setExtendedState(getExtendedState() | MAXIMIZED_BOTH); 
-      setDefaultCloseOperation(EXIT_ON_CLOSE);
+      //setExtendedState(getExtendedState() | MAXIMIZED_BOTH); 
+      //setDefaultCloseOperation(EXIT_ON_CLOSE);
       setLayout(new BorderLayout());
       //setVisible(true);
       
