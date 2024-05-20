@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
 
 public class SwingChairMan extends JPanel {
 
@@ -15,11 +14,12 @@ public class SwingChairMan extends JPanel {
         f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
         f.setLayout(new BorderLayout());
         f.setVisible(true);
+        f.setTitle("who are you");
         
         //Tabs work start here 
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.addTab("formand",openChairman());
-        tabbedPane.addTab("Couch", new JPanel());//openCoach());
+        tabbedPane.addTab("Couch", openCoach());//openCoach());
         tabbedPane.addTab("Accounten",openAcc());
         f.add(tabbedPane, BorderLayout.NORTH);
         
@@ -28,7 +28,6 @@ public class SwingChairMan extends JPanel {
         f.setVisible(true);
         //signe
         setBackground(new Color(255,200,200));
-        addJTable(MemberList.memberList);
         }
        
 
@@ -63,7 +62,7 @@ public class SwingChairMan extends JPanel {
 
         b3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                displayListWithButtons(MemberList.memberList);
+               // SwingCoach.displayListWithButtons(MemberList.memberList);
             }
         });
         
@@ -155,7 +154,6 @@ public class SwingChairMan extends JPanel {
     }
 
     public void displayList(ArrayList<?> list) {
-        //f.setTitle("Members List");
          
         JPanel listPanel = new JPanel();
         listPanel.setLayout(new GridLayout(list.size(), 1));
@@ -179,50 +177,5 @@ public class SwingChairMan extends JPanel {
         this.repaint();
         //setLocationRelativeTo(null);
         setVisible(true);
-    }
-
-    public void displayListWithButtons(ArrayList<?> list) {
-        //setTitle("List with buttons");
-
-        JPanel listPanel = new JPanel();
-        listPanel.setLayout(new GridLayout(list.size(), 1));
-
-        for (Object item : list) {
-            JPanel rowPanel = new JPanel(new BorderLayout());
-
-            JLabel label = new JLabel("     " + item.toString() + "\n");
-            rowPanel.add(label, BorderLayout.WEST);
-
-            JButton button = new JButton("Add Time");
-            button.setPreferredSize(new Dimension(100, button.getPreferredSize().height));
-            button.addActionListener(e -> System.out.println("Button clicked for " + item));
-            rowPanel.add(button, BorderLayout.EAST);
-
-            listPanel.add(rowPanel);
-        }
-        JScrollPane scrollPane = new JScrollPane(listPanel);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        add(scrollPane, BorderLayout.CENTER);
-        setLayout(new BorderLayout());
-        this.removeAll(); 
-        this.add(scrollPane, BorderLayout.CENTER);
-        this.revalidate(); 
-        this.repaint();
-
-     //   setLocationRelativeTo(null);
-        setVisible(true);
-    }
-    
-    public void addJTable(ArrayList <Member> list){
-       String [] col = {"navn", "alder"};
-       DefaultTableModel tableModel = new DefaultTableModel(col, 0);
-       for (Member m : list){
-         Object [] row = {m.getName(), m.getAge()};
-         tableModel.addRow(row);
-       }
-       JTable table = new JTable(tableModel);
-       add(table, BorderLayout.CENTER);
-    }
-     
+    }     
 }
