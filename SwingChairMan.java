@@ -8,7 +8,7 @@ public class SwingChairMan extends JPanel {
 
 
     public SwingChairMan() {
-        JFrame f = new JFrame(); 
+    JFrame f = new JFrame(); 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
         f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
