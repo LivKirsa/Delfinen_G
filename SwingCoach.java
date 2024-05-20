@@ -10,7 +10,7 @@ public class SwingCoach extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setVisible(true);
-      
+        
         JPanel buttonPanel = new JPanel(new GridLayout(30,1)); 
         JButton b1 = new JButton("Se Holdlister");
         JButton b2 = new JButton("Indtast svømmeresultater"); 

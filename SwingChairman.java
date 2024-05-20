@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class SwingChairMan extends JPanel {
 
@@ -27,6 +28,7 @@ public class SwingChairMan extends JPanel {
         f.setVisible(true);
         //signe
         setBackground(new Color(255,200,200));
+        addJTable(MemberList.memberList);
         }
        
 
@@ -210,6 +212,17 @@ public class SwingChairMan extends JPanel {
 
      //   setLocationRelativeTo(null);
         setVisible(true);
+    }
+    
+    public void addJTable(ArrayList <Member> list){
+       String [] col = {"navn", "alder"};
+       DefaultTableModel tableModel = new DefaultTableModel(col, 0);
+       for (Member m : list){
+         Object [] row = {m.getName(), m.getAge()};
+         tableModel.addRow(row);
+       }
+       JTable table = new JTable(tableModel);
+       add(table, BorderLayout.CENTER);
     }
      
 }
