@@ -47,9 +47,7 @@ public class SwingCoach extends JFrame {
        // size of the window 
        setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 }
-public  void displayListWithButtons(ArrayList<?> list) {
-        //setTitle("List with buttons");
-
+public void displayListWithButtons(ArrayList<?> list) {
         JPanel listPanel = new JPanel();
         listPanel.setLayout(new GridLayout(list.size(), 1));
 
@@ -66,19 +64,14 @@ public  void displayListWithButtons(ArrayList<?> list) {
 
             listPanel.add(rowPanel);
         }
+
         JScrollPane scrollPane = new JScrollPane(listPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        add(scrollPane, BorderLayout.CENTER);
-        setLayout(new BorderLayout());
-        this.removeAll(); 
-        this.add(scrollPane, BorderLayout.CENTER);
-        this.revalidate(); 
-        this.repaint();
 
-     //   setLocationRelativeTo(null);
-        setVisible(true);
+        getContentPane().add(scrollPane, BorderLayout.CENTER);
+        getContentPane().revalidate();
+        getContentPane().repaint();
     }
-
 
 }
