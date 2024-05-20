@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class SwingCoach extends SwingAcc {
+public class SwingCoach extends JFrame {
 
     public SwingCoach() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -33,7 +33,7 @@ public class SwingCoach extends SwingAcc {
       //actions of the se medlem button 
       b2.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-         SwimmerFrame();
+         //SwimmerFrame();
          }
        });
        //actions of the add trainer to a team. 
