@@ -17,7 +17,7 @@ public class Member{
     private boolean isJuniorMembership;
     private boolean isCompetitiveSwimmer;
     private boolean isMan;
-    private static int counter = 1;
+    private static int counter = 1; // Counter for assigning memberID
     private LocalDate now = LocalDate.now();
     private int teamNumber;
     
@@ -29,16 +29,15 @@ public class Member{
         this.name = name;
         this.age = calculateAge(LocalDate.parse(birthday), now);
         this.birthday = LocalDate.parse(birthday);
-        this.memberID = counter; //Assign memberIDs
+        this.memberID = counter; //Assign memberIDs to next int 
+            counter++;
         this.registrationDate = LocalDate.now();
         this.nextPayment = LocalDate.now().plusYears(1);
-        this.isPaid = true;
+        this.isPaid = true; // Assumes that no new member is created before they have paid for membership
         this.isActiveMembership = isActiveMembership;
         this.isCompetitiveSwimmer = isCompetitiveSwimmer;
         this.isJuniorMembership = getIsJuniorMembership(this);
         this.isMan = isMan;
-        //this.teamNumber = autoAssignToTeam
-        counter++;
         MemberList.addMember(this); // Adds the new Member to memberList automatically
         this.memberNumber = MemberList.memberList.indexOf(this);
         this.teamNumber = TeamList.autoAssignToTeam(this); // Automatically adds the new Member to the appropriate team  
