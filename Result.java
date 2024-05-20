@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.io.Serializable;
+import java.time.Duration;
 
 public class Result implements Serializable{
 
@@ -19,10 +20,16 @@ public class Result implements Serializable{
    }
    
    public String toString(){
-      return (swimmingStyle  + ", " + length + "m: " + time + " sek. \nDate: " + date);
+      return (swimmingStyle  + ", " + length + "m\n Time: " + time + ". \nDate: " + date);
    }
 
    public void printResult(){
       System.out.println(toString());
    }
+   
+   // Method for converting 3 int inputs Minutes(m), Seconds(s), Milliseconds(ms) into a Duration Object
+   public static Duration createDuration(int m, int s, int ms){ 
+      return Duration.ofMinutes(m).plusSeconds(s).plusMillis(ms);
+   }
+      
 }  
