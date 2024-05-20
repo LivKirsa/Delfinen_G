@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class MemberList {
+public class MemberList implements Serializable {
    static ArrayList <Member> memberList = new ArrayList <Member>();
    
    static public void updateMemberList(){
@@ -12,7 +13,7 @@ public class MemberList {
       updateMemberList();
    }
    
-   // Method for printing memberList to console (For Liv's brain :))) )
+   // Method for printing memberList
    public static void printMemberList(){
       System.out.println("Member List: \n");
       for (Member member : memberList){

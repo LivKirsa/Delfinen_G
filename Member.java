@@ -1,51 +1,47 @@
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
-import java.awt.Color;
+import java.io.Serializable;
 
-public class Member{
+public class Member implements Serializable{
 
     // Attributes for each Member
     private String name;
     private int age;
     private LocalDate birthday;
     private int memberID;
-    private LocalDate registrationDate;
-    private LocalDate nextPayment;
+    private int memberNumber;
+    private static LocalDate registrationDate;
+    private static LocalDate nextPayment;
     private boolean isPaid;
     private boolean isActiveMembership;
     private boolean isJuniorMembership;
     private boolean isCompetitiveSwimmer;
     private boolean isMan;
-    private static int counter = 1;
+    private static int counter = 1; // Counter for assigning memberID
     private LocalDate now = LocalDate.now();
     private int teamNumber;
     
     ArrayList <Result> bestTimesList = new ArrayList <Result>();
     
-    public String toString() {
-         //System.out.println("hej");
-        return "Navn:" + this.name +"." + " " + "Fødseldag: "+ this.birthday+"." + " " + ", Alder:"+ this.age+"." + " " + "ID:" + this.memberID +"." + " " + "Betalt:"+ this.isPaid +"." + " " +"Aktiv:"+ this.isActiveMembership+"." + " " +"Junior:" + this.isJuniorMembership+"." + " " +"Mand:" + this.isMan+"." +" " +"Team:" +this.teamNumber +"."  ; 
-    }
-    
     // Constructor for Member Objects
 
-    public Member(String name, String birthday, boolean isActiveMembership, boolean isJuniorMembership, boolean isCompetitiveSwimmer, boolean isMan){
+    public Member(String name, String birthday, boolean isActiveMembership, boolean isCompetitiveSwimmer, boolean isMan){
         this.name = name;
         this.age = calculateAge(LocalDate.parse(birthday), now);
         this.birthday = LocalDate.parse(birthday);
-        this.memberID = counter; //Assign memberIDs
+        this.memberID = counter; //Assign memberIDs to next int 
+            counter++;
         this.registrationDate = LocalDate.now();
         this.nextPayment = LocalDate.now().plusYears(1);
-        this.isPaid = true;
+        this.isPaid = true; // Assumes that no new member is created before they have paid for membership
         this.isActiveMembership = isActiveMembership;
-        this.isJuniorMembership = isJuniorMembership;
         this.isCompetitiveSwimmer = isCompetitiveSwimmer;
+        this.isJuniorMembership = getIsJuniorMembership(this);
         this.isMan = isMan;
-        //this.teamNumber = autoAssignToTeam
-        counter++;
         MemberList.addMember(this); // Adds the new Member to memberList automatically
-        teamNumber = TeamList.autoAssignToTeam(this); // Automatically adds the new Member to the appropriate team  
+        this.memberNumber = MemberList.memberList.indexOf(this);
+        this.teamNumber = TeamList.autoAssignToTeam(this); // Automatically adds the new Member to the appropriate team  
     }
     
     // Method for printing Member
@@ -63,8 +59,8 @@ public class Member{
       }
     
     // Method for constructing Member and returning Member Object
-    public Member addMemberReturnObject(String name, String birthday, boolean isActiveMembership, boolean isJuniorMembership, boolean isCompetitiveSwimmer, boolean isMan) {
-      Member newMember = new Member(name, birthday, isActiveMembership, isJuniorMembership, isCompetitiveSwimmer, isMan);
+    public Member addMemberReturnObject(String name, String birthday, boolean isActiveMembership, boolean isCompetitiveSwimmer, boolean isMan) {
+      Member newMember = new Member(name, birthday, isActiveMembership, isCompetitiveSwimmer, isMan);
       counter++; // Im not sure if this works properly - Liv
       MemberList.addMember(this); // Adds the new Member to memberList automatically
       return newMember;
@@ -125,12 +121,6 @@ public class Member{
         this.isPaid = isPaid;
     }
     
-    // Option to setPaid AND move the next due payment 1 year forward (When a member successfully pays for another year)
-    public void setIsPaidYear(Member member){
-      this.isPaid = isPaid;
-      this.nextPayment.plusYears(1);
-    }
-    
     // Getter for isActiveMembership
     public boolean getIsActiveMembership(){
         return isActiveMembership;
@@ -141,9 +131,14 @@ public class Member{
         this.isActiveMembership = isActiveMembership;
     }
 
-    // Getter for isJuniorMembership
-    public boolean getIsJuniorMembership(){
-        return isJuniorMembership;
+    // Getter/calculator for isJuniorMembership
+    public boolean getIsJuniorMembership(Member member){
+      int age = member.getAge();
+      if (age <18 && isCompetitiveSwimmer == true){
+         return  true;
+      } else {
+        return false;
+      }
     }
     
     // Setter for isJuniorMembership
@@ -171,10 +166,34 @@ public class Member{
       this.isMan = isMan;
     }
     
+    // Getter for memberNumber
+    public int getMemberNumber(){
+      return memberNumber;
+    }
+    
+    // Getter for nextPayment
+    public LocalDate getNextPayment(){
+      return nextPayment;
+    }
+    
+    // Method for moving nextPayment a year forward (Used in AccList)
+    public void moveNextPayment(Member member){
+      member.nextPayment.plusYears(1);
+    }
+    
+    // Method to renew membership
+    public void renewMembership() {
+    this.isPaid = true;
+    this.nextPayment = this.nextPayment.plusYears(1);
+    }
+
     public void printBestTimesList(){
       System.out.println("\nBedste tider for " + name + ":");
        for (Result r: bestTimesList){
-          r.printResult();
-       }
+
+            r.printResult();
+
+       }//end of for loop.
     }
+    
 }

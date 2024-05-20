@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class TeamList{
+public class TeamList implements Serializable{
    static ArrayList<Team> teamList = new ArrayList <Team>();
    
    // Method for adding teams to teamList
@@ -11,8 +12,8 @@ public class TeamList{
    
    // static status right now, because otherwise I can't print them in main. Static can be removed with no issues, I think. - Liv
    static Team team1 = new Team("Casual Team", 1, "Coach Martin");//grete
-   static Team team2 = new Team("Competitive Junior Team", 2, "Coach Signe");
-   static Team team3 = new Team("Competitive Senior Team", 3, "Coach Liv");//jens
+   static Team team2 = new CompTeam("Competitive Junior Team", 2, "Coach Signe");
+   static Team team3 = new CompTeam("Competitive Senior Team", 3, "Coach Liv");//jens
    
    // Method for adding members to the right team
    public static int autoAssignToTeam(Member member){

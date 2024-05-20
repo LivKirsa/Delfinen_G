@@ -1,11 +1,13 @@
 import java.util.*;
 import java.time.LocalDateTime;
+import java.io.Serializable;
 
-public class Team{
+public class Team implements Serializable{
    
    String teamName;
    int teamNumber;
    String coachName;
+   Result result;
    ArrayList<Member> teamMemberList = new ArrayList<Member>();
    
    // Constructor for constructing teams
@@ -17,52 +19,47 @@ public class Team{
       //this.teamMemberList = teamMemberList;
       TeamList.addTeam(this);
    }
-
-
-/*   public Team(){
-      //teamList.add(new Member("Johnny", "11. juni 2004", true, false, false, true));
-      //String name, String birthday, boolean isActiveMembership, boolean isJuniorMembership, boolean isCompetitiveSwimmer, boolean isMan
-      teamList.add(Main.jens);
-      //teamList.get(0).bestTimesList.add(new Result(500, "Crawl", 130));
-   } 
-   
-   public void updateTeamList(){
-      teamList.add(Main.jens);
-   } */
    
    public void addResult(int memberNumber, int length, String swimmingStyle, int time){//, LocalDateTime date){//(ikke CompResult).
-      Result result = new Result(length, swimmingStyle, time);//, date);//print Result.
-      
-      if (teamMemberList.get(memberNumber).bestTimesList.size() > 0){
-         boolean addDiscipline = false;
-         
-         for(Result r : teamMemberList.get(memberNumber).bestTimesList){
-            if (r.length == result.length && r.swimmingStyle.equalsIgnoreCase(result.swimmingStyle)){//compare disciplines. If same:
-            //if (teamList.get(memberNumber).bestTimesList.contains(
-               if(r.time > result.time){//comparing times. If new time < old time, new time is added. 
-                  System.out.print("resultat opdateret: ");
-                  result.printResult();
-                  teamMemberList.get(memberNumber).bestTimesList.set(teamMemberList.get(memberNumber).bestTimesList.indexOf(r), result);//replace old time with new time.
-                  break;
-               }
-            }else{
-               addDiscipline = true;          
-            }
-         }//end of for each loop.
-         
-         if (addDiscipline){//if the discipline doesnt exist yet:
-            disciplineDoesntExist(memberNumber, result);//discipline added to members besttimes list if no former instances.
-         }
-         
-      }else{//if besttimeslsit is entirely empty:
-         disciplineDoesntExist(memberNumber, result);//discipline added to members besttimes list if no former instances.
-      }
+      result = new Result(length, swimmingStyle, time);//, date);
+      result.memberID = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
+      comparePersonalResult(memberNumber);
    }
    
-   public void disciplineDoesntExist(int memberNumber, Result result){
-      System.out.print("\nNy disciplin oprettet: ");
-         result.printResult();
-         teamMemberList.get(memberNumber).bestTimesList.add(result);
+   public void comparePersonalResult(int memberNumber){
+      if (teamMemberList.get(memberNumber).bestTimesList.size() > 0){
+         if (compareDiscipline(teamMemberList.get(memberNumber).bestTimesList) < 0){//!compareResult(teamMemberList.get(memberNumber).bestTimesList, true)){//if Compare personalResult returns false = the discipline doesnt exist yet:
+            //System.out.println("disciplin findes ikke.");
+            disciplineDoesntExist(teamMemberList.get(memberNumber).bestTimesList);//discipline added to members besttimes list if no former instances.
+            
+         }else{
+            //System.out.println("disciplin findes");
+            teamMemberList.get(memberNumber).bestTimesList.set(teamMemberList.get(memberNumber).bestTimesList.size() -1, result);
+            
+         }
+      }else{//if besttimeslsit is entirely empty:
+         //System.out.println("ingen discipliner oprettet");
+         disciplineDoesntExist(teamMemberList.get(memberNumber).bestTimesList);//discipline added to members besttimes list if no former instances.  
+      }
+      
+      //System.out.println();
+   } 
+   
+   //returns index of discipline matching result in list.
+   public int compareDiscipline(ArrayList<Result> list){//compare result with parameter - list. does discipline exist in list?= true/fasle.
+      for(Result r : list){
+         if (r.length == result.length && r.swimmingStyle.equalsIgnoreCase(result.swimmingStyle)){//compare disciplines. If same:   
+            return list.indexOf(r);
+         }
+      }//end of for each loop.
+      return -1;//if discipline doesnt exist: return false.
+   }
+   
+   public void disciplineDoesntExist(ArrayList<Result> list){//if discipline doesnt exist: add result to parameter-list. 
+      System.out.print("Ny disciplin oprettet: ");
+      result.printResult();
+      list.add(result);
+      //System.out.println("Result added.");
    }
    
    // Setter for coachName
