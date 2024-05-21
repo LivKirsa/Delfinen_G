@@ -18,12 +18,6 @@ public class SwingCoach extends JPanel {
         buttonPanel();
       }
       
-   /*public SwingCoach(boolean bwa){
-   setLayout(new BorderLayout());
-      buttonPanel();
-      f.setVisible(false);
-   }*/
-      
       public void buttonPanel(){
         JPanel buttonPanel = new JPanel(new GridLayout(30,1)); 
         JButton b1 = new JButton("Se Holdlister");

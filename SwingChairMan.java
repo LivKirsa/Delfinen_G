@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.table.DefaultTableModel;
 
 public class SwingChairMan extends JPanel {
 
@@ -28,6 +30,8 @@ public class SwingChairMan extends JPanel {
         f.setVisible(true);
         //signe
         setBackground(new Color(255,200,200));
+        setLayout(new BorderLayout());
+        //addJTable(MemberList.memberList);
         }
        
 
@@ -62,6 +66,7 @@ public class SwingChairMan extends JPanel {
 
         b3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+               displayList(TeamList.teamList);
                // SwingCoach.displayListWithButtons(MemberList.memberList);
             }
         });
@@ -154,9 +159,34 @@ public class SwingChairMan extends JPanel {
         });
     }
 
-    public void displayList(ArrayList<?> list) {
-         
-        JPanel listPanel = new JPanel();
+    public void displayList(ArrayList<?> list) {        
+        Object[] tempArr = list.toArray();
+        //ArrayList <Object> objList = new ArrayList<Object> (Arrays.asList((Object[])tempArr));
+        String[] col = Member.col;
+         DefaultTableModel tableModel = addJTable(tempArr, col);
+            /*
+            if (arr instanceof Member[]){
+               //ArrayList <Member> memberList = new ArrayList<Member> (Arrays.asList((Member[])arr)); 
+               String[] col = Member.col;
+               tableModel = addJTable(list, col);
+            }*/
+            
+
+               //String [] col = {"Restance", "Navn", "ID", "Alder", "Dato for betaling"};//acc
+               //String [] col = {};//couch
+               //formand(kan se alt)
+               //kasserer(kan se betalingsinfo)
+               //træner(kan se holdoversig og holdmedlemmer)
+
+            //formand(kan tilføje træner)
+            //træner(kan se hold og oprette resultater)
+            
+            //medlemsresultater
+            //team resultater
+            //team discipliner.
+
+        
+        /*JPanel listPanel = new JPanel();
         listPanel.setLayout(new GridLayout(list.size(), 1));
          listPanel.setBackground(Color.BLACK);
          
@@ -166,6 +196,8 @@ public class SwingChairMan extends JPanel {
             rowPanel.add(label, BorderLayout.CENTER);
             listPanel.add(rowPanel);
         }
+        
+        
         
         JScrollPane scrollPane = new JScrollPane(listPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -177,6 +209,49 @@ public class SwingChairMan extends JPanel {
         this.revalidate(); 
         this.repaint();
         //setLocationRelativeTo(null);
-        setVisible(true);
+        setVisible(true);*/
+        
+        JTable table = new JTable(tableModel);
+        table.setBackground(Color.WHITE);
+        //table.setColumnSelectionAllowed(true);
+        
+        JScrollPane scrollpane = new JScrollPane(table); 
+        scrollpane.setVisible(true);      
+        add(scrollpane, BorderLayout.CENTER);
+        //setBackground(Color.WHITE);
+        
+        revalidate();
+    }
+    
+    public DefaultTableModel addJTable(Object[] list, String[] col){//ArrayList <Object> list, String [] col){
+
+       DefaultTableModel tableModel = new DefaultTableModel(col, 0);
+       for (Object o : list){
+         if(o instanceof Member){
+            Member m = (Member) o;
+            tableModel.addRow(m.getMemberInfoAsArray());
+            
+            tableModel.setColumnIdentifiers(Member.col);
+            tableModel.setRowColour(1, Color.BLACK);
+            tableModel.addColumn(", ");
+            
+         }else if (o instanceof Team){
+            Team t= (Team) o;
+            tableModel.addRow(t.getTeamInfoAsArray());
+            tableModel.setColumnIdentifiers(Team.col);
+            
+         }else if (o instanceof Result){
+            Result r = (Result) o;
+               /*if (r instanceof CompResult){
+                  r = (CompResult) r;
+               }*/
+            tableModel.addRow(r.getResultInfoAsArray());
+            tableModel.setColumnIdentifiers(Result.col);
+         }
+       }
+
+       
+      return tableModel;
     }     
 }
+

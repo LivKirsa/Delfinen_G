@@ -36,6 +36,7 @@ public class Main{
         Member m30 = new Member("Chloe Evans", "1990-09-14", true, false, true);
    TeamList.team1.addResult(0,500,"Crawling",20);
    TeamList.team1.printTeam(); 
+   
     SwingUtilities.invokeLater( //dette kører swing 
          ()->{ 
             new Login();  

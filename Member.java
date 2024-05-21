@@ -24,6 +24,10 @@ public class Member implements Serializable{
     
     ArrayList <Result> bestTimesList = new ArrayList <Result>();
     
+    static String[] col ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv", "Konkurrencesvømmer", "Køn(Mand?)", "Hold"};
+    static String[] accCol ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv"};
+    static String[] couchCol ={"ID", "navn", "Fødselsdag", "Alder", "Køn(Mand?)"};
+    
     // Constructor for Member Objects
 
     public Member(String name, String birthday, boolean isActiveMembership, boolean isCompetitiveSwimmer, boolean isMan){
@@ -196,4 +200,21 @@ public class Member implements Serializable{
        }//end of for loop.
     }
     
+
+    
+    public String[] getMemberInfoAsArray(){
+      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + registrationDate, "" + nextPayment, ""+ isPaid, "" + isJuniorMembership, "" + isActiveMembership, "" + isCompetitiveSwimmer, "" + isMan, "" + teamNumber};
+      return row;
+    }
+    
+    public String[] getMemberAccInfoAsArray(){
+      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + registrationDate, "" + nextPayment, "" + isPaid, "" + isJuniorMembership, "" + isActiveMembership};
+      return row;
+    }
+    
+    public String [] getMemberCouchInfoAsArray(){
+      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + isMan};
+      return row;
+
+    }
 }

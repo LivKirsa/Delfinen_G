@@ -14,4 +14,14 @@ public class CompResult extends Result implements Serializable{
       System.out.println(swimmingStyle  + ", " + length + "m: " + time + " sek, " + location);
    }
    
+   @Override
+   public String[] getResultInfoAsArray(){
+      String [] superRow = super.getResultInfoAsArray();
+      String [] row = new String [superRow.length + 1];
+      for (int i = 0; i < superRow.length; i++){
+         row[i] = superRow[i];
+      }
+      row[superRow.length] = location;
+      return row;
+   }
 }
