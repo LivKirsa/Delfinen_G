@@ -195,6 +195,8 @@ public class SwingChairMan extends JPanel {
             JLabel label = new JLabel("     " + item.toString());
             rowPanel.add(label, BorderLayout.CENTER);
             listPanel.add(rowPanel);
+            
+            
         }
         
         
