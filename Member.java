@@ -43,7 +43,13 @@ public class Member implements Serializable{
         this.memberNumber = MemberList.memberList.indexOf(this);
         this.teamNumber = TeamList.autoAssignToTeam(this); // Automatically adds the new Member to the appropriate team  
     }
-    
+        // Method for removing Member from all lists
+        public void removeMember(Member member) {
+        MemberList.memberList.remove(member); 
+        for (Team team : TeamList.teamList) {
+            Team.teamMemberList.remove(member); 
+        }
+    }
     // Method for printing Member
     public void printMember(){
       System.out.println("(" + memberID + ") " +

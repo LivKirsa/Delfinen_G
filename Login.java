@@ -30,7 +30,7 @@ public class Login{
    JPanel panel = new JPanel();
    
        JButton runChairManButton = new JButton("Chairman");
-      runChairManButton.setBackground(Color.BLUE);
+      runChairManButton.setBackground(new Color(171,218,233));
       JButton runAccButton = new JButton("Accaounten");
       runAccButton.setBackground(Color.WHITE);
       JButton runCouchButton = new JButton("Couch");

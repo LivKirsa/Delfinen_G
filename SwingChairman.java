@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.Period;
 
+
+
 public class SwingChairMan extends JPanel {
 
 private Member member;

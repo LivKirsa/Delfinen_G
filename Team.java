@@ -8,7 +8,7 @@ public class Team implements Serializable{
    int teamNumber;
    String coachName;
    Result result;
-   ArrayList<Member> teamMemberList = new ArrayList<Member>();
+   static ArrayList<Member> teamMemberList = new ArrayList<Member>(); // This was made static to make removeMember method work
    
    // Constructor for constructing teams
    
