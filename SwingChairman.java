@@ -15,6 +15,8 @@ public class SwingChairMan extends JPanel {
    Color pink = new Color(232, 173, 210);
    Color blue = new Color(171, 218, 233);
    Color softWhite = new Color(241, 234, 231);
+   Color darkBlue = new Color(53, 120, 180);
+   Color softBlack = new Color(50, 42, 51);
 
    public SwingChairMan() {
 
@@ -28,15 +30,14 @@ public class SwingChairMan extends JPanel {
         
         //Tabs work start here 
         JTabbedPane tabbedPane = new JTabbedPane();
-        tabbedPane.addTab("formand",openChairman());
+        tabbedPane.addTab("Chairman",openChairman());
         tabbedPane.addTab("Couch", openCoach());//openCoach());
-        tabbedPane.addTab("Accounten",openAcc());
+        tabbedPane.addTab("Accountant",openAcc());
         f.add(tabbedPane, BorderLayout.NORTH);
         
         
         f.setLocationRelativeTo(null);
         f.setVisible(true);
-        //signe
         setBackground(new Color(199, 237, 231));
         setLayout(new BorderLayout());
         //addJTable(MemberList.memberList);
@@ -45,21 +46,24 @@ public class SwingChairMan extends JPanel {
 
         private JPanel chairManButtons(){
          JPanel buttonPanel = new JPanel(new GridLayout(30, 1));
-         JButton b1 = new JButton("Tilføj medlem");
+         buttonPanel.setBackground(turkis2);
+         JButton b1 = new JButton("Tilføj nyt Medlem");
          JButton b2 = new JButton("Se Medlemmer");
-         JButton b3 = new JButton("tilføj trainer");
+         JButton b3 = new JButton("Tilføj Træner");
          
         buttonPanel.add(b1);
         buttonPanel.add(b2);
         buttonPanel.add(b3);
 
         b1.setBackground(pink);
+        b1.setForeground(softBlack);
         b2.setBackground(blue);
-        b3.setBackground(purple);
-        
+        b2.setForeground(softBlack);
+        b3.setBackground(pink);
+        b3.setForeground(softBlack);
 
         add(buttonPanel, BorderLayout.WEST);
-
+        
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 swimmerFrame();
@@ -84,7 +88,6 @@ public class SwingChairMan extends JPanel {
         //f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
     }     
     
-    //tabs here 
         private JPanel openChairman() {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(new Color(255, 200, 200));
@@ -107,7 +110,7 @@ public class SwingChairMan extends JPanel {
            panel.add(new SwingAcc(false));
  
         return panel;
-    }
+        }
     
     public void swimmerFrame() {
         JFrame swimmerFrame = new JFrame();
@@ -117,6 +120,7 @@ public class SwingChairMan extends JPanel {
         Login.centerFrameOnScreen(swimmerFrame);
 
         JPanel panel = new JPanel();
+        panel.setBackground(blue);
 
         JTextField text1Field = new JTextField(20);
         JTextField text2Field = new JTextField(20);
