@@ -3,9 +3,12 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class SwingChairMan extends JPanel {
 
+private Member member;
 
     public SwingChairMan() {
     JFrame f = new JFrame(); 
@@ -95,30 +98,69 @@ public class SwingChairMan extends JPanel {
         return panel;
     }
     
-    public void swimmerFrame() {
+ public void swimmerFrame() {
         JFrame swimmerFrame = new JFrame();
         swimmerFrame.setVisible(true);
-        swimmerFrame.setSize(300, 200);
+        swimmerFrame.setSize(300, 300);
         swimmerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Login.centerFrameOnScreen(swimmerFrame);
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+
+        JLabel label1 = new JLabel("Name:");
+        JLabel label2 = new JLabel("Birthday:");
 
         JTextField text1Field = new JTextField(20);
         JTextField text2Field = new JTextField(20);
-        JTextField text3Field = new JTextField(20);
 
-        JCheckBox checkBox1 = new JCheckBox("Option 1");
-        JCheckBox checkBox2 = new JCheckBox("Option 2");
-        JCheckBox checkBox3 = new JCheckBox("Option 3");
+        JCheckBox checkBox1 = new JCheckBox("isActiveMembership");
+        JCheckBox checkBox2 = new JCheckBox("isCompetitiveSwimmer");
+        JCheckBox checkBox3 = new JCheckBox("isMan");
+         
+        //this just places it around found online. 
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(label1, gbc);
 
-        panel.add(text1Field);
-        panel.add(text2Field);
-        panel.add(text3Field);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(text1Field, gbc);
 
-        panel.add(checkBox1);
-        panel.add(checkBox2);
-        panel.add(checkBox3);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(label2, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(text2Field, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(checkBox1, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(checkBox2, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(checkBox3, gbc);
+        
+         // Adding the Done button
+        JButton doneButton = new JButton("Done");
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        gbc.anchor = GridBagConstraints.CENTER;
+        panel.add(doneButton, gbc);
 
         swimmerFrame.add(panel);
 
@@ -135,9 +177,9 @@ public class SwingChairMan extends JPanel {
         checkBox2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (checkBox2.isSelected()) {
-                    System.out.println("Box 1 was checked");
+                    System.out.println("Box 2 was checked");
                 } else {
-                    System.out.println("Box 1 was unchecked");
+                    System.out.println("Box 2 was unchecked");
                 }
             }
         });
@@ -145,14 +187,40 @@ public class SwingChairMan extends JPanel {
         checkBox3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (checkBox3.isSelected()) {
-                    System.out.println("Box 1 was checked");
+                    System.out.println("Box 3 was checked");
                 } else {
-                    System.out.println("Box 1 was unchecked");
+                    System.out.println("Box 3 was unchecked");
                 }
             }
         });
+            doneButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            String name = text1Field.getText(); 
+            String birthdayString = text2Field.getText(); 
+            boolean isActiveMembership = checkBox1.isSelected();
+            boolean isCompetitiveSwimmer = checkBox2.isSelected();
+            boolean isMan = checkBox3.isSelected();
+            
+            LocalDate birthday;
+            try {
+               birthday = LocalDate.parse(birthdayString);
+            } catch (Exception ex) {
+               JOptionPane.showMessageDialog(swimmerFrame, "Invalid birthday format. Please use YYYY-MM-DD.");
+            return;
+            }
+            Member newMember = new Member(name, birthdayString, isActiveMembership, isCompetitiveSwimmer, isMan);
+            swimmerFrame.dispose(); 
+            }
+        }); 
+            text1Field.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+            text2Field.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
     }
-
     public void displayList(ArrayList<?> list) {
          
         JPanel listPanel = new JPanel();

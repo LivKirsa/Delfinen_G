@@ -1,12 +1,13 @@
 import javax.swing.*;
 
 public class Main{
-   static Member luise = new Member("Luise Jensen","1915-01-20",false, true, false);
+ // static Member luise = new Member("Luise Jensen","1915-01-20",false, true, false);
    
    public static void main (String [] args){
-        Member m1 = new Member("Kenney Jensen", "1990-12-12", true, true, true);
-        Member m2 = new Member("Alice Smith", "1985-06-15", false, true, false);
-        Member m3 = new Member("Bob Johnson", "1978-03-22", true, false, true);
+       Member m1 = new Member("Kenney Jensen", "1990-12-12", true, true, true);
+       Member m2 = new Member("Alice Smith", "1985-06-15", false, true, false);
+       Member m3 = new Member("Bob Johnson", "1978-03-22", true, false, true);
+       /*
         Member m4 = new Member("Carol Williams", "1995-11-09", false, false, true);
         Member m5 = new Member("David Brown", "1982-07-19", true, true, false);
         Member m6 = new Member("Eve Davis", "1993-01-29", true, false, true);
@@ -34,6 +35,7 @@ public class Main{
         Member m28 = new Member("Amy Carter", "1978-06-18", true, true, true);
         Member m29 = new Member("Brian Perez", "1982-03-27", false, true, true);
         Member m30 = new Member("Chloe Evans", "1990-09-14", true, false, true);
+        */
    TeamList.team1.addResult(0,500,"Crawling",20);
    TeamList.team1.printTeam(); 
     SwingUtilities.invokeLater( //dette kører swing 
