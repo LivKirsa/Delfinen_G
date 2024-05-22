@@ -4,9 +4,9 @@ public class Main{
  // static Member luise = new Member("Luise Jensen","1915-01-20",false, true, false);
    
    public static void main (String [] args){
-       Member m1 = new Member("Kenney Jensen", "1990-12-12", true, true, true);
+       Member m1 = new Member("Kenney Jensen", "2008-12-12", true, true, true);
        Member m2 = new Member("Alice Smith", "1985-06-15", false, true, false);
-       Member m3 = new Member("Bob Johnson", "1978-03-22", true, false, true);
+       //Member m3 = new Member("Bob Johnson", "1978-03-22", true, false, true);
        /*
         Member m4 = new Member("Carol Williams", "1995-11-09", false, false, true);
         Member m5 = new Member("David Brown", "1982-07-19", true, true, false);
@@ -36,8 +36,8 @@ public class Main{
         Member m29 = new Member("Brian Perez", "1982-03-27", false, true, true);
         Member m30 = new Member("Chloe Evans", "1990-09-14", true, false, true);
         */
-   TeamList.team1.addResult(0,500,"Crawling",20);
-   TeamList.team1.printTeam(); 
+   TeamList.team3.addResult(0,500,"Crawling",20);
+   TeamList.team3.printTeam(); 
     SwingUtilities.invokeLater( //dette kører swing 
          ()->{ 
             new Login();  

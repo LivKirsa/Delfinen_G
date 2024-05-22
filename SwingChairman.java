@@ -9,6 +9,7 @@ import java.time.Period;
 public class SwingChairMan extends JPanel {
 
 private Member member;
+private SwingCoach swingCoach;
 
     public SwingChairMan() {
     JFrame f = new JFrame(); 
@@ -17,8 +18,7 @@ private Member member;
         f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
         f.setLayout(new BorderLayout());
         f.setVisible(true);
-        f.setTitle("who are you");
-        
+
         //Tabs work start here 
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.addTab("formand",openChairman());
@@ -35,6 +35,9 @@ private Member member;
        
 
         private JPanel chairManButtons(){
+         // Create SwingCaouch to use methods from there dum dum
+        swingCoach = new SwingCoach();
+        
          JPanel buttonPanel = new JPanel(new GridLayout(30, 1));
          JButton b1 = new JButton("Tilføj medlem");
          JButton b2 = new JButton("Se Medlemmer");
@@ -59,19 +62,17 @@ private Member member;
 
         b2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                displayList(MemberList.memberList);
+            swingCoach.displayListWithButtons(MemberList.memberList, SwingChairMan.this);
             }
         });
 
         b3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               // SwingCoach.displayListWithButtons(MemberList.memberList);
+            displayList(MemberList.memberList); 
             }
         });
         
         return buttonPanel; 
-
-        //f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
     }     
     
     //tabs here 
@@ -245,5 +246,6 @@ private Member member;
         this.repaint();
         //setLocationRelativeTo(null);
         setVisible(true);
-    }     
+    } 
+        
 }

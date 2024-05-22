@@ -34,20 +34,22 @@ public class SwingCoach extends JFrame {
       //actions of the se medlem button 
       b2.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
+                  displayListWithButtons(MemberList.memberList, SwingCoach.this); 
          //SwimmerFrame();
          }
        });
        //actions of the add trainer to a team. 
       b3.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-         displayListWithButtons(TeamList.teamList); 
+         //displayListWithButtons(TeamList.teamList, SwingChairMan.this);
+         displayListWithButtons(TeamList.teamList, SwingCoach.this); 
          }
        });
        
        // size of the window 
        setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 }
-public void displayListWithButtons(ArrayList<?> list) {
+public void displayListWithButtons(ArrayList<?> list, Container container) {
         JPanel listPanel = new JPanel();
         listPanel.setLayout(new GridLayout(list.size(), 1));
 
@@ -69,9 +71,11 @@ public void displayListWithButtons(ArrayList<?> list) {
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        getContentPane().add(scrollPane, BorderLayout.CENTER);
-        getContentPane().revalidate();
-        getContentPane().repaint();
+        container.removeAll();
+        container.setLayout(new BorderLayout());
+        container.add(scrollPane, BorderLayout.CENTER);
+        container.revalidate();
+        container.repaint();
     }
 
 }
