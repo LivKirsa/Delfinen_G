@@ -24,7 +24,7 @@ public class SwingChairMan extends JPanel {
         f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
         f.setLayout(new BorderLayout());
         f.setVisible(true);
-        f.setTitle("who are you");
+        f.setTitle("Svømmeklubben Delfinen");
         
         //Tabs work start here 
         JTabbedPane tabbedPane = new JTabbedPane();

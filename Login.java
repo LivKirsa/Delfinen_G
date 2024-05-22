@@ -23,12 +23,17 @@ public class Login{
 
    public void RunLoginUI(){ 
    JFrame frame = new JFrame("Login"); 
-   frame.setSize(300, 200);
+   frame.setSize(475, 550);
    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-   Color blue = new Color(171, 218, 233);
+   Color turkis1 = new Color(199, 237, 231);
+   Color turkis2 = new Color(177, 224, 218);
+   Color turkis3 = new Color(140, 204, 200);
+   Color turkis4 = new Color(103, 159, 157);
    Color purple = new Color(159, 141, 185);
    Color pink = new Color(232, 173, 210);
-   Color turkis3 = new Color(140, 204, 200);
+   Color blue = new Color(171, 218, 233);
+   Color softWhite = new Color(241, 234, 231);
+   Color darkBlue = new Color(61, 133, 198);
 
    holdFrame[0] = frame;
    JPanel panel = new JPanel(new BorderLayout());
@@ -37,26 +42,29 @@ public class Login{
    // Create a JLabel to hold the image
   JLabel dolphinLabel = new JLabel();
   dolphinPanel.add(dolphinLabel);
-  panel.add(dolphinPanel, BorderLayout.SOUTH);
 
   // Load the image (replace "image.png" with your actual image path)
-  ImageIcon dolphin = new ImageIcon("simpledolphin.png");
+  ImageIcon dolphin = new ImageIcon("textdolphin.png");
   dolphinLabel.setIcon(dolphin);
 
   // Add the picture label to the panel
    
       JButton runChairManButton = new JButton("Chairman");
       runChairManButton.setBackground(blue);
+      runChairManButton.setForeground(darkBlue);
       JButton runAccButton = new JButton("Accountant");
-      runAccButton.setBackground(purple);
+      runAccButton.setBackground(pink);
+      runAccButton.setForeground(darkBlue);
       JButton runCouchButton = new JButton("Couch");
       runCouchButton.setBackground(turkis3);
+      runCouchButton.setForeground(darkBlue);
       
       JPanel buttonPanel = new JPanel();
        buttonPanel.add(runChairManButton);
        buttonPanel.add(runAccButton);
        buttonPanel.add(runCouchButton);
        panel.add(buttonPanel, BorderLayout.CENTER);
+       panel.add(dolphinPanel, BorderLayout.NORTH);
        frame.add(panel);
        frame.setVisible(true);
        centerFrameOnScreen(frame); 
