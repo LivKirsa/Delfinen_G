@@ -5,11 +5,21 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.Period;
+import java.awt.Color;
 
 public class SwingChairMan extends JPanel {
 
 private Member member;
 private SwingCoach swingCoach;
+Color turkis1 = new Color(199, 237, 231);
+Color turkis2 = new Color(177, 224, 218);
+Color turkis3 = new Color(140, 204, 200);
+Color turkis4 = new Color(103, 159, 157);
+Color purple = new Color(159, 141, 185);
+Color pink = new Color(232, 173, 210);
+Color blue = new Color(171, 218, 233);
+Color softWhite = new Color(241, 234, 231);
+
 
     public SwingChairMan() {
     JFrame f = new JFrame(); 
@@ -30,7 +40,7 @@ private SwingCoach swingCoach;
         f.setLocationRelativeTo(null);
         f.setVisible(true);
         //signe
-        setBackground(new Color(255,200,200));
+        setBackground(turkis1);
         }
        
 
