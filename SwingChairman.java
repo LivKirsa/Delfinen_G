@@ -7,9 +7,17 @@ import java.util.Arrays;
 import javax.swing.table.DefaultTableModel;
 
 public class SwingChairMan extends JPanel {
+   Color turkis1 = new Color(199, 237, 231);
+   Color turkis2 = new Color(177, 224, 218);
+   Color turkis3 = new Color(140, 204, 200);
+   Color turkis4 = new Color(103, 159, 157);
+   Color purple = new Color(159, 141, 185);
+   Color pink = new Color(232, 173, 210);
+   Color blue = new Color(171, 218, 233);
+   Color softWhite = new Color(241, 234, 231);
 
+   public SwingChairMan() {
 
-    public SwingChairMan() {
     JFrame f = new JFrame(); 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
@@ -29,7 +37,7 @@ public class SwingChairMan extends JPanel {
         f.setLocationRelativeTo(null);
         f.setVisible(true);
         //signe
-        setBackground(new Color(255,200,200));
+        setBackground(new Color(199, 237, 231));
         setLayout(new BorderLayout());
         //addJTable(MemberList.memberList);
         }
@@ -45,9 +53,9 @@ public class SwingChairMan extends JPanel {
         buttonPanel.add(b2);
         buttonPanel.add(b3);
 
-        b1.setBackground(Color.BLUE);
-        b2.setBackground(Color.RED);
-        b3.setBackground(Color.GREEN);
+        b1.setBackground(pink);
+        b2.setBackground(blue);
+        b3.setBackground(purple);
         
 
         add(buttonPanel, BorderLayout.WEST);
@@ -234,7 +242,7 @@ public class SwingChairMan extends JPanel {
             tableModel.addRow(m.getMemberInfoAsArray());
             
             tableModel.setColumnIdentifiers(Member.col);
-            tableModel.setRowColour(1, Color.BLACK);
+            //tableModel.setRowColour(1, Color.BLACK);
             tableModel.addColumn(", ");
             
          }else if (o instanceof Team){
