@@ -10,7 +10,6 @@ public class Member implements Serializable{
     private int age;
     private LocalDate birthday;
     private int memberID;
-    private int memberNumber;
     private static LocalDate registrationDate;
     private static LocalDate nextPayment;
     private boolean isPaid;
@@ -21,11 +20,9 @@ public class Member implements Serializable{
     private static int counter = 1; // Counter for assigning memberID
     private LocalDate now = LocalDate.now();
     private int teamNumber;
-    
-    ArrayList <Result> bestTimesList = new ArrayList <Result>();
+    ArrayList<Result> bestTimesList = new ArrayList<Result>();
     
     // Constructor for Member Objects
-
     public Member(String name, String birthday, boolean isActiveMembership, boolean isCompetitiveSwimmer, boolean isMan){
         this.name = name;
         this.age = calculateAge(LocalDate.parse(birthday), now);
@@ -40,7 +37,6 @@ public class Member implements Serializable{
         this.isJuniorMembership = getIsJuniorMembership(this);
         this.isMan = isMan;
         MemberList.addMember(this); // Adds the new Member to memberList automatically
-        this.memberNumber = MemberList.memberList.indexOf(this);
         this.teamNumber = TeamList.autoAssignToTeam(this); // Automatically adds the new Member to the appropriate team  
     }
     
@@ -50,7 +46,7 @@ public class Member implements Serializable{
       name + "\n Age: " + age + "\n Birthday: " + birthday + "\n Active Membership?: " + 
       isActiveMembership + "\n Junior Membership?: " + isJuniorMembership + 
       "\n Competitive Swimmer?: " + isCompetitiveSwimmer + "\n Man?: " + isMan + 
-      "\n Paid?: " + isPaid + "\n Next payment due: " + nextPayment); // Next payment due should show a year from last registration date. Is currently just showing registration date
+      "\n Paid?: " + isPaid + "\n Next payment due: " + nextPayment);
       }
       
       // Method for printing memberName
@@ -156,11 +152,6 @@ public class Member implements Serializable{
     // Setter for isMan
     public void setIsMan(boolean isMan){
       this.isMan = isMan;
-    }
-    
-    // Getter for memberNumber
-    public int getMemberNumber(){
-      return memberNumber;
     }
     
     // Getter for nextPayment

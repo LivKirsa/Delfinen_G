@@ -4,14 +4,14 @@ import java.time.Duration;
 
 public class Result implements Serializable{
 
-   // Attributes
+   // Attributes for Results
    int length; 
    String swimmingStyle; 
    Duration time;
    LocalDate date;
    int memberID;
    
-   // Constructor
+   // Constructor for Result Objects
    public Result(int length, String swimmingStyle, int m, int s, int ms){
    
        this.length = length;

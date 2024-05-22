@@ -14,8 +14,7 @@ public class Main{
       MemberList.memberList.get(0).setName("Findus");
       System.out.println(MemberList.memberList.get(0).getName());
       
-      //TeamList.teamList.get(2).teamMemberList.get(0).addResult(0, 500, "Crawl", 300);
-      TeamList.team3.addResult(0, 300, "Crawl", 4, 30, 81);//date);
+      TeamList.team3.addResult(0, 300, "Crawl", 4, 30, 81);
       TeamList.team3.addResult(0, 500, "Crawl", 6, 41, 02);
       TeamList.team3.addResult(0, 500, "Crawl", 6, 55, 99);
       TeamList.team3.addResult(0, 500, "Crawl", 6, 02, 302);
@@ -34,6 +33,10 @@ public class Main{
       for(Team t : TeamList.teamList){
          t.printTeam();
       }
+      
+      morten.printMember();
+      AccList.setRenewed(morten.getMemberID());
+      morten.printMember();
       
       //System.out.println("MemberList: " + MemberList.memberList + ", TeamList: " + TeamList.teamList + ", member best: " +  MemberList.memberList.get(0).bestTimesList + ", team top 5: " + ((CompTeam)TeamList.teamList.get(2)).printTeamResultList());
       

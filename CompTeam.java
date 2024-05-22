@@ -16,7 +16,7 @@ public class CompTeam extends Team{
       compareTeamResult();
    }
          
-   //overload
+   // Overload
    public void addResult(int memberNumber, int length, String swimmingStyle, int m, int s, int ms, String location, int placement){
       result = new CompResult(length, swimmingStyle, m, s, ms, location, placement);
       result.memberID = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
@@ -27,21 +27,21 @@ public class CompTeam extends Team{
    
    public void compareTeamResult(){
       boolean resultsCompared = false;
-      if (discTop5List.size() > 0){//if discipline list isn't empty:
+      if (discTop5List.size() > 0){ // If Discipline list isn't empty:
          for(ArrayList<Result> dList : discTop5List){
-            if(compareDiscipline(dList) == 0){//if result == discipline in dList:
+            if(compareDiscipline(dList) == 0){ // If result == discipline in dList:
                compareTeamTimes(dList, 5);//comparing times.
                resultsCompared = true;
                break;           
             }
-         }//end of for each loop*/
+         } // End of for each loop*/
          
-         if (!resultsCompared) {//if results haven't been compared, that means the discipline doesn't exist yet.
+         if (!resultsCompared) { // If results haven't been compared, that means the discipline doesn't exist yet.
             disciplineDoesntExist();
          } 
       }else{
-         disciplineDoesntExist();//no disciplines exist yet.
-      }//end of if statement.
+         disciplineDoesntExist(); // No disciplines exist yet.
+      } // End of if statement.
    }
    
    public void compareTeamTimes(ArrayList<Result> list, int listSize){
@@ -57,20 +57,18 @@ public class CompTeam extends Team{
          }else{
             
          }
-      }//end of for each loop.
+      } // End of for each loop.
       
       if (list.size()> listSize){
          list.remove(listSize);
       }
    }
       
-   public void disciplineDoesntExist(){//adds new discipline (dList) to discTop5List.
+   public void disciplineDoesntExist(){ // Adds new discipline (dList) to discTop5List if chosen discipline doesn't exist already.
       ArrayList<Result> top5List = new ArrayList<Result>();
-      
       top5List.add(result);
       discTop5List.add(top5List);
-      
-      System.out.println("added discipline to team best lsit");
+      System.out.println("added discipline to team best list");
    }
    
    public void printDiscTop5List(){
