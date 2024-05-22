@@ -1,5 +1,4 @@
-import java.util.*;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.time.Duration;
 import java.io.Serializable;
 
@@ -17,7 +16,6 @@ public class Team implements Serializable{
       this.teamName = teamName;
       this.teamNumber = teamNumber;
       this.couchName = couchName;
-      //this.teamMemberList = teamMemberList;
       TeamList.addTeam(this);
    }
    
@@ -38,7 +36,7 @@ public class Team implements Serializable{
             teamMemberList.get(memberNumber).bestTimesList.set(teamMemberList.get(memberNumber).bestTimesList.size() -1, result);
 
          }
-      } else {//if besttimeslsit is entirely empty:
+      } else {//if besttimeslist is entirely empty:
          //System.out.println("ingen discipliner oprettet");
          disciplineDoesntExist(teamMemberList.get(memberNumber).bestTimesList);//discipline added to members besttimes list if no former instances.  
       }

@@ -43,7 +43,7 @@ public class Member implements Serializable{
     // Method for printing Member
     public void printMember(){
       System.out.println("(" + memberID + ") " +
-      name + "\n Age: " + age + "\n Birthday: " + birthday + "\n Active Membership?: " + 
+      name + "\n Age: " + age + "\n Birthday: " + birthday + "\n Team Number: " + teamNumber + "\n Active Membership?: " + 
       isActiveMembership + "\n Junior Membership?: " + isJuniorMembership + 
       "\n Competitive Swimmer?: " + isCompetitiveSwimmer + "\n Man?: " + isMan + 
       "\n Paid?: " + isPaid + "\n Next payment due: " + nextPayment);
@@ -157,6 +157,16 @@ public class Member implements Serializable{
     // Getter for nextPayment
     public LocalDate getNextPayment(){
       return nextPayment;
+    }
+    
+    // Setter for teamNumber (has to be added to class diagram)
+    public void setTeamNumber(int teamNumber){
+      this.teamNumber = teamNumber;
+    }
+    
+    // Getter for teamNumber (has to be added to class diagram)
+    public int getTeamNumber(){
+      return teamNumber;
     }
     
     // Method to renew membership
