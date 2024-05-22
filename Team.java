@@ -1,5 +1,6 @@
 import java.util.*;
 import java.time.LocalDateTime;
+import java.time.Duration;
 import java.io.Serializable;
 
 public class Team implements Serializable{
@@ -20,8 +21,8 @@ public class Team implements Serializable{
       TeamList.addTeam(this);
    }
    
-   public void addResult(int memberNumber, int length, String swimmingStyle, int time){//, LocalDateTime date){//(ikke CompResult).
-      result = new Result(length, swimmingStyle, time);//, date);
+   public void addResult(int memberNumber, int length, String swimmingStyle, int m, int s, int ms){//, LocalDateTime date){//(ikke CompResult).
+      result = new Result(length, swimmingStyle, m, s, ms);//, date);
       result.memberID = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
       comparePersonalResult(memberNumber);
    }

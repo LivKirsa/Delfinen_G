@@ -10,15 +10,15 @@ public class CompTeam extends Team{
    }
    
    @Override
-   public void addResult(int memberNumber, int length, String swimmingStyle, int time){
-      super.addResult(memberNumber, length, swimmingStyle, time);
+   public void addResult(int memberNumber, int length, String swimmingStyle, int m, int s, int ms){
+      super.addResult(memberNumber, length, swimmingStyle, m, s, ms);
       
       compareTeamResult();
    }
          
    //overload
-   public void addResult(int memberNumber, int length, String swimmingStyle, int time, String location, int placement){
-      result = new CompResult(length, swimmingStyle, time, location, placement);
+   public void addResult(int memberNumber, int length, String swimmingStyle, int m, int s, int ms, String location, int placement){
+      result = new CompResult(length, swimmingStyle, m, s, ms, location, placement);
       result.memberID = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
       comparePersonalResult(memberNumber);
       
@@ -48,8 +48,9 @@ public class CompTeam extends Team{
       //list.add(new Result(5,"beep boop", 10000));
       list.add(result);
       for(Result r : list){
+      
          //System.out.println("heehooheehoo");
-         if (result.time <= r.time){
+         if ((result.time).compareTo(r.time) <= 0){
             list.add(list.indexOf(r), result);
             list.remove(list.size() - 1);
             break;

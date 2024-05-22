@@ -15,12 +15,12 @@ public class Main{
       System.out.println(MemberList.memberList.get(0).getName());
       
       //TeamList.teamList.get(2).teamMemberList.get(0).addResult(0, 500, "Crawl", 300);
-      TeamList.team3.addResult(0, 300, "Crawl", 350);//date);
-      TeamList.team3.addResult(0, 500, "Crawl", 320);
-      TeamList.team3.addResult(0, 500, "Crawl", 400);
-      TeamList.team3.addResult(0, 500, "Crawl", 200);
+      TeamList.team3.addResult(0, 300, "Crawl", 4, 30, 81);//date);
+      TeamList.team3.addResult(0, 500, "Crawl", 6, 41, 02);
+      TeamList.team3.addResult(0, 500, "Crawl", 6, 55, 99);
+      TeamList.team3.addResult(0, 500, "Crawl", 6, 02, 302);
       
-      ((CompTeam)TeamList.team3).addResult(0, 400, "Crawl", 300, "Aarhus Stadion", 3);
+      ((CompTeam)TeamList.team3).addResult(0, 400, "Crawl", 4, 50, 99, "Aarhus Stadion", 3);
       
       ((CompTeam)TeamList.team3).printDiscTop5List();
       jens.printBestTimesList();
@@ -30,7 +30,6 @@ public class Main{
       MemberList.memberList.get(0).setName("Pedersen");//won't be saved.
       
          filehandling.readFile();
-      
             
       for(Team t : TeamList.teamList){
          t.printTeam();

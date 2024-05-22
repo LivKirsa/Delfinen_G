@@ -7,15 +7,16 @@ public class Result implements Serializable{
    // Attributes
    int length; 
    String swimmingStyle; 
-   int time;
+   Duration time;
    LocalDate date;
    int memberID;
    
    // Constructor
-   public Result(int length, String swimmingStyle, int time){
+   public Result(int length, String swimmingStyle, int m, int s, int ms){
+   
        this.length = length;
        this.swimmingStyle = swimmingStyle;
-       this.time = time;
+       this.time = createDuration(m, s, ms);
        this.date = LocalDate.now();
    }
    
@@ -28,7 +29,7 @@ public class Result implements Serializable{
    }
    
    // Method for converting 3 int inputs Minutes(m), Seconds(s), Milliseconds(ms) into a Duration Object
-   public static Duration createDuration(int m, int s, int ms){ 
+   public static Duration createDuration(int m, int s, int ms){
       return Duration.ofMinutes(m).plusSeconds(s).plusMillis(ms);
    }
       
