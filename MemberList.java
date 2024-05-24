@@ -3,7 +3,7 @@ import java.io.Serializable;
 
 public class MemberList implements Serializable {
    static ArrayList <Member> memberList = new ArrayList <Member>();
-   
+   static int counter = 1; // Counter for assigning memberID
    static public void updateMemberList(){
    }
    

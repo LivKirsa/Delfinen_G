@@ -1,9 +1,7 @@
 import java.util.*;
-import java.time.LocalDate;
 
 public class AccList {
-   static ArrayList <Member> subsList = new ArrayList<Member> ();
-   
+   static ArrayList <Member> unpaidSubsList = new ArrayList<Member> ();
    static public void updateSubsList(){// Update list whenever program starts.
    }
    

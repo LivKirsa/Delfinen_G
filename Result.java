@@ -10,10 +10,10 @@ public class Result implements Serializable{
    Duration time;
    LocalDate date;
    int memberID;
-   
+   static String[] col = {"navn", "disciplin", "distance", "Tid"};
+
    // Constructor for Result Objects
    public Result(int length, String swimmingStyle, int m, int s, int ms){
-   
        this.length = length;
        this.swimmingStyle = swimmingStyle;
        this.time = createDuration(m, s, ms);
@@ -27,10 +27,21 @@ public class Result implements Serializable{
    public void printResult(){
       System.out.println(toString());
    }
-   
+
    // Method for converting 3 int inputs Minutes(m), Seconds(s), Milliseconds(ms) into a Duration Object
    public static Duration createDuration(int m, int s, int ms){
       return Duration.ofMinutes(m).plusSeconds(s).plusMillis(ms);
    }
-      
-}  
+
+   public String[] getResultInfoAsArray(){
+      String name = "";
+      for (Member m : MemberList.memberList){
+         if (m.getMemberID() == memberID){
+            name = m.getName();
+            break;
+         }
+      }
+      String[] row = {name, swimmingStyle, length + " m.", time + " sek"};
+      return row;
+   }
+}

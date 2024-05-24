@@ -17,18 +17,21 @@ public class Member implements Serializable{
     private boolean isJuniorMembership;
     private boolean isCompetitiveSwimmer;
     private boolean isMan;
-    private static int counter = 1; // Counter for assigning memberID
     private LocalDate now = LocalDate.now();
     private int teamNumber;
     ArrayList<Result> bestTimesList = new ArrayList<Result>();
+    
+    static String[] col ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv", "Konkurrencesvømmer", "Køn(Mand?)", "Hold"};
+    static String[] accCol ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv"};
+    static String[] couchCol ={"ID", "navn", "Fødselsdag", "Alder", "Køn(Mand?)"};
     
     // Constructor for Member Objects
     public Member(String name, String birthday, boolean isActiveMembership, boolean isCompetitiveSwimmer, boolean isMan){
         this.name = name;
         this.age = calculateAge(LocalDate.parse(birthday), now);
         this.birthday = LocalDate.parse(birthday);
-        this.memberID = counter; //Assign memberIDs to next int 
-            counter++;
+        this.memberID = MemberList.counter; //Assign memberIDs to next int 
+            MemberList.counter++;
         this.registrationDate = LocalDate.now();
         this.nextPayment = LocalDate.now().plusYears(1);
         this.isPaid = true; // Assumes that no new member is created before they have paid for membership
@@ -39,7 +42,13 @@ public class Member implements Serializable{
         MemberList.addMember(this); // Adds the new Member to memberList automatically
         this.teamNumber = TeamList.autoAssignToTeam(this); // Automatically adds the new Member to the appropriate team  
     }
-    
+        // Method for removing Member from all lists
+        public void removeMember(Member member) {
+        MemberList.memberList.remove(member); 
+        for (Team team : TeamList.teamList) {
+            Team.teamMemberList.remove(member); 
+        }
+    }
     // Method for printing Member
     public void printMember(){
       System.out.println("(" + memberID + ") " +
@@ -53,7 +62,7 @@ public class Member implements Serializable{
       public void printMemberName(){
          System.out.println(name);
       }
-    
+
     // Getter for name
     public String getName(){
         return name;
@@ -174,4 +183,21 @@ public class Member implements Serializable{
        }//end of for loop.
     }
     
+
+    
+    public String[] getMemberInfoAsArray(){
+      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + registrationDate, "" + nextPayment, ""+ isPaid, "" + isJuniorMembership, "" + isActiveMembership, "" + isCompetitiveSwimmer, "" + isMan, "" + teamNumber};
+      return row;
+    }
+    
+    public String[] getMemberAccInfoAsArray(){
+      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + registrationDate, "" + nextPayment, "" + isPaid, "" + isJuniorMembership, "" + isActiveMembership};
+      return row;
+    }
+    
+    public String [] getMemberCouchInfoAsArray(){
+      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + isMan};
+      return row;
+
+    }
 }
