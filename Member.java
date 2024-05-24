@@ -18,11 +18,14 @@ public class Member implements Serializable{
     private boolean isJuniorMembership;
     private boolean isCompetitiveSwimmer;
     private boolean isMan;
-    private static int counter = 1; // Counter for assigning memberID
     private LocalDate now = LocalDate.now();
     private int teamNumber;
     
     ArrayList <Result> bestTimesList = new ArrayList <Result>();
+    
+    static String[] col ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv", "Konkurrencesvømmer", "Køn(Mand?)", "Hold"};
+    static String[] accCol ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv"};
+    static String[] couchCol ={"ID", "navn", "Fødselsdag", "Alder", "Køn(Mand?)"};
     
     // Constructor for Member Objects
 
@@ -30,8 +33,8 @@ public class Member implements Serializable{
         this.name = name;
         this.age = calculateAge(LocalDate.parse(birthday), now);
         this.birthday = LocalDate.parse(birthday);
-        this.memberID = counter; //Assign memberIDs to next int 
-            counter++;
+        this.memberID = MemberList.counter; //Assign memberIDs to next int 
+            MemberList.counter++;
         this.registrationDate = LocalDate.now();
         this.nextPayment = LocalDate.now().plusYears(1);
         this.isPaid = true; // Assumes that no new member is created before they have paid for membership
@@ -67,7 +70,7 @@ public class Member implements Serializable{
     // Method for constructing Member and returning Member Object
     public Member addMemberReturnObject(String name, String birthday, boolean isActiveMembership, boolean isCompetitiveSwimmer, boolean isMan) {
       Member newMember = new Member(name, birthday, isActiveMembership, isCompetitiveSwimmer, isMan);
-      counter++; // Im not sure if this works properly - Liv
+      MemberList.counter++; // Im not sure if this works properly - Liv
       MemberList.addMember(this); // Adds the new Member to memberList automatically
       return newMember;
     }
@@ -202,4 +205,21 @@ public class Member implements Serializable{
        }//end of for loop.
     }
     
+
+    
+    public String[] getMemberInfoAsArray(){
+      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + registrationDate, "" + nextPayment, ""+ isPaid, "" + isJuniorMembership, "" + isActiveMembership, "" + isCompetitiveSwimmer, "" + isMan, "" + teamNumber};
+      return row;
+    }
+    
+    public String[] getMemberAccInfoAsArray(){
+      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + registrationDate, "" + nextPayment, "" + isPaid, "" + isJuniorMembership, "" + isActiveMembership};
+      return row;
+    }
+    
+    public String [] getMemberCouchInfoAsArray(){
+      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + isMan};
+      return row;
+
+    }
 }

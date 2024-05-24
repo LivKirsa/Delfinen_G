@@ -39,8 +39,7 @@ public class Main{
    TeamList.team3.printTeam(); 
     SwingUtilities.invokeLater( //dette kører swing 
          ()->{ 
-            new Login();  
+            new Login();
          });
-   
    }
 }

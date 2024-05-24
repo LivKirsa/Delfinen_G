@@ -1,4 +1,4 @@
-import javax.swing.* ;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -22,23 +22,49 @@ public class Login{
          static boolean isFrameOpen = false;
 
    public void RunLoginUI(){ 
-   JFrame frame = new JFrame("login box"); 
-   frame.setSize(300, 200);
+   JFrame frame = new JFrame("Login"); 
+   frame.setSize(475, 550);
    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      
-      holdFrame[0] = frame;
-   JPanel panel = new JPanel();
+   Color turkis1 = new Color(199, 237, 231);
+   Color turkis2 = new Color(177, 224, 218);
+   Color turkis3 = new Color(140, 204, 200);
+   Color turkis4 = new Color(103, 159, 157);
+   Color purple = new Color(159, 141, 185);
+   Color pink = new Color(232, 173, 210);
+   Color blue = new Color(171, 218, 233);
+   Color softWhite = new Color(241, 234, 231);
+   Color darkBlue = new Color(61, 133, 198);
+
+   holdFrame[0] = frame;
+   JPanel panel = new JPanel(new BorderLayout());
+   JPanel dolphinPanel = new JPanel();
    
-       JButton runChairManButton = new JButton("Chairman");
-      runChairManButton.setBackground(new Color(171,218,233));
-      JButton runAccButton = new JButton("Accaounten");
-      runAccButton.setBackground(Color.WHITE);
+   // Create a JLabel to hold the image
+  JLabel dolphinLabel = new JLabel();
+  dolphinPanel.add(dolphinLabel);
+
+  // Load the image (replace "image.png" with your actual image path)
+  ImageIcon dolphin = new ImageIcon("textdolphin.png");
+  dolphinLabel.setIcon(dolphin);
+
+  // Add the picture label to the panel
+   
+      JButton runChairManButton = new JButton("Chairman");
+      runChairManButton.setBackground(blue);
+      runChairManButton.setForeground(darkBlue);
+      JButton runAccButton = new JButton("Accountant");
+      runAccButton.setBackground(pink);
+      runAccButton.setForeground(darkBlue);
       JButton runCouchButton = new JButton("Couch");
-      runCouchButton.setBackground(Color.RED);
+      runCouchButton.setBackground(turkis3);
+      runCouchButton.setForeground(darkBlue);
       
-       panel.add(runChairManButton);
-       panel.add(runAccButton);
-       panel.add(runCouchButton);
+      JPanel buttonPanel = new JPanel();
+       buttonPanel.add(runChairManButton);
+       buttonPanel.add(runAccButton);
+       buttonPanel.add(runCouchButton);
+       panel.add(buttonPanel, BorderLayout.CENTER);
+       panel.add(dolphinPanel, BorderLayout.NORTH);
        frame.add(panel);
        frame.setVisible(true);
        centerFrameOnScreen(frame); 
@@ -56,7 +82,7 @@ public class Login{
          public void actionPerformed(ActionEvent e) {
             //if (!isFrameOpen){
             //holdFrame[0] = new SwingAcc();
-            new SwingAcc().setVisible(true);  
+            new SwingAcc(true);  
             }
                   
        });
@@ -65,7 +91,7 @@ public class Login{
             runCouchButton.addActionListener(new ActionListener() {
                public void actionPerformed(ActionEvent e) {
                //holdFrame[0] = new SwingCoach();
-                  new SwingCoach().setVisible(true);
+                  new SwingCoach(true);//.setVisible(true);
          }
        });
                   holdFrame[0].setVisible(true);

@@ -10,6 +10,8 @@ public class Team implements Serializable{
    Result result;
    static ArrayList<Member> teamMemberList = new ArrayList<Member>(); // This was made static to make removeMember method work
    
+    static String[] col = {"Holdnavn", "Holdnummber", "Træner"};
+    
    // Constructor for constructing teams
    
    public Team(String teamName, int teamNumber, String coachName){
@@ -75,6 +77,13 @@ public class Team implements Serializable{
       for (Member member : teamMemberList){
          member.printMemberName();
       }
+   }
+   
+  
+   
+   public String[] getTeamInfoAsArray(){
+      String[] row = {teamName, ""+ teamNumber, coachName};
+      return row;
    }
 }
 
