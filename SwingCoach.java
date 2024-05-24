@@ -4,11 +4,14 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
-public class SwingCoach extends JPanel {
+public class SwingCoach extends SuperSwing {
    JFrame f = new JFrame(); 
    
     public SwingCoach(boolean visible) {
-      setLayout(new BorderLayout());
+    super(true);
+    //SwingCoach.buttonPanel();
+    f.setTitle("Sub Coach uwu");
+    /*  setLayout(new BorderLayout());
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
         f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
@@ -54,6 +57,7 @@ public class SwingCoach extends JPanel {
        
        // size of the window 
        f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
+       */
       }
       
    public void displayListWithButtons(ArrayList<?> list) {

@@ -9,23 +9,12 @@ import java.awt.Color;
 import java.util.Arrays;
 import javax.swing.table.DefaultTableModel;
 
-public class SwingChairMan extends JPanel {
-   Color turkis1 = new Color(199, 237, 231);
-   Color turkis2 = new Color(177, 224, 218);
-   Color turkis3 = new Color(140, 204, 200);
-   Color turkis4 = new Color(103, 159, 157);
-   Color purple = new Color(159, 141, 185);
-   Color pink = new Color(232, 173, 210);
-   Color blue = new Color(171, 218, 233);
-   Color softWhite = new Color(241, 234, 231);
-   Color darkBlue = new Color(53, 120, 180);
-   Color softBlack = new Color(50, 42, 51);
+public class SwingChairMan extends SuperSwing {
    
    private Member member;
-   private SwingCoach swingCoach;
    
-   public SwingChairMan() { // Constructor
-
+   public SwingChairMan(boolean visible) { // Constructor
+      super (visible);
     JFrame f = new JFrame(); 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
