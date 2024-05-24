@@ -228,6 +228,7 @@ public class SwingChairMan extends JPanel {
         JTable table = new JTable(tableModel);
         table.setBackground(Color.WHITE);
         //table.setColumnSelectionAllowed(true);
+        table.addMouseListener(new JTableButtonMouseListener(table));
         
         JScrollPane scrollpane = new JScrollPane(table); 
         scrollpane.setVisible(true);      
@@ -266,6 +267,8 @@ public class SwingChairMan extends JPanel {
 
        
       return tableModel;
-    }     
+    }    
+    
+     
 }
 
