@@ -304,8 +304,9 @@ public class SwingCoach extends JPanel {
             
             Member member = MemberList.memberList.get(memberNumber-1);
             Team team = TeamList.teamList.get(member.getTeamNumber()-1);
+            int memberTeamListNumber = team.IndexOf(member);
 
-            team.addResult(memberNumber, length, swimmingStyle, m, s, ms);
+            team.addResult(memberTeamNumber, length, swimmingStyle, m, s, ms);
             resultFrame.dispose(); 
             }
         }); 
