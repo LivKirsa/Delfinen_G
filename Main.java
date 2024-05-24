@@ -1,9 +1,9 @@
 import javax.swing.*;
 
 public class Main{
-   static Member luise = new Member("Luise Jensen","1915-01-20",false, true, false);
+   static Member luise = new Member("Luise Jensen","1915-01-20", false, true, false);
    
-   public static void main (String [] args){
+   public static void main(String [] args){
         Member m1 = new Member("Kenney Jensen", "1990-12-12", true, true, true);
         Member m2 = new Member("Alice Smith", "1985-06-15", false, true, false);
         Member m3 = new Member("Bob Johnson", "1978-03-22", true, false, true);
