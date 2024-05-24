@@ -206,11 +206,13 @@ public class SwingCoach extends JPanel {
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
-        // JPanel panel = new JPanel();
         panel.setBackground(blue);
 
         JTextField text1Field = new JTextField(20);
         JTextField text2Field = new JTextField(20);
+        JTextField text3Field = new JTextField(5);
+        JTextField text4Field = new JTextField(5);
+        JTextField text5Field = new JTextField(5);
         JLabel label1 = new JLabel("Name:");
         JLabel label2 = new JLabel("Birthday:");
 
