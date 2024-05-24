@@ -83,7 +83,7 @@ public class Team implements Serializable{
   
    
    public String[] getTeamInfoAsArray(){
-      String[] row = {teamName, ""+ teamNumber, coachName};
+      String[] row = {teamName, ""+ teamNumber, couchName};
       return row;
    }
 }
