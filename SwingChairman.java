@@ -131,8 +131,15 @@ public class SwingChairMan extends JPanel {
         JLabel label2 = new JLabel("Birthday:");
 
         JCheckBox checkBox1 = new JCheckBox("isActiveMembership");
+        checkBox1.setForeground(softBlack);
+        checkBox1.setBackground(blue);
         JCheckBox checkBox2 = new JCheckBox("isCompetitiveSwimmer");
+        checkBox2.setForeground(softBlack);
+        checkBox2.setBackground(blue);
         JCheckBox checkBox3 = new JCheckBox("isMan");
+        checkBox3.setForeground(softBlack);
+        checkBox3.setBackground(blue);
+        
          
         //this just places it around found online. 
         gbc.gridx = 0;
