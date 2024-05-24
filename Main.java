@@ -40,5 +40,6 @@ public class Main{
          ()->{ 
             new Login();
          });
+         m3.printBestTimesList();
      }
 }
