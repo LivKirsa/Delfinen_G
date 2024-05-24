@@ -2,6 +2,7 @@ import java.awt.event.MouseAdapter;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
 
 public class JTableButtonMouseListener extends MouseAdapter {
     private final JTable table;
@@ -15,13 +16,14 @@ public class JTableButtonMouseListener extends MouseAdapter {
     int row    = e.getY()/table.getRowHeight(); //get the row of the button
 
     /*Checking the row or column is valid or not*/
-    if (row < table.getRowCount() && row >= 0 && column < table.getColumnCount() && column >= 0) {
-      Object value = table.getValueAt(row, column);
-      System.out.println(row + ", " + column);
-      if (value instanceof JButton) {
-         /*perform a click event*/
-           ((JButton)value).doClick();
-        }
-     }
+      if (row < table.getRowCount() && row >= 0 && column < table.getColumnCount() && column >= 0) {
+        Object value = table.getValueAt(row, column);
+        System.out.println(row + ", " + column);
+        if (value instanceof JButton) {
+            /*perform a click event*/
+            ((JButton)value).doClick();
+            System.out.println("halløj");
+         }
+      }
    }
 }
