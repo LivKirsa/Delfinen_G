@@ -1,3 +1,4 @@
+import javax.swing.*;
 public class Main{
  // static Member luise = new Member("Luise Jensen","1915-01-20",false, true, false);
    
@@ -33,7 +34,7 @@ public class Main{
        Member m29 = new Member("Brian Perez", "1982-03-27", false, true, true);
        Member m30 = new Member("Chloe Evans", "1990-09-14", true, false, true);
        
-          TeamList.team3.addResult(0,500,"Crawling",20);
+          TeamList.team3.addResult(0,500,"Crawling", 4, 50, 891);
    TeamList.team3.printTeam(); 
     SwingUtilities.invokeLater( //dette kører swing 
          ()->{ 
