@@ -4,15 +4,15 @@ import java.time.Duration;
 import java.io.Serializable;
 
 public class Team implements Serializable{
-   
+
    String teamName;
    int teamNumber;
    String couchName;
    Result result;
    static ArrayList<Member> teamMemberList = new ArrayList<Member>(); // This was made static to make removeMember method work
-   
+
     static String[] col = {"Holdnavn", "Holdnummber", "Træner"};
-    
+
    // Constructor for constructing teams
    
    public Team(String teamName, int teamNumber, String couchName){

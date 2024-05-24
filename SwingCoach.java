@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import java.time.LocalDate;
+import java.lang.*;
 
 public class SwingCoach extends JPanel {
    Color turkis1 = new Color(199, 237, 231);
@@ -208,19 +209,31 @@ public class SwingCoach extends JPanel {
         gbc.insets = new Insets(5, 5, 5, 5);
         panel.setBackground(blue);
 
-        JTextField text1Field = new JTextField(20);
+        JTextField text0Field = new JTextField(5);
+        JTextField text1Field = new JTextField(5);
         JTextField text2Field = new JTextField(20);
         JTextField text3Field = new JTextField(5);
         JTextField text4Field = new JTextField(5);
         JTextField text5Field = new JTextField(5);
-        JLabel label1 = new JLabel("Name:");
-        JLabel label2 = new JLabel("Birthday:");
-
-        JCheckBox checkBox1 = new JCheckBox("isActiveMembership");
-        JCheckBox checkBox2 = new JCheckBox("isCompetitiveSwimmer");
-        JCheckBox checkBox3 = new JCheckBox("isMan");
+        JLabel label0 = new JLabel("Medlem: ");
+        JLabel label1 = new JLabel("Meter: ");
+        JLabel label2 = new JLabel("Discipline: ");
+        JLabel labelS = new JLabel("Minutes: ");
+        JLabel labelM = new JLabel("Seconds: ");
+        JLabel labelMS = new JLabel("Milliseconds: ");
+        
          
         //this just places it around found online. 
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.EAST;
+        panel.add(label0, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.EAST;
+        panel.add(text0Field, gbc);
+        
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
@@ -244,17 +257,32 @@ public class SwingCoach extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 4;
         gbc.anchor = GridBagConstraints.WEST;
-        panel.add(checkBox1, gbc);
+        panel.add(labelS, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.anchor = GridBagConstraints.EAST;
+        panel.add(text3Field, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 5;
         gbc.anchor = GridBagConstraints.WEST;
-        panel.add(checkBox2, gbc);
+        panel.add(labelM, gbc);
+        
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.anchor = GridBagConstraints.EAST;
+        panel.add(text4Field, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 6;
         gbc.anchor = GridBagConstraints.WEST;
-        panel.add(checkBox3, gbc);
+        panel.add(labelMS, gbc);
+        
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.anchor = GridBagConstraints.EAST;
+        panel.add(text5Field, gbc);
         
          // Adding the Done button
         JButton doneButton = new JButton("Done");
@@ -265,51 +293,19 @@ public class SwingCoach extends JPanel {
 
         resultFrame.add(panel);
 
-        checkBox1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (checkBox1.isSelected()) {
-                    System.out.println("Box 1 was checked");
-                } else {
-                    System.out.println("Box 1 was unchecked");
-                }
-            }
-        });
-
-        checkBox2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (checkBox2.isSelected()) {
-                    System.out.println("Box 2 was checked");
-                } else {
-                    System.out.println("Box 2 was unchecked");
-                }
-            }
-        });
-
-        checkBox3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (checkBox3.isSelected()) {
-                    System.out.println("Box 3 was checked");
-                } else {
-                    System.out.println("Box 3 was unchecked");
-                }
-            }
-        });
             doneButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            String name = text1Field.getText(); 
-            String birthdayString = text2Field.getText(); 
-            boolean isActiveMembership = checkBox1.isSelected();
-            boolean isCompetitiveSwimmer = checkBox2.isSelected();
-            boolean isMan = checkBox3.isSelected();
+            int memberNumber = Integer.parseInt(text0Field.getText());
+            int length = Integer.parseInt(text1Field.getText()); 
+            String swimmingStyle = text2Field.getText(); 
+            int m = Integer.parseInt(text3Field.getText());
+            int s = Integer.parseInt(text4Field.getText());
+            int ms = Integer.parseInt(text5Field.getText());
             
-            LocalDate birthday;
-            try {
-               birthday = LocalDate.parse(birthdayString);
-            } catch (Exception ex) {
-               JOptionPane.showMessageDialog(resultFrame, "Invalid birthday format. Please use YYYY-MM-DD.");
-            return;
-            }
-            Member newMember = new Member(name, birthdayString, isActiveMembership, isCompetitiveSwimmer, isMan);
+            Member member = MemberList.memberList.get(memberNumber-1);
+            Team team = TeamList.teamList.get(member.getTeamNumber()-1);
+
+            team.addResult(memberNumber, length, swimmingStyle, m, s, ms);
             resultFrame.dispose(); 
             }
         }); 

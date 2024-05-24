@@ -55,7 +55,7 @@ public class Member implements Serializable{
       name + "\n Age: " + age + "\n Birthday: " + birthday + "\n Active Membership?: " + 
       isActiveMembership + "\n Junior Membership?: " + isJuniorMembership + 
       "\n Competitive Swimmer?: " + isCompetitiveSwimmer + "\n Man?: " + isMan + 
-      "\n Paid?: " + isPaid + "\n Next payment due: " + nextPayment);
+      "\n Paid?: " + isPaid + "\n Next payment due: " + nextPayment + "\nTeam: " + teamNumber);
       }
       
       // Method for printing memberName
@@ -166,6 +166,11 @@ public class Member implements Serializable{
     // Getter for nextPayment
     public LocalDate getNextPayment(){
       return nextPayment;
+    }
+    
+    // Getter for teamNumber
+    public int getTeamNumber(){
+      return teamNumber;
     }
     
     // Method to renew membership
