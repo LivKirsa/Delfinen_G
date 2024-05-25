@@ -17,12 +17,25 @@ public class JTableButtonMouseListener extends MouseAdapter {
 
     /*Checking the row or column is valid or not*/
       if (row < table.getRowCount() && row >= 0 && column < table.getColumnCount() && column >= 0) {
-        Object value = table.getValueAt(row, column);
-        System.out.println(row + ", " + column);
+        Object value = new ButtonRenderer().getTableCellRendererComponent(table, table.getValueAt(row, column), true, true, row, column);
+        
+        //System.out.println(row + ", " + column);
+        if (column == table.getColumnCount() - 1){
+            System.out.println(row);
+            
+            Member member = MemberList.memberList.get(row);
+            
+            if (member.getIsPaid()){
+               member.setIsPaid(false);
+            }else{
+               member.setIsPaid(true);
+            }
+            
+        }
+
         if (value instanceof JButton) {
-            /*perform a click event*/
+            //perform a click event
             ((JButton)value).doClick();
-            System.out.println("halløj");
          }
       }
    }

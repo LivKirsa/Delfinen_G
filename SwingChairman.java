@@ -228,10 +228,13 @@ public class SwingChairMan extends JPanel {
             Member m = (Member) o;
             //tableModel.addColumn("Knap");
             Object [] row = m.getMemberInfoAsArray();
-            row[row.length - 1] = new JButton("hej");
+            /*row[row.length - 1] = new JButton("hej");
             if (row[row.length - 1] instanceof JButton){
                
-            }
+            }*/
+            
+            //row[row.length -1 ] = addButton(row.length - 1);
+            
             tableModel.addRow(m.getMemberInfoAsArray());
             
             tableModel.setColumnIdentifiers(Member.col);
@@ -253,11 +256,22 @@ public class SwingChairMan extends JPanel {
             tableModel.setColumnIdentifiers(Result.col);
          }
        }
-
        
       return tableModel;
-    }    
+    }   
     
+    /*
+    public JButton addButton(int row){
+      JButton button = new JButton("hallo");
+         button.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+
+            System.out.println("Button added");
+         }
+         });
+         return button;
+    } 
+    */
      
 }
 
