@@ -128,7 +128,6 @@ public class SwingCoach extends JPanel {
          if (o instanceof Member) {
             Member m = (Member) o;
             tableModel.addRow(m.getMemberInfoAsArray());
-            
             tableModel.setColumnIdentifiers(Member.col);
             //tableModel.setRowColour(1, Color.BLACK);
             tableModel.addColumn(", ");
@@ -274,7 +273,6 @@ public class SwingCoach extends JPanel {
         gbc.anchor = GridBagConstraints.EAST;
         panel.add(textFieldRank, gbc);
 
-
         enableTextFieldCheckBox.addActionListener(new ActionListener() {
          @Override
             public void actionPerformed(ActionEvent e) {
@@ -302,7 +300,6 @@ public class SwingCoach extends JPanel {
                int s = Integer.parseInt(text4Field.getText());
                int ms = Integer.parseInt(text5Field.getText());
                
-               
                // Extraction of Member Team index IDs and stuff from different lists so the methods work together seamlessly, idk, it works
                Team team = TeamList.teamList.get(selectedMember.getTeamNumber()-1);
                team.addResult(team.teamMemberList.indexOf(selectedMember), length, swimmingStyle, m, s, ms);
@@ -320,7 +317,7 @@ public class SwingCoach extends JPanel {
             public void actionPerformed(ActionEvent e) {
             }
         });
-    } // This ends swimmerFrame
+    } // This ends resultFrame
 
 
 }
