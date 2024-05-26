@@ -1,7 +1,9 @@
 import javax.swing.*;
+import javax.swing.JComboBox;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.table.DefaultTableModel;
 import java.time.LocalDate;
 import java.lang.*;
@@ -106,55 +108,7 @@ public class SwingCoach extends JPanel {
         //ArrayList <Object> objList = new ArrayList<Object> (Arrays.asList((Object[])tempArr));
         String[] col = Team.col;
          DefaultTableModel tableModel = addJTable(tempArr, col);
-            /*
-            if (arr instanceof Member[]){
-               //ArrayList <Member> memberList = new ArrayList<Member> (Arrays.asList((Member[])arr)); 
-               String[] col = Member.col;
-               tableModel = addJTable(list, col);
-            }*/
-            
-
-               //String [] col = {"Restance", "Navn", "ID", "Alder", "Dato for betaling"};//acc
-               //String [] col = {};//couch
-               //formand(kan se alt)
-               //kasserer(kan se betalingsinfo)
-               //træner(kan se holdoversig og holdmedlemmer)
-
-            //formand(kan tilføje træner)
-            //træner(kan se hold og oprette resultater)
-            
-            //medlemsresultater
-            //team resultater
-            //team discipliner.
-
-        
-        /*JPanel listPanel = new JPanel();
-        listPanel.setLayout(new GridLayout(list.size(), 1));
-         listPanel.setBackground(Color.BLACK);
-         
-        for (Object item : list) {
-            JPanel rowPanel = new JPanel(new BorderLayout());
-            JLabel label = new JLabel("     " + item.toString());
-            rowPanel.add(label, BorderLayout.CENTER);
-            listPanel.add(rowPanel);
-            
-            
-        }
-        
-        
-        
-        JScrollPane scrollPane = new JScrollPane(listPanel);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        add(scrollPane, BorderLayout.CENTER);
-        setLayout(new BorderLayout());
-        this.removeAll(); 
-        this.add(scrollPane, BorderLayout.CENTER);
-        this.revalidate(); 
-        this.repaint();
-        //setLocationRelativeTo(null);
-        setVisible(true);*/
-        
+                 
         JTable table = new JTable(tableModel);
         table.setBackground(Color.WHITE);
         //table.setColumnSelectionAllowed(true);
@@ -174,7 +128,6 @@ public class SwingCoach extends JPanel {
          if (o instanceof Member) {
             Member m = (Member) o;
             tableModel.addRow(m.getMemberInfoAsArray());
-            
             tableModel.setColumnIdentifiers(Member.col);
             //tableModel.setRowColour(1, Color.BLACK);
             tableModel.addColumn(", ");
@@ -200,7 +153,7 @@ public class SwingCoach extends JPanel {
      public void resultFrame() {
         JFrame resultFrame = new JFrame();
         resultFrame.setVisible(true);
-        resultFrame.setSize(300, 300);
+        resultFrame.setSize(350, 400);
         resultFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Login.centerFrameOnScreen(resultFrame);
 
@@ -209,9 +162,21 @@ public class SwingCoach extends JPanel {
         gbc.insets = new Insets(5, 5, 5, 5);
         panel.setBackground(blue);
 
-        JTextField text0Field = new JTextField(5);
+        Member[] memberArray = MemberList.memberList.toArray(new Member[MemberList.memberList.size()]);
+        JComboBox<Member> memberComboBox = new JComboBox<Member>(memberArray);
+        
+        JCheckBox enableTextFieldCheckBox = new JCheckBox("Resultatet er fra et Stævne");
+        enableTextFieldCheckBox.setBackground(blue);
+        enableTextFieldCheckBox.setForeground(softBlack);
+        JTextField textFieldComp = new JTextField(10);
+        JLabel labelLoca = new JLabel("Lokation for stævnet: ");
+        JTextField textFieldRank = new JTextField(5);
+        JLabel labelRank = new JLabel("Placering: ");
+        textFieldComp.setEnabled(false); // Initially disable the text field
+        textFieldRank.setEnabled(false);
+        
         JTextField text1Field = new JTextField(5);
-        JTextField text2Field = new JTextField(20);
+        JTextField text2Field = new JTextField(30);
         JTextField text3Field = new JTextField(5);
         JTextField text4Field = new JTextField(5);
         JTextField text5Field = new JTextField(5);
@@ -221,8 +186,7 @@ public class SwingCoach extends JPanel {
         JLabel labelS = new JLabel("Minutes: ");
         JLabel labelM = new JLabel("Seconds: ");
         JLabel labelMS = new JLabel("Milliseconds: ");
-        
-         
+
         //this just places it around found online. 
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -232,7 +196,7 @@ public class SwingCoach extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.anchor = GridBagConstraints.EAST;
-        panel.add(text0Field, gbc);
+        panel.add(memberComboBox, gbc);
         
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -284,31 +248,66 @@ public class SwingCoach extends JPanel {
         gbc.anchor = GridBagConstraints.EAST;
         panel.add(text5Field, gbc);
         
-         // Adding the Done button
-        JButton doneButton = new JButton("Done");
         gbc.gridx = 0;
         gbc.gridy = 7;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(enableTextFieldCheckBox, gbc);
+        
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(labelLoca, gbc);
+        
+        gbc.gridx = 0;
+        gbc.gridy = 9;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(textFieldComp, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        gbc.anchor = GridBagConstraints.EAST;
+        panel.add(labelRank, gbc);
+        
+        gbc.gridx = 0;
+        gbc.gridy = 9;
+        gbc.anchor = GridBagConstraints.EAST;
+        panel.add(textFieldRank, gbc);
+
+        enableTextFieldCheckBox.addActionListener(new ActionListener() {
+         @Override
+            public void actionPerformed(ActionEvent e) {
+               textFieldComp.setEnabled(enableTextFieldCheckBox.isSelected());
+               textFieldRank.setEnabled(enableTextFieldCheckBox.isSelected());
+            }
+         });
+        
+        // Adding the Done button
+        JButton doneButton = new JButton("Tilføj");
+        gbc.gridx = 0;
+        gbc.gridy = 11;
         gbc.anchor = GridBagConstraints.CENTER;
         panel.add(doneButton, gbc);
-
         resultFrame.add(panel);
 
             doneButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            int memberNumber = Integer.parseInt(text0Field.getText());
-            int length = Integer.parseInt(text1Field.getText()); 
-            String swimmingStyle = text2Field.getText(); 
-            int m = Integer.parseInt(text3Field.getText());
-            int s = Integer.parseInt(text4Field.getText());
-            int ms = Integer.parseInt(text5Field.getText());
-            
-            Member member = MemberList.memberList.get(memberNumber-1);
-            Team team = TeamList.teamList.get(member.getTeamNumber()-1);
+               public void actionPerformed(ActionEvent e) {
+               Member selectedMember = (Member) memberComboBox.getSelectedItem();
+               int teamNumber = selectedMember.getTeamNumber();
+               int memberNumber = MemberList.memberList.indexOf(memberComboBox.getSelectedItem());
+               int length = Integer.parseInt(text1Field.getText()); 
+               String swimmingStyle = text2Field.getText(); 
+               int m = Integer.parseInt(text3Field.getText());
+               int s = Integer.parseInt(text4Field.getText());
+               int ms = Integer.parseInt(text5Field.getText());
+               
+               // Extraction of Member Team index IDs and stuff from different lists so the methods work together seamlessly, idk, it works
+               Team team = TeamList.teamList.get(selectedMember.getTeamNumber()-1);
+               team.addResult(team.teamMemberList.indexOf(selectedMember), length, swimmingStyle, m, s, ms);
+               resultFrame.dispose();
+               }
 
-            team.addResult(memberNumber, length, swimmingStyle, m, s, ms);
-            resultFrame.dispose(); 
-            }
-        }); 
+            }); // Done button action listener ends here
+
             text1Field.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             }
@@ -317,7 +316,7 @@ public class SwingCoach extends JPanel {
             public void actionPerformed(ActionEvent e) {
             }
         });
-    } // This ends swimmerFrame
+    } // This ends resultFrame
 
 
 }

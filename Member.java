@@ -182,9 +182,7 @@ public class Member implements Serializable{
     public void printBestTimesList(){
       System.out.println("\nBedste tider for " + name + ":");
        for (Result r: bestTimesList){
-
             r.printResult();
-
        }//end of for loop.
     }
     
@@ -203,6 +201,10 @@ public class Member implements Serializable{
     public String [] getMemberCouchInfoAsArray(){
       String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + isMan};
       return row;
-
     }
+    
+    @Override
+  public String toString() {
+    return "[" + memberID + "] " + this.getName() + " (Team " + this.getTeamNumber() + ")"; // Customize display format
+  }
 }
