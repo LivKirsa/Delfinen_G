@@ -25,7 +25,7 @@ public class SwingCoach extends SuperSwing {
         JButton b2 = new JButton("Se hurtigste svømmere");
         b2.setBackground(Color.GREEN);
         b2.addActionListener(new ActionListener() {
-        //action for button 1
+        //action for button 2
             public void actionPerformed(ActionEvent e) {
 
             }
@@ -36,7 +36,7 @@ public class SwingCoach extends SuperSwing {
         JButton b3 = new JButton("opret resultater");
         b3.setBackground(Color.ORANGE);
         b3.addActionListener(new ActionListener() {
-        //action for button 1
+        //action for button 3
             public void actionPerformed(ActionEvent e) {
 
             }
