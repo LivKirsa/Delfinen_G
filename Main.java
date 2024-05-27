@@ -1,7 +1,5 @@
 import javax.swing.*;
-public class Main{
- // static Member luise = new Member("Luise Jensen","1915-01-20",false, true, false);
-   
+public class Main{   
    public static void main (String [] args){
        Member m1 = new Member("Kenney Jensen", "2008-12-12", true, true, true);
        Member m2 = new Member("Alice Smith", "1985-06-15", false, true, false);
