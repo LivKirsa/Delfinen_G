@@ -23,7 +23,7 @@ public class TableModel extends DefaultTableModel{
                member.setIsPaid(true);
             }
             button.setText("" + rowIndex);
-            SwingChairMan.f.repaint();
+            //SwingChairMan.f.repaint();
          });
          return button;
       }

@@ -9,7 +9,6 @@ public class SwingCoach extends SuperSwing {
     public SwingCoach(boolean visible) {
     super(visible);
     f.setTitle("Sub Coach uwu");
-    f.add(this);
     }
     
     @Override
