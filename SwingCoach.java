@@ -280,6 +280,8 @@ public class SwingCoach extends JPanel {
                textFieldRank.setEnabled(enableTextFieldCheckBox.isSelected());
             }
          });
+         
+        final boolean isCompetitiveBoxChecked = enableTextFieldCheckBox.isSelected();
         
         // Adding the Done button
         JButton doneButton = new JButton("Tilføj");
@@ -300,14 +302,18 @@ public class SwingCoach extends JPanel {
                int s = Integer.parseInt(text4Field.getText());
                int ms = Integer.parseInt(text5Field.getText());
                String location = textFieldComp.getText();
-               int rank = Integer.parseInt(textFieldRank.getText();
+               int placement = Integer.parseInt(textFieldRank.getText());
                
                // Extraction of Member Team index IDs and stuff from different lists so the methods work together seamlessly, idk, it works
                Team team = TeamList.teamList.get(selectedMember.getTeamNumber()-1);
-               team.addResult(team.teamMemberList.indexOf(selectedMember), length, swimmingStyle, m, s, ms);
-               resultFrame.dispose();
+               if (isCompetitiveBoxChecked) {
+                  ((CompTeam)team).addResult(team.teamMemberList.indexOf(selectedMember), length, swimmingStyle, m, s, ms, location, placement);
+               } else {
+                  team.addResult(team.teamMemberList.indexOf(selectedMember), length, swimmingStyle, m, s, ms);
                }
-
+               resultFrame.dispose();
+               
+               }
             }); // Done button action listener ends here
 
             text1Field.addActionListener(new ActionListener() {

@@ -14,7 +14,7 @@ public class CompResult extends Result implements Serializable{
    
    @Override
    public void printResult(){
-      System.out.println(swimmingStyle  + ", " + length + "m: " + time + " sek, " + location + ". Placement: " + placement);
+      System.out.println(swimmingStyle  + ", " + length + "m: " + time + " . Sted: " + location + ". Placering: " + placement);
    }
    
    @Override
