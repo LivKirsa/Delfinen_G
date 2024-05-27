@@ -24,53 +24,67 @@ public class SuperSwing extends JPanel {
    protected JFrame f; 
    
    public SuperSwing(boolean visible) {
-   JFrame f = new JFrame(); 
+   f = new JFrame(); 
       setLayout(new BorderLayout());
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
         f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
         f.setLayout(new BorderLayout());
         f.setTitle("SuperSwing");
-        f.setVisible(false);
+        f.setVisible(visible);
         f.add(this);
         // size of the window 
-       //f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
-
-        buttonPanel();
+       f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
+       buttonPanel();
       }
       
-      public void buttonPanel(){
+      void buttonPanel(){
         JPanel buttonPanel = new JPanel(new GridLayout(30,1)); 
-        JButton b1 = new JButton("Se Holdlister");
-        JButton b2 = new JButton("Indtast svømmeresultater"); 
-        JButton b3 = new JButton("Holdoversigt");
-        b1.setBackground(Color.BLUE);
-        buttonPanel.add(b1);
-        b2.setBackground(Color.RED);
-        buttonPanel.add(b2);
-        b3.setBackground(Color.GREEN);
-        buttonPanel.add(b3);
         
+        JButton b1 = Button1(); 
+        JButton b2 = Button2(); 
+        JButton b3 = Button3(); 
+        
+        buttonPanel.add(b1);
+        buttonPanel.add(b2);
+        buttonPanel.add(b3);
  //add Buttonpanel til WEST
        add(buttonPanel, BorderLayout.WEST);
-      //actions of the add Swimmer button 
-      b1.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            
-         }
-       });
-      //actions of the se medlem button 
-      b2.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-         //SwimmerFrame();
-         }
-       });
-       //actions of the add trainer to a team. 
-      b3.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-         //displayList(TeamList.teamList); 
-         }
-       });
-       
-       }
 }
+      
+      protected JButton Button1() {
+        JButton b1 = new JButton("Se Holdlister");
+        b1.setBackground(Color.BLUE);
+        b1.addActionListener(new ActionListener() {
+        //action for button 1
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        return b1;
+    }
+      protected JButton Button2() {
+        JButton b1 = new JButton("Se Holdlister");
+        b1.setBackground(Color.WHITE);
+        b1.addActionListener(new ActionListener() {
+        //action for button 1
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        return b1;
+    }
+      protected JButton Button3() {
+        JButton b1 = new JButton("Se Holdlister");
+        b1.setBackground(Color.RED);
+        b1.addActionListener(new ActionListener() {
+        //action for button 1
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        return b1;
+    }      
+
+       }
+

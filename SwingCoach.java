@@ -5,69 +5,24 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class SwingCoach extends SuperSwing {
-   private JFrame f; 
    
     public SwingCoach(boolean visible) {
-    super(true);
-    f = new JFrame();  
-    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    f.setLayout(new BorderLayout());
-    //SwingCoach.buttonPanel();
+    super(visible);
     f.setTitle("Sub Coach uwu");
-            f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setLayout(new BorderLayout());
-        f.setSize(800, 600); // Example size, adjust as needed
-        f.setVisible(visible);
-    
-    /*
-    /*  setLayout(new BorderLayout());
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
-        f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
-        f.setLayout(new BorderLayout());
-        f.setTitle("Couch");
-        f.setVisible(visible);
-        f.add(this);
-        buttonPanel();
-      }
-      
-      public void buttonPanel(){
-        JPanel buttonPanel = new JPanel(new GridLayout(30,1)); 
+    }
+        protected JButton Button1() {
         JButton b1 = new JButton("Se Holdlister");
-        JButton b2 = new JButton("Indtast svømmeresultater"); 
-        JButton b3 = new JButton("Holdoversigt");
-        b1.setBackground(Color.BLUE);
-        buttonPanel.add(b1);
-        b2.setBackground(Color.RED);
-        buttonPanel.add(b2);
-        b3.setBackground(Color.GREEN);
-        buttonPanel.add(b3);
-        
- //add Buttonpanel til WEST
-       add(buttonPanel, BorderLayout.WEST);
-      //actions of the add Swimmer button 
-      b1.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            
-         }
-       });
-      //actions of the se medlem button 
-      b2.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-         //SwimmerFrame();
-         }
-       });
-       //actions of the add trainer to a team. 
-      b3.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-         displayList(TeamList.teamList); 
-         }
-       });
-       
-       // size of the window 
-       f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
-       */
-      }
+        b1.setBackground(Color.PINK);
+        b1.addActionListener(new ActionListener() {
+        //action for button 1
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        return b1;
+    }
+    
+      
       
    public void displayListWithButtons(ArrayList<?> list) {
         JPanel listPanel = new JPanel();
