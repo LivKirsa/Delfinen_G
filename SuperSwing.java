@@ -87,48 +87,55 @@ public class SuperSwing extends JPanel {
     } 
     //stays here just in case, but will be replaced if Signes method works
 
+
     public void displayList(ArrayList<?> list) {        
         Object[] tempArr = list.toArray();
         String[] col = Member.col;
         DefaultTableModel tableModel = addJTable(tempArr, col);
         
         JTable table = new JTable(tableModel);
-        table.setBackground(Color.WHITE);
+        //table.setBackground(Color.WHITE);
+        table.setColumnSelectionAllowed(false);
+        table.addMouseListener(new JTableButtonMouseListener(table));
+        
+        ButtonRenderer buttonRenderer = new ButtonRenderer();
+        table.getColumn("Knap").setCellRenderer(buttonRenderer);
         
         JScrollPane scrollpane = new JScrollPane(table); 
         scrollpane.setVisible(true);      
-       f.add(scrollpane, BorderLayout.CENTER); 
-       f.setBackground(Color.WHITE);
-       f.revalidate();;
+        add(scrollpane, BorderLayout.CENTER);
+        //setBackground(Color.WHITE);
+        revalidate();
     }
-    
-    public DefaultTableModel addJTable(Object[] list, String[] col) {
+        
+    public DefaultTableModel addJTable(Object[] list, String[] col){//ArrayList <Object> list, String [] col){
 
-       DefaultTableModel tableModel = new DefaultTableModel(col, 0);
-       for (Object o : list) {
-         if (o instanceof Member) {
+       //DefaultTableModel tableModel = new DefaultTableModel(col, 0);
+       TableModel tableModel = new TableModel(col, 0);
+       for (Object o : list){
+         if(o instanceof Member){
             Member m = (Member) o;
+            //tableModel.addColumn("Knap");
+            Object [] row = m.getMemberInfoAsArray();
+
             tableModel.addRow(m.getMemberInfoAsArray());
             tableModel.setColumnIdentifiers(Member.col);
-            //tableModel.setRowColour(1, Color.BLACK);
-            tableModel.addColumn(", ");
-         } else if (o instanceof Team) {
+            
+         }else if (o instanceof Team){
+
             Team t= (Team) o;
             tableModel.addRow(t.getTeamInfoAsArray());
             tableModel.setColumnIdentifiers(Team.col);
          } else if (o instanceof Result) {
             Result r = (Result) o;
-               /*if (r instanceof CompResult){
-                  r = (CompResult) r;
-               }*/
             tableModel.addRow(r.getResultInfoAsArray());
             tableModel.setColumnIdentifiers(Result.col);
          }
        }
-
        
       return tableModel;
-    } 
+    }     
+
  public void swimmerFrame() {
         JFrame swimmerFrame = new JFrame();
         swimmerFrame.setVisible(true);
