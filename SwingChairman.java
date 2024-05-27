@@ -15,20 +15,22 @@ public class SwingChairMan extends SuperSwing {
    
    public SwingChairMan(boolean visible) { // Constructor
       super (visible);
-    JFrame f = new JFrame(); 
+      f.setTitle("Svømmeklubben Delfinen");
+      
+    /*JFrame f = new JFrame(); 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
         f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
         f.setLayout(new BorderLayout());
         f.setVisible(true);
-        f.setTitle("Svømmeklubben Delfinen");
+        */
         
         //Tabs work start here 
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.addTab("Chairman",openChairman());
         tabbedPane.addTab("Couch", openCoach());//openCoach());
         tabbedPane.addTab("Accountant",openAcc());
-        f.add(tabbedPane, BorderLayout.NORTH);
+        f.add(tabbedPane, BorderLayout.CENTER);
         
         
         f.setLocationRelativeTo(null);
@@ -36,9 +38,50 @@ public class SwingChairMan extends SuperSwing {
         setBackground(turkis1);
         setLayout(new BorderLayout());
         }
+        protected JButton Button1() {
+        JButton b1 = new JButton("Se medlemer");
+                        b1.setBackground(pink);
+                        b1.setForeground(softBlack);
+        b1.addActionListener(new ActionListener() {
+        //action for button 1
+            public void actionPerformed(ActionEvent e) {
+                            swimmerFrame();
+
+            }
+        });
+        return b1;
+    }
+        protected JButton Button2() {
+        JButton b2 = new JButton("Se hurtigste svømmere");
+                b2.setBackground(blue);
+        b2.setForeground(softBlack);
+        b2.addActionListener(new ActionListener() {
+        //action for button 2
+            public void actionPerformed(ActionEvent e) {
+                        displayList(MemberList.memberList);
+
+            }
+        });
+        return b2;
+    }
+        protected JButton Button3() {
+        JButton b3 = new JButton("opret resultater");
+                b3.setBackground(pink);
+        b3.setForeground(softBlack);
+        b3.addActionListener(new ActionListener() {
+        //action for button 3
+            public void actionPerformed(ActionEvent e) {
+                           displayList(TeamList.teamList);
+            }
+        });
+        return b3;
+    }
+
        
 
-        private JPanel chairManButtons(){
+     //   private JPanel chairManButtons(){
+
+        /*
          JPanel buttonPanel = new JPanel(new GridLayout(30, 1));
          buttonPanel.setBackground(turkis2);
          JButton b1 = new JButton("Tilføj nyt Medlem");
@@ -75,15 +118,15 @@ public class SwingChairMan extends SuperSwing {
                displayList(TeamList.teamList);
             }
         });
-        
-        return buttonPanel; 
-    }
+        */
+       // return buttonPanel; 
+  //  }
     
         private JPanel openChairman() {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(new Color(255, 200, 200));
-        panel.add(chairManButtons(),BorderLayout.WEST);
-         panel.add(this, BorderLayout.CENTER);
+        //panel.add(chairManButtons(),BorderLayout.WEST);
+         panel.add(this); //BorderLayout.CENTER);
         return panel;
         } 
         private JPanel openCoach() {
@@ -225,47 +268,5 @@ public class SwingChairMan extends SuperSwing {
             }
         });
     } // This ends swimmerFrame
-
-    public void displayList(ArrayList<?> list) {        
-        Object[] tempArr = list.toArray();
-        String[] col = Member.col;
-        DefaultTableModel tableModel = addJTable(tempArr, col);
-        
-        JTable table = new JTable(tableModel);
-        table.setBackground(Color.WHITE);
-        
-        JScrollPane scrollpane = new JScrollPane(table); 
-        scrollpane.setVisible(true);      
-        add(scrollpane, BorderLayout.CENTER);
-        //setBackground(Color.WHITE);
-        revalidate();
-    }
-    
-    public DefaultTableModel addJTable(Object[] list, String[] col) {
-
-       DefaultTableModel tableModel = new DefaultTableModel(col, 0);
-       for (Object o : list) {
-         if (o instanceof Member) {
-            Member m = (Member) o;
-            tableModel.addRow(m.getMemberInfoAsArray());
-            tableModel.setColumnIdentifiers(Member.col);
-            //tableModel.setRowColour(1, Color.BLACK);
-            tableModel.addColumn(", ");
-         } else if (o instanceof Team) {
-            Team t= (Team) o;
-            tableModel.addRow(t.getTeamInfoAsArray());
-            tableModel.setColumnIdentifiers(Team.col);
-         } else if (o instanceof Result) {
-            Result r = (Result) o;
-               /*if (r instanceof CompResult){
-                  r = (CompResult) r;
-               }*/
-            tableModel.addRow(r.getResultInfoAsArray());
-            tableModel.setColumnIdentifiers(Result.col);
-         }
-       }
-
-       
-      return tableModel;
-    }     
+  
 }

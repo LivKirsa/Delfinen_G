@@ -64,27 +64,69 @@ public class SuperSwing extends JPanel {
         return b1;
     }
       protected JButton Button2() {
-        JButton b1 = new JButton("Knap2");
-        b1.setBackground(Color.WHITE);
-        b1.addActionListener(new ActionListener() {
+        JButton b2 = new JButton("Knap2");
+        b2.setBackground(Color.WHITE);
+        b2.addActionListener(new ActionListener() {
         //action for button 1
             public void actionPerformed(ActionEvent e) {
 
             }
         });
-        return b1;
+        return b2;
     }
       protected JButton Button3() {
-        JButton b1 = new JButton("knap3");
-        b1.setBackground(Color.RED);
-        b1.addActionListener(new ActionListener() {
+        JButton b3 = new JButton("knap3");
+        b3.setBackground(Color.RED);
+        b3.addActionListener(new ActionListener() {
         //action for button 1
             public void actionPerformed(ActionEvent e) {
 
             }
         });
-        return b1;
-    }      
+        return b3;
+    } 
+    public void displayList(ArrayList<?> list) {        
+        Object[] tempArr = list.toArray();
+        String[] col = Member.col;
+        DefaultTableModel tableModel = addJTable(tempArr, col);
+        
+        JTable table = new JTable(tableModel);
+        table.setBackground(Color.WHITE);
+        
+        JScrollPane scrollpane = new JScrollPane(table); 
+        scrollpane.setVisible(true);      
+        add(scrollpane, BorderLayout.CENTER);
+        setBackground(Color.WHITE);
+        revalidate();
+    }
+    
+    public DefaultTableModel addJTable(Object[] list, String[] col) {
+
+       DefaultTableModel tableModel = new DefaultTableModel(col, 0);
+       for (Object o : list) {
+         if (o instanceof Member) {
+            Member m = (Member) o;
+            tableModel.addRow(m.getMemberInfoAsArray());
+            tableModel.setColumnIdentifiers(Member.col);
+            //tableModel.setRowColour(1, Color.BLACK);
+            tableModel.addColumn(", ");
+         } else if (o instanceof Team) {
+            Team t= (Team) o;
+            tableModel.addRow(t.getTeamInfoAsArray());
+            tableModel.setColumnIdentifiers(Team.col);
+         } else if (o instanceof Result) {
+            Result r = (Result) o;
+               /*if (r instanceof CompResult){
+                  r = (CompResult) r;
+               }*/
+            tableModel.addRow(r.getResultInfoAsArray());
+            tableModel.setColumnIdentifiers(Result.col);
+         }
+       }
+
+       
+      return tableModel;
+    }        
 
        }
 
