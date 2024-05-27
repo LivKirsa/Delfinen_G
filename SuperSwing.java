@@ -47,9 +47,9 @@ public class SuperSwing extends JPanel {
         
         buttonPanel.add(b1);
         buttonPanel.add(b2);
-        buttonPanel.add(b3);
+        //buttonPanel.add(b3);
  //add Buttonpanel til WEST
-       f.add(buttonPanel, BorderLayout.WEST);
+       add(buttonPanel, BorderLayout.WEST);
 }
       
       protected JButton Button1() {
@@ -87,52 +87,62 @@ public class SuperSwing extends JPanel {
     } 
     //stays here just in case, but will be replaced if Signes method works
 
+/*
+displayList(addJTable(list, col));
 
-    public void displayList(ArrayList<?> list) {        
-        Object[] tempArr = list.toArray();
-        String[] col = Member.col;
-        DefaultTableModel tableModel = addJTable(tempArr, col);
+DefaultTableModel tableModel = addJTable(list, col);
+displayList(tableModel);*/
+
+JTable table;
+    public void displayList(DefaultTableModel tableModel){//ArrayList<?> list, String[]col) {        
         
-        JTable table = new JTable(tableModel);
+        //DefaultTableModel tableModel = addJTable(tempArr, col, rowList);
+        
+        table = new JTable(tableModel);
         table.setColumnSelectionAllowed(false);
-        table.addMouseListener(new JTableButtonMouseListener(table));
-        
-        ButtonRenderer buttonRenderer = new ButtonRenderer();
-        table.getColumn("Knap").setCellRenderer(buttonRenderer);
-        
+         
+        // addButton("Knap");
         JScrollPane scrollpane = new JScrollPane(table); 
         scrollpane.setVisible(true);      
         add(scrollpane, BorderLayout.CENTER);
+        
         revalidate();
     }
-        
-    public DefaultTableModel addJTable(Object[] list, String[] col){
+    
+    //overload
+    public void addButton(String columnName){
+        table.addMouseListener(new JTableButtonMouseListener(table));
+        ButtonRenderer buttonRenderer = new ButtonRenderer();
+        table.getColumn(columnName).setCellRenderer(buttonRenderer);
+    }
+    
+    //making a tablemodel
+    public DefaultTableModel addTableModel(ArrayList <?> list, String[] col){
 
-       //DefaultTableModel tableModel = new DefaultTableModel(col, 0);
-       TableModel tableModel = new TableModel(col, 0, f);
-       tableModel.setColumnIdentifiers(Member.col);
-       for (Object o : list){
-         if(o instanceof Member){
-            Member m = (Member) o;
-            Object [] row = m.getMemberInfoAsArray();
-
-            tableModel.addRow(m.getMemberInfoAsArray());
-                        
-         }else if (o instanceof Team){
-
-            Team t = (Team) o;
-            tableModel.addRow(t.getTeamInfoAsArray());
-            tableModel.setColumnIdentifiers(Team.col);
-            
-         } else if (o instanceof Result) {
-            Result r = (Result) o;
-            tableModel.addRow(r.getResultInfoAsArray());
-            tableModel.setColumnIdentifiers(Result.col);
-         }
-      }
+      DefaultTableModel tableModel = new TableModel(col, 0, f);
+      Object [] row = {};
+      tableModel.setColumnIdentifiers(col);
        
+      for (Object o : list){
+         if(o instanceof Member){
+            row = ((Member)o).getMemberInfoAsArray();
+         }else if (o instanceof Team){
+            row = ((Team)o).getTeamInfoAsArray();
+         }else if (o instanceof Result){
+            row = ((Result)o).getResultInfoAsArray();
+         }
+         
+         tableModel.addRow(row);
+      }//end of for each loop
+      
       return tableModel;
-   }     
+   }   
+   
+   /*
+   public DefaultTableModel memberTableModel(){
+      DefaultTableModel tableModel = new DefaultTableModel();
+      return tableModel;
+   } */ 
 
    public void swimmerFrame() {
         JFrame swimmerFrame = new JFrame();
@@ -250,9 +260,5 @@ public class SuperSwing extends JPanel {
             }
          });
     } // This ends swimmerFrame
-    
-    public JFrame getF(){
-      return f;
-    }
 }       
 

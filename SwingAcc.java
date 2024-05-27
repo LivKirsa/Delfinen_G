@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
-public class SwingAcc  extends SuperSwing {
+public class SwingAcc extends SuperSwing {
    
     public SwingAcc(boolean visible) {
     super(visible);
@@ -23,12 +23,12 @@ public class SwingAcc  extends SuperSwing {
         add(buttonPanel, BorderLayout.WEST);
       }
        protected JButton Button1() {
-        JButton b1 = new JButton("Se Resitance");
+        JButton b1 = new JButton("Se Restance");
         b1.setBackground(Color.PINK);
         b1.addActionListener(new ActionListener() {
         //action for button 1
             public void actionPerformed(ActionEvent e) {
-
+               displayList(addTableModel(MemberList.memberList, Member.accCol));
             }
         });
         return b1;
