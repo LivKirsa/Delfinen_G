@@ -49,7 +49,7 @@ public class SuperSwing extends JPanel {
         buttonPanel.add(b2);
         buttonPanel.add(b3);
  //add Buttonpanel til WEST
-       add(buttonPanel, BorderLayout.WEST);
+       f.add(buttonPanel, BorderLayout.WEST);
 }
       
       protected JButton Button1() {
@@ -97,9 +97,9 @@ public class SuperSwing extends JPanel {
         
         JScrollPane scrollpane = new JScrollPane(table); 
         scrollpane.setVisible(true);      
-        add(scrollpane, BorderLayout.CENTER);
-        setBackground(Color.WHITE);
-        revalidate();
+       f.add(scrollpane, BorderLayout.CENTER); 
+       f.setBackground(Color.WHITE);
+       f.revalidate();;
     }
     
     public DefaultTableModel addJTable(Object[] list, String[] col) {

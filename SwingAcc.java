@@ -12,7 +12,7 @@ public class SwingAcc  extends SuperSwing {
     f.add(this);
     }
     
-        void buttonPanel() {
+        public void buttonPanel() {
         JPanel buttonPanel = new JPanel(new GridLayout(30, 1));
         
         //adding Button1 to the panel
