@@ -94,7 +94,6 @@ public class SuperSwing extends JPanel {
         DefaultTableModel tableModel = addJTable(tempArr, col);
         
         JTable table = new JTable(tableModel);
-        //table.setBackground(Color.WHITE);
         table.setColumnSelectionAllowed(false);
         table.addMouseListener(new JTableButtonMouseListener(table));
         
@@ -104,7 +103,6 @@ public class SuperSwing extends JPanel {
         JScrollPane scrollpane = new JScrollPane(table); 
         scrollpane.setVisible(true);      
         add(scrollpane, BorderLayout.CENTER);
-        //setBackground(Color.WHITE);
         revalidate();
     }
         
@@ -112,6 +110,7 @@ public class SuperSwing extends JPanel {
 
        //DefaultTableModel tableModel = new DefaultTableModel(col, 0);
        TableModel tableModel = new TableModel(col, 0);
+       tableModel.setColumnIdentifiers(Member.col);
        for (Object o : list){
          if(o instanceof Member){
             Member m = (Member) o;
@@ -119,7 +118,7 @@ public class SuperSwing extends JPanel {
             Object [] row = m.getMemberInfoAsArray();
 
             tableModel.addRow(m.getMemberInfoAsArray());
-            tableModel.setColumnIdentifiers(Member.col);
+            
             
          }else if (o instanceof Team){
 

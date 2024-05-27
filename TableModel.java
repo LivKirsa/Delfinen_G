@@ -13,7 +13,7 @@ public class TableModel extends DefaultTableModel{
       Object value = super.getValueAt(rowIndex, columnIndex);
       if (columnIndex == 12){
          JButton button = new JButton();
-         //System.out.println("table model");
+
          button.addActionListener( e ->{
             Member member = MemberList.memberList.get(rowIndex);
             //System.out.println("table model actionlistener");
@@ -23,7 +23,7 @@ public class TableModel extends DefaultTableModel{
                member.setIsPaid(true);
             }
             button.setText("" + rowIndex);
-            SwingChairMan.f.repaint();
+            //SwingChairMan.f.repaint();
          });
          return button;
       }
