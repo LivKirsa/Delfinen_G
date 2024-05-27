@@ -15,7 +15,8 @@ public class SwingCoach extends SuperSwing {
     @Override
         protected JButton Button1() {
         JButton b1 = new JButton("Se Hold");
-        b1.setBackground(Color.PINK);
+        b1.setBackground(pink);
+        b1.setForeground(softBlack);
         b1.addActionListener(new ActionListener() {
         //action for button 1
             public void actionPerformed(ActionEvent e) {
@@ -27,28 +28,28 @@ public class SwingCoach extends SuperSwing {
     
     
         protected JButton Button2() {
-        JButton b2 = new JButton("Nyt Hold");
-        b2.setBackground(Color.GREEN);
+        JButton b2 = new JButton("Registrer nyt Resultat");
+        b2.setBackground(pink);
+        b2.setForeground(softBlack);
         b2.addActionListener(new ActionListener() {
-        //action for button 2
             public void actionPerformed(ActionEvent e) {
-
             }
         });
         return b2;
     }
-    /*
+    
         protected JButton Button3() {
-        JButton b3 = new JButton("opret resultater");
-        b3.setBackground(Color.ORANGE);
+        JButton b3 = new JButton("Nyt Hold?");
+        b3.setBackground(pink);
+        b3.setForeground(softBlack);
         b3.addActionListener(new ActionListener() {
         //action for button 3
             public void actionPerformed(ActionEvent e) {
-
+            
             }
         });
         return b3;
-    }*/
+    }
     
       
       //stays here just in case, but will be removed if Signes method works
@@ -84,5 +85,7 @@ public class SwingCoach extends SuperSwing {
        super.displayList(tableModel);
        addButton("", "Se hold");
     
-    }    
+    }
+    
+    
 }
