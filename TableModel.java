@@ -10,7 +10,10 @@ public class TableModel extends DefaultTableModel{
       super(col, row);
       this.frame = frame;
    }
-
+    public boolean isCellEditable(int row, int column) {
+        // Only the button column (e.g., column 12) is editable
+        return false;
+    }
    @Override
    public Object getValueAt(final int rowIndex, final int columnIndex) {
       Object value = super.getValueAt(rowIndex, columnIndex);

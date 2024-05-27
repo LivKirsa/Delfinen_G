@@ -190,13 +190,13 @@ public class Member implements Serializable{
       return row;
     }
     
-    public String[] getMemberAccInfoAsArray(){
-      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + registrationDate, "" + nextPayment, "" + isPaid, "" + isJuniorMembership, "" + isActiveMembership};
+    public Object[] getMemberAccInfoAsArray(){
+      Object[] row = {"" + memberID, name, "" + birthday, "" + age, "" + registrationDate, "" + nextPayment, "" + isPaid, "" + isJuniorMembership, "" + isActiveMembership};
       return row;
     }
     
-    public String [] getMemberCouchInfoAsArray(){
-      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + isMan};
+    public Object [] getMemberCouchInfoAsArray(){
+      Object[] row = {memberID, name,"" + birthday, "" + age, "" + isMan};
       return row;
 
     }
