@@ -3,15 +3,18 @@ import java.io.Serializable;
 
 public class CompResult extends Result implements Serializable{
    String location;
+   int placement;
    
-   public CompResult(int distance, String style, int timeSec, String location){//LocalDateTime date, String location){
-      super(distance, style, timeSec);//date);
+   // Constructor for CompResult
+   public CompResult(int length, String swimmingStyle, int m, int s, int ms, String location, int placement){
+      super(length, swimmingStyle, m, s, ms);
       this.location = location;
+      this.placement = placement;
    }
    
    @Override
    public void printResult(){
-      System.out.println(swimmingStyle  + ", " + length + "m: " + time + " sek, " + location);
+      System.out.println(swimmingStyle  + ", " + length + "m: " + time + " sek, " + location + ". Placement: " + placement);
    }
    
    @Override

@@ -6,7 +6,9 @@ public class Login{
 
    JFrame [] holdFrame = new JFrame[1];
    
+   
    public Login(){
+      SuperSwing superswing = new SuperSwing(false);
       RunLoginUI();
    }
    
@@ -16,7 +18,7 @@ public class Login{
    public void runAccUI(){
    }
    
-   public void runCoachUI(){
+   public void runCouchUI(){
    }
    
          static boolean isFrameOpen = false;
@@ -73,7 +75,7 @@ public class Login{
        runChairManButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
          
-            new SwingChairMan();//.setVisible(true);
+            new SwingChairMan(true);//.setVisible(true);
             
          }
        });

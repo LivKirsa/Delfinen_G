@@ -1,33 +1,38 @@
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.io.Serializable;
+import java.time.Duration;
 
 public class Result implements Serializable{
 
-   // Attributes
+   // Attributes for Results
    int length; 
    String swimmingStyle; 
-   int time;
-   LocalDateTime Date;  
+   Duration time;
+   LocalDate date;
    int memberID;
-   
    static String[] col = {"navn", "disciplin", "distance", "Tid"};
-   
-   // Constructor
-   public Result(int length, String swimmingStyle, int time){//LocalDateTime date)
+
+   // Constructor for Result Objects
+   public Result(int length, String swimmingStyle, int m, int s, int ms){
        this.length = length;
        this.swimmingStyle = swimmingStyle;
-       this.time = time;
+       this.time = createDuration(m, s, ms);
+       this.date = LocalDate.now();
    }
    
    public String toString(){
-      return (swimmingStyle  + ", " + length + "m: " + time + " sek");
+      return (swimmingStyle  + ", " + length + "m\n Time: " + time + ". \nDate: " + date);
    }
-      
+
    public void printResult(){
       System.out.println(toString());
    }
-   
-   
+
+   // Method for converting 3 int inputs Minutes(m), Seconds(s), Milliseconds(ms) into a Duration Object
+   public static Duration createDuration(int m, int s, int ms){
+      return Duration.ofMinutes(m).plusSeconds(s).plusMillis(ms);
+   }
+
    public String[] getResultInfoAsArray(){
       String name = "";
       for (Member m : MemberList.memberList){

@@ -4,58 +4,53 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
-public class SwingCoach extends JPanel {
-   JFrame f = new JFrame(); 
+public class SwingCoach extends SuperSwing {
    
     public SwingCoach(boolean visible) {
-      setLayout(new BorderLayout());
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
-        f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
-        f.setLayout(new BorderLayout());
-        f.setTitle("Couch");
-        f.setVisible(visible);
-        f.add(this);
-        buttonPanel();
-      }
-      
-      public void buttonPanel(){
-        JPanel buttonPanel = new JPanel(new GridLayout(30,1)); 
+    super(visible);
+    f.setTitle("Sub Coach uwu");
+    f.add(this);
+    }
+    
+    @Override
+        protected JButton Button1() {
         JButton b1 = new JButton("Se Holdlister");
-        JButton b2 = new JButton("Indtast svømmeresultater"); 
-        JButton b3 = new JButton("Holdoversigt");
-        b1.setBackground(Color.BLUE);
-        buttonPanel.add(b1);
-        b2.setBackground(Color.RED);
-        buttonPanel.add(b2);
-        b3.setBackground(Color.GREEN);
-        buttonPanel.add(b3);
-        
- //add Buttonpanel til WEST
-       add(buttonPanel, BorderLayout.WEST);
-      //actions of the add Swimmer button 
-      b1.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-            
-         }
-       });
-      //actions of the se medlem button 
-      b2.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-         //SwimmerFrame();
-         }
-       });
-       //actions of the add trainer to a team. 
-      b3.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {
-         displayList(TeamList.teamList); 
-         }
-       });
-       
-       // size of the window 
-       f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
-      }
+        b1.setBackground(Color.PINK);
+        b1.addActionListener(new ActionListener() {
+        //action for button 1
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        return b1;
+    }
+    
+    
+        protected JButton Button2() {
+        JButton b2 = new JButton("Se hurtigste svømmere");
+        b2.setBackground(Color.GREEN);
+        b2.addActionListener(new ActionListener() {
+        //action for button 2
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        return b2;
+    }
+        protected JButton Button3() {
+        JButton b3 = new JButton("opret resultater");
+        b3.setBackground(Color.ORANGE);
+        b3.addActionListener(new ActionListener() {
+        //action for button 3
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        return b3;
+    }
+    
       
+      //stays here just in case, but will be removed if Signes method works
    public void displayListWithButtons(ArrayList<?> list) {
         JPanel listPanel = new JPanel();
         listPanel.setLayout(new GridLayout(list.size(), 1));
@@ -179,4 +174,5 @@ public class SwingCoach extends JPanel {
 
       return tableModel;
     }  
+    
 }

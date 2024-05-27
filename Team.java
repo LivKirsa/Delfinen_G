@@ -1,12 +1,13 @@
 import java.util.*;
 import java.time.LocalDateTime;
+import java.time.Duration;
 import java.io.Serializable;
 
 public class Team implements Serializable{
    
    String teamName;
    int teamNumber;
-   String coachName;
+   String couchName;
    Result result;
    static ArrayList<Member> teamMemberList = new ArrayList<Member>(); // This was made static to make removeMember method work
    
@@ -14,16 +15,16 @@ public class Team implements Serializable{
     
    // Constructor for constructing teams
    
-   public Team(String teamName, int teamNumber, String coachName){
+   public Team(String teamName, int teamNumber, String couchName){
       this.teamName = teamName;
       this.teamNumber = teamNumber;
-      this.coachName = coachName;
+      this.couchName = couchName;
       //this.teamMemberList = teamMemberList;
       TeamList.addTeam(this);
    }
    
-   public void addResult(int memberNumber, int length, String swimmingStyle, int time){//, LocalDateTime date){//(ikke CompResult).
-      result = new Result(length, swimmingStyle, time);//, date);
+   public void addResult(int memberNumber, int length, String swimmingStyle, int m, int s, int ms){//, LocalDateTime date){//(ikke CompResult).
+      result = new Result(length, swimmingStyle, m, s, ms);
       result.memberID = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
       comparePersonalResult(memberNumber);
    }
@@ -33,13 +34,13 @@ public class Team implements Serializable{
          if (compareDiscipline(teamMemberList.get(memberNumber).bestTimesList) < 0){//!compareResult(teamMemberList.get(memberNumber).bestTimesList, true)){//if Compare personalResult returns false = the discipline doesnt exist yet:
             //System.out.println("disciplin findes ikke.");
             disciplineDoesntExist(teamMemberList.get(memberNumber).bestTimesList);//discipline added to members besttimes list if no former instances.
-            
-         }else{
+ 
+         } else {
             //System.out.println("disciplin findes");
             teamMemberList.get(memberNumber).bestTimesList.set(teamMemberList.get(memberNumber).bestTimesList.size() -1, result);
-            
+
          }
-      }else{//if besttimeslsit is entirely empty:
+      } else {//if besttimeslsit is entirely empty:
          //System.out.println("ingen discipliner oprettet");
          disciplineDoesntExist(teamMemberList.get(memberNumber).bestTimesList);//discipline added to members besttimes list if no former instances.  
       }
@@ -64,15 +65,15 @@ public class Team implements Serializable{
       //System.out.println("Result added.");
    }
    
-   // Setter for coachName
-   public void setCoach(String coachName){
-      this.coachName = coachName;
+   // Setter for couchName
+   public void setCouch(String couchName){
+      this.couchName = couchName;
    }
    
    // Method for printing Team information
    public void printTeam(){
       System.out.println("_________________________________________");
-      System.out.println("(" + teamNumber + ") Team Name: " + teamName + ". Coach name: " + coachName);
+      System.out.println("(" + teamNumber + ") Team Name: " + teamName + ". Coach name: " + couchName);
       System.out.println("Team Members: \n");
       for (Member member : teamMemberList){
          member.printMemberName();
@@ -82,7 +83,7 @@ public class Team implements Serializable{
   
    
    public String[] getTeamInfoAsArray(){
-      String[] row = {teamName, ""+ teamNumber, coachName};
+      String[] row = {teamName, ""+ teamNumber, couchName};
       return row;
    }
 }

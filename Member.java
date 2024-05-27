@@ -10,7 +10,6 @@ public class Member implements Serializable{
     private int age;
     private LocalDate birthday;
     private int memberID;
-    private int memberNumber;
     private static LocalDate registrationDate;
     private static LocalDate nextPayment;
     private boolean isPaid;
@@ -20,15 +19,13 @@ public class Member implements Serializable{
     private boolean isMan;
     private LocalDate now = LocalDate.now();
     private int teamNumber;
-    
-    ArrayList <Result> bestTimesList = new ArrayList <Result>();
+    ArrayList<Result> bestTimesList = new ArrayList<Result>();
     
     static String[] col ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv", "Konkurrencesvømmer", "Køn(Mand?)", "Hold", "Knap"};
     static String[] accCol ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv"};
     static String[] couchCol ={"ID", "navn", "Fødselsdag", "Alder", "Køn(Mand?)"};
     
     // Constructor for Member Objects
-
     public Member(String name, String birthday, boolean isActiveMembership, boolean isCompetitiveSwimmer, boolean isMan){
         this.name = name;
         this.age = calculateAge(LocalDate.parse(birthday), now);
@@ -43,7 +40,6 @@ public class Member implements Serializable{
         this.isJuniorMembership = getIsJuniorMembership(this);
         this.isMan = isMan;
         MemberList.addMember(this); // Adds the new Member to memberList automatically
-        this.memberNumber = MemberList.memberList.indexOf(this);
         this.teamNumber = TeamList.autoAssignToTeam(this); // Automatically adds the new Member to the appropriate team  
     }
         // Method for removing Member from all lists
@@ -59,22 +55,14 @@ public class Member implements Serializable{
       name + "\n Age: " + age + "\n Birthday: " + birthday + "\n Active Membership?: " + 
       isActiveMembership + "\n Junior Membership?: " + isJuniorMembership + 
       "\n Competitive Swimmer?: " + isCompetitiveSwimmer + "\n Man?: " + isMan + 
-      "\n Paid?: " + isPaid + "\n Next payment due: " + nextPayment); // Next payment due should show a year from last registration date. Is currently just showing registration date
+      "\n Paid?: " + isPaid + "\n Next payment due: " + nextPayment);
       }
       
       // Method for printing memberName
       public void printMemberName(){
          System.out.println(name);
       }
-    
-    // Method for constructing Member and returning Member Object
-    public Member addMemberReturnObject(String name, String birthday, boolean isActiveMembership, boolean isCompetitiveSwimmer, boolean isMan) {
-      Member newMember = new Member(name, birthday, isActiveMembership, isCompetitiveSwimmer, isMan);
-      MemberList.counter++; // Im not sure if this works properly - Liv
-      MemberList.addMember(this); // Adds the new Member to memberList automatically
-      return newMember;
-    }
-    
+
     // Getter for name
     public String getName(){
         return name;
@@ -175,19 +163,9 @@ public class Member implements Serializable{
       this.isMan = isMan;
     }
     
-    // Getter for memberNumber
-    public int getMemberNumber(){
-      return memberNumber;
-    }
-    
     // Getter for nextPayment
     public LocalDate getNextPayment(){
       return nextPayment;
-    }
-    
-    // Method for moving nextPayment a year forward (Used in AccList)
-    public void moveNextPayment(Member member){
-      member.nextPayment.plusYears(1);
     }
     
     // Method to renew membership

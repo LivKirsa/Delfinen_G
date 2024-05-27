@@ -9,48 +9,71 @@ import java.awt.Color;
 import java.util.Arrays;
 import javax.swing.table.DefaultTableModel;
 
-public class SwingChairMan extends JPanel {
-   Color turkis1 = new Color(199, 237, 231);
-   Color turkis2 = new Color(177, 224, 218);
-   Color turkis3 = new Color(140, 204, 200);
-   Color turkis4 = new Color(103, 159, 157);
-   Color purple = new Color(159, 141, 185);
-   Color pink = new Color(232, 173, 210);
-   Color blue = new Color(171, 218, 233);
-   Color softWhite = new Color(241, 234, 231);
-   Color darkBlue = new Color(53, 120, 180);
-   Color softBlack = new Color(50, 42, 51);
+public class SwingChairMan extends SuperSwing {
    
    private Member member;
-   private SwingCoach swingCoach;
    
-   static JFrame f = new JFrame(); 
-       
-   public SwingChairMan() {
-
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
-        f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
-        f.setLayout(new BorderLayout());
-        f.setVisible(true);
-        f.setTitle("Svømmeklubben Delfinen");
-        
+   public SwingChairMan(boolean visible) { // Constructor
+      super (visible);
+      f.setTitle("Svømmeklubben Delfinen");
+      
         //Tabs work start here 
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.addTab("Chairman",openChairman());
         tabbedPane.addTab("Couch", openCoach());//openCoach());
         tabbedPane.addTab("Accountant",openAcc());
-        f.add(tabbedPane, BorderLayout.NORTH);
+        f.add(tabbedPane, BorderLayout.CENTER);
         
         
         f.setLocationRelativeTo(null);
         f.setVisible(true);
         setBackground(turkis1);
-        setLayout(new BorderLayout());
+        //setLayout(new BorderLayout());
         }
-       
+        protected JButton Button1() {
+        JButton b1 = new JButton("Se medlemer");
+                        b1.setBackground(pink);
+                        b1.setForeground(softBlack);
+        b1.addActionListener(new ActionListener() {
+        //action for button 1
+            public void actionPerformed(ActionEvent e) {
+                            swimmerFrame();
 
-        private JPanel chairManButtons(){
+            }
+        });
+        return b1;
+    }
+        protected JButton Button2() {
+        JButton b2 = new JButton("Se hurtigste svømmere");
+                b2.setBackground(blue);
+        b2.setForeground(softBlack);
+        b2.addActionListener(new ActionListener() {
+        //action for button 2
+            public void actionPerformed(ActionEvent e) {
+                        displayList(MemberList.memberList);
+
+            }
+        });
+        return b2;
+    }
+        protected JButton Button3() {
+        JButton b3 = new JButton("opret resultater");
+                b3.setBackground(pink);
+        b3.setForeground(softBlack);
+        b3.addActionListener(new ActionListener() {
+        //action for button 3
+            public void actionPerformed(ActionEvent e) {
+                           displayList(TeamList.teamList);
+            }
+        });
+        return b3;
+    }
+
+       //remove all below when it runs, could be part of the reason why it does not run, not sure yet. 
+
+     //   private JPanel chairManButtons(){
+
+        /*
          JPanel buttonPanel = new JPanel(new GridLayout(30, 1));
          buttonPanel.setBackground(turkis2);
          JButton b1 = new JButton("Tilføj nyt Medlem");
@@ -87,15 +110,15 @@ public class SwingChairMan extends JPanel {
                displayList(TeamList.teamList);
             }
         });
-        
-        return buttonPanel; 
-    }
+        */
+       // return buttonPanel; 
+  //  }
     
         private JPanel openChairman() {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(new Color(255, 200, 200));
-        panel.add(chairManButtons(),BorderLayout.WEST);
-         panel.add(this, BorderLayout.CENTER);
+        //panel.add(chairManButtons(),BorderLayout.WEST);
+         panel.add(this); //BorderLayout.CENTER);
         return panel;
         } 
         private JPanel openCoach() {
@@ -112,7 +135,7 @@ public class SwingChairMan extends JPanel {
  
         return panel;
         }
-    
+            
  public void swimmerFrame() {
         JFrame swimmerFrame = new JFrame();
         swimmerFrame.setVisible(true);
@@ -299,4 +322,5 @@ public class SwingChairMan extends JPanel {
        
       return tableModel;
     }     
-}
+}      
+
