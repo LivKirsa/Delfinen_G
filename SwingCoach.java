@@ -89,7 +89,7 @@ public class SwingCoach extends SuperSwing {
     }
     
     public void resultFrame() {
-        JFrame resultFrame = new JFrame();
+        JFrame resultFrame = new JFrame("Indtast nyt Resultat");
         resultFrame.setVisible(true);
         resultFrame.setSize(350, 400);
         resultFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
