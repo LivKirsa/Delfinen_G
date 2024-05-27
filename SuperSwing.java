@@ -53,7 +53,7 @@ public class SuperSwing extends JPanel {
 }
       
       protected JButton Button1() {
-        JButton b1 = new JButton("Se Holdlister");
+        JButton b1 = new JButton("knap1");
         b1.setBackground(Color.BLUE);
         b1.addActionListener(new ActionListener() {
         //action for button 1
@@ -64,7 +64,7 @@ public class SuperSwing extends JPanel {
         return b1;
     }
       protected JButton Button2() {
-        JButton b1 = new JButton("Se Holdlister");
+        JButton b1 = new JButton("Knap2");
         b1.setBackground(Color.WHITE);
         b1.addActionListener(new ActionListener() {
         //action for button 1
@@ -75,7 +75,7 @@ public class SuperSwing extends JPanel {
         return b1;
     }
       protected JButton Button3() {
-        JButton b1 = new JButton("Se Holdlister");
+        JButton b1 = new JButton("knap3");
         b1.setBackground(Color.RED);
         b1.addActionListener(new ActionListener() {
         //action for button 1

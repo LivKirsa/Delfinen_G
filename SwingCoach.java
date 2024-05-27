@@ -21,6 +21,28 @@ public class SwingCoach extends SuperSwing {
         });
         return b1;
     }
+        protected JButton Button2() {
+        JButton b2 = new JButton("Se hurtigste svømmere");
+        b2.setBackground(Color.GREEN);
+        b2.addActionListener(new ActionListener() {
+        //action for button 1
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        return b2;
+    }
+        protected JButton Button3() {
+        JButton b3 = new JButton("opret resultater");
+        b3.setBackground(Color.ORANGE);
+        b3.addActionListener(new ActionListener() {
+        //action for button 1
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        return b3;
+    }
     
       
       
