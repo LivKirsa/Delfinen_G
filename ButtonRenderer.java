@@ -11,14 +11,7 @@ public class ButtonRenderer implements TableCellRenderer{
       JButton button = (JButton)value;
       if (button == null){
          button = new JButton();
-         if (MemberList.memberList.get(row).getIsPaid()){
-            button.setBackground(new Color(124, 255, 178));
-            button.setText("Betalt");
-            
-         }else{
-            button.setText("Restance");
-            button.setBackground(Color.PINK);            
-         }
+
          /*button.addActionListener(e ->{
             System.out.println("peddersen of findus");
          });*/
@@ -32,6 +25,14 @@ public class ButtonRenderer implements TableCellRenderer{
       });*/
       //button.setBackground(Color.PINK);
       //System.out.println("jbutton:" + row + ", " + column);
+         if (MemberList.memberList.get(row).getIsPaid()){
+            button.setBackground(new Color(124, 255, 178));
+            button.setText("Betalt");
+            
+         }else{
+            button.setText("Restance");
+            button.setBackground(Color.PINK);            
+         }
       return button;
    }
    

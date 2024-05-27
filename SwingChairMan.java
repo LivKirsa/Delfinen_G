@@ -18,9 +18,11 @@ public class SwingChairMan extends JPanel {
    Color darkBlue = new Color(53, 120, 180);
    Color softBlack = new Color(50, 42, 51);
 
+       static JFrame f = new JFrame(); 
+       
    public SwingChairMan() {
 
-    JFrame f = new JFrame(); 
+
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
         f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
@@ -222,7 +224,8 @@ public class SwingChairMan extends JPanel {
     
     public DefaultTableModel addJTable(Object[] list, String[] col){//ArrayList <Object> list, String [] col){
 
-       DefaultTableModel tableModel = new DefaultTableModel(col, 0);
+       //DefaultTableModel tableModel = new DefaultTableModel(col, 0);
+       TableModel tableModel = new TableModel(col, 0);
        for (Object o : list){
          if(o instanceof Member){
             Member m = (Member) o;
