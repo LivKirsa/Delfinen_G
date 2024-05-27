@@ -299,6 +299,8 @@ public class SwingCoach extends JPanel {
                int m = Integer.parseInt(text3Field.getText());
                int s = Integer.parseInt(text4Field.getText());
                int ms = Integer.parseInt(text5Field.getText());
+               String location = textFieldComp.getText();
+               int rank = Integer.parseInt(textFieldRank.getText();
                
                // Extraction of Member Team index IDs and stuff from different lists so the methods work together seamlessly, idk, it works
                Team team = TeamList.teamList.get(selectedMember.getTeamNumber()-1);
