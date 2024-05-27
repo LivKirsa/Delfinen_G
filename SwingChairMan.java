@@ -68,52 +68,7 @@ public class SwingChairMan extends SuperSwing {
         });
         return b3;
     }
-
-       //remove all below when it runs, could be part of the reason why it does not run, not sure yet. 
-
-     //   private JPanel chairManButtons(){
-
-        /*
-         JPanel buttonPanel = new JPanel(new GridLayout(30, 1));
-         buttonPanel.setBackground(turkis2);
-         JButton b1 = new JButton("Tilføj nyt Medlem");
-         JButton b2 = new JButton("Se Medlemmer");
-         JButton b3 = new JButton("Tilføj Træner");
-         
-        buttonPanel.add(b1);
-        buttonPanel.add(b2);
-        buttonPanel.add(b3);
-
-        b1.setBackground(pink);
-        b1.setForeground(softBlack);
-        b2.setBackground(blue);
-        b2.setForeground(softBlack);
-        b3.setBackground(pink);
-        b3.setForeground(softBlack);
-
-        add(buttonPanel, BorderLayout.WEST);
-        
-        b1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                swimmerFrame();
-            }
-        });
-
-        b2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            displayList(MemberList.memberList);
-            }
-        });
-
-        b3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-               displayList(TeamList.teamList);
-            }
-        });
-        */
-       // return buttonPanel; 
-  //  }
-    
+  
         private JPanel openChairman() {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(new Color(255, 200, 200));
