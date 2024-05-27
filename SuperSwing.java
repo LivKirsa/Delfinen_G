@@ -32,13 +32,13 @@ public class SuperSwing extends JPanel {
         f.setLayout(new BorderLayout());
         f.setTitle("SuperSwing");
         f.setVisible(visible);
-        f.add(this);
+        //f.add(this);
         // size of the window 
        f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
        buttonPanel();
       }
       
-      void buttonPanel(){
+      public void buttonPanel(){
         JPanel buttonPanel = new JPanel(new GridLayout(30,1)); 
         
         JButton b1 = Button1(); 
@@ -85,6 +85,8 @@ public class SuperSwing extends JPanel {
         });
         return b3;
     } 
+    //stays here just in case, but will be replaced if Signes method works
+
     public void displayList(ArrayList<?> list) {        
         Object[] tempArr = list.toArray();
         String[] col = Member.col;
@@ -241,17 +243,8 @@ public class SuperSwing extends JPanel {
             Member newMember = new Member(name, birthdayString, isActiveMembership, isCompetitiveSwimmer, isMan);
             swimmerFrame.dispose(); 
             }
-        }); 
-            text1Field.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
-            text2Field.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
+         });
     } // This ends swimmerFrame
        
-
-       }
+}       
 

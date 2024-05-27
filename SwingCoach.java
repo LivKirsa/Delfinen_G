@@ -9,7 +9,10 @@ public class SwingCoach extends SuperSwing {
     public SwingCoach(boolean visible) {
     super(visible);
     f.setTitle("Sub Coach uwu");
+    f.add(this);
     }
+    
+    @Override
         protected JButton Button1() {
         JButton b1 = new JButton("Se Holdlister");
         b1.setBackground(Color.PINK);
@@ -21,6 +24,8 @@ public class SwingCoach extends SuperSwing {
         });
         return b1;
     }
+    
+    
         protected JButton Button2() {
         JButton b2 = new JButton("Se hurtigste svømmere");
         b2.setBackground(Color.GREEN);
@@ -45,7 +50,7 @@ public class SwingCoach extends SuperSwing {
     }
     
       
-      
+      //stays here just in case, but will be removed if Signes method works
    public void displayListWithButtons(ArrayList<?> list) {
         JPanel listPanel = new JPanel();
         listPanel.setLayout(new GridLayout(list.size(), 1));

@@ -9,6 +9,7 @@ public class SwingAcc  extends SuperSwing {
     public SwingAcc(boolean visible) {
     super(visible);
     f.setTitle("Sub ACC");
+    f.add(this);
     }
     
         void buttonPanel() {

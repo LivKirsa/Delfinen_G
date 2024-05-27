@@ -28,7 +28,7 @@ public class SwingChairMan extends SuperSwing {
         f.setLocationRelativeTo(null);
         f.setVisible(true);
         setBackground(turkis1);
-        setLayout(new BorderLayout());
+        //setLayout(new BorderLayout());
         }
         protected JButton Button1() {
         JButton b1 = new JButton("Se medlemer");
@@ -69,7 +69,7 @@ public class SwingChairMan extends SuperSwing {
         return b3;
     }
 
-       
+       //remove all below when it runs, could be part of the reason why it does not run, not sure yet. 
 
      //   private JPanel chairManButtons(){
 
