@@ -126,7 +126,132 @@ public class SuperSwing extends JPanel {
 
        
       return tableModel;
-    }        
+    } 
+ public void swimmerFrame() {
+        JFrame swimmerFrame = new JFrame();
+        swimmerFrame.setVisible(true);
+        swimmerFrame.setSize(300, 300);
+        swimmerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Login.centerFrameOnScreen(swimmerFrame);
+
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        // JPanel panel = new JPanel();
+        panel.setBackground(blue);
+
+        JTextField text1Field = new JTextField(20);
+        JTextField text2Field = new JTextField(20);
+        JLabel label1 = new JLabel("Name:");
+        JLabel label2 = new JLabel("Birthday:");
+
+        JCheckBox checkBox1 = new JCheckBox("isActiveMembership");
+        JCheckBox checkBox2 = new JCheckBox("isCompetitiveSwimmer");
+        JCheckBox checkBox3 = new JCheckBox("isMan");
+         
+        //this just places it around found online. 
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(label1, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(text1Field, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(label2, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(text2Field, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(checkBox1, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(checkBox2, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(checkBox3, gbc);
+        
+         // Adding the Done button
+        JButton doneButton = new JButton("Done");
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        gbc.anchor = GridBagConstraints.CENTER;
+        panel.add(doneButton, gbc);
+
+        swimmerFrame.add(panel);
+
+        checkBox1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (checkBox1.isSelected()) {
+                    System.out.println("Box 1 was checked");
+                } else {
+                    System.out.println("Box 1 was unchecked");
+                }
+            }
+        });
+
+        checkBox2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (checkBox2.isSelected()) {
+                    System.out.println("Box 2 was checked");
+                } else {
+                    System.out.println("Box 2 was unchecked");
+                }
+            }
+        });
+
+        checkBox3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (checkBox3.isSelected()) {
+                    System.out.println("Box 3 was checked");
+                } else {
+                    System.out.println("Box 3 was unchecked");
+                }
+            }
+        });
+            doneButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            String name = text1Field.getText(); 
+            String birthdayString = text2Field.getText(); 
+            boolean isActiveMembership = checkBox1.isSelected();
+            boolean isCompetitiveSwimmer = checkBox2.isSelected();
+            boolean isMan = checkBox3.isSelected();
+            
+            LocalDate birthday;
+            try {
+               birthday = LocalDate.parse(birthdayString);
+            } catch (Exception ex) {
+               JOptionPane.showMessageDialog(swimmerFrame, "Invalid birthday format. Please use YYYY-MM-DD.");
+            return;
+            }
+            Member newMember = new Member(name, birthdayString, isActiveMembership, isCompetitiveSwimmer, isMan);
+            swimmerFrame.dispose(); 
+            }
+        }); 
+            text1Field.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+            text2Field.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+    } // This ends swimmerFrame
+       
 
        }
 
