@@ -24,9 +24,10 @@ public class SwingChairMan extends JPanel {
    private Member member;
    private SwingCoach swingCoach;
    
-   public SwingChairMan() { // Constructor
+   static JFrame f = new JFrame(); 
+       
+   public SwingChairMan() {
 
-    JFrame f = new JFrame(); 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
         f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
@@ -243,7 +244,12 @@ public class SwingChairMan extends JPanel {
         DefaultTableModel tableModel = addJTable(tempArr, col);
         
         JTable table = new JTable(tableModel);
-        table.setBackground(Color.WHITE);
+        //table.setBackground(Color.WHITE);
+        table.setColumnSelectionAllowed(false);
+        table.addMouseListener(new JTableButtonMouseListener(table));
+        
+        ButtonRenderer buttonRenderer = new ButtonRenderer();
+        table.getColumn("Knap").setCellRenderer(buttonRenderer);
         
         JScrollPane scrollpane = new JScrollPane(table); 
         scrollpane.setVisible(true);      
@@ -252,17 +258,32 @@ public class SwingChairMan extends JPanel {
         revalidate();
     }
     
-    public DefaultTableModel addJTable(Object[] list, String[] col) {
 
-       DefaultTableModel tableModel = new DefaultTableModel(col, 0);
-       for (Object o : list) {
-         if (o instanceof Member) {
+    static ArrayList <JButton> buttonList = new ArrayList <JButton>();
+    
+    public DefaultTableModel addJTable(Object[] list, String[] col){//ArrayList <Object> list, String [] col){
+
+       //DefaultTableModel tableModel = new DefaultTableModel(col, 0);
+       TableModel tableModel = new TableModel(col, 0);
+       for (Object o : list){
+         if(o instanceof Member){
             Member m = (Member) o;
+            //tableModel.addColumn("Knap");
+            Object [] row = m.getMemberInfoAsArray();
+            /*row[row.length - 1] = new JButton("hej");
+            if (row[row.length - 1] instanceof JButton){
+               
+            }*/
+            
+            //row[row.length -1 ] = addButton(row.length - 1);
+            
             tableModel.addRow(m.getMemberInfoAsArray());
             tableModel.setColumnIdentifiers(Member.col);
+            //tableModel.setColumnClass
             //tableModel.setRowColour(1, Color.BLACK);
-            tableModel.addColumn(", ");
-         } else if (o instanceof Team) {
+            
+         }else if (o instanceof Team){
+
             Team t= (Team) o;
             tableModel.addRow(t.getTeamInfoAsArray());
             tableModel.setColumnIdentifiers(Team.col);
@@ -275,7 +296,6 @@ public class SwingChairMan extends JPanel {
             tableModel.setColumnIdentifiers(Result.col);
          }
        }
-
        
       return tableModel;
     }     
