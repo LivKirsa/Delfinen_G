@@ -15,7 +15,7 @@ public class JTableButtonMouseListener extends MouseAdapter {
     int column = table.getColumnModel().getColumnIndexAtX(e.getX()); // get the coloum of the button
     int row = e.getY()/table.getRowHeight(); //get the row of the button
 
-   if (row < table.getRowCount() && row >= 0 && column < table.getColumnCount() && column >= 0) {
+    if (row < table.getRowCount() && row >= 0 && column < table.getColumnCount() && column >= 0) {
       Object value = table.getValueAt(row, column);
 
       if (value instanceof JButton) {

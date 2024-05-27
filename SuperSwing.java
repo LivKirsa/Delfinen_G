@@ -109,10 +109,19 @@ JTable table;
         revalidate();
     }
     
-    //overload
-    public void addButton(String columnName){
+    public void addButton(String columnName, String buttonText){
         table.addMouseListener(new JTableButtonMouseListener(table));
-        ButtonRenderer buttonRenderer = new ButtonRenderer();
+        ((TableModel)table.getModel()).columnNumber = table.getColumn(columnName).getModelIndex();
+        
+        ButtonRenderer buttonRenderer = new ButtonRenderer(buttonText, blue);
+        table.getColumn(columnName).setCellRenderer(buttonRenderer);
+    }
+    
+    public void addButton(String columnName, String buttonText, String buttonText2){
+        table.addMouseListener(new JTableButtonMouseListener(table));
+        ((TableModel)table.getModel()).columnNumber = table.getColumn(columnName).getModelIndex();
+        
+        ButtonRenderer buttonRenderer = new ButtonRenderer(buttonText, buttonText2, turkis1, turkis2);
         table.getColumn(columnName).setCellRenderer(buttonRenderer);
     }
     
@@ -138,11 +147,6 @@ JTable table;
       return tableModel;
    }   
    
-   /*
-   public DefaultTableModel memberTableModel(){
-      DefaultTableModel tableModel = new DefaultTableModel();
-      return tableModel;
-   } */ 
 
    public void swimmerFrame() {
         JFrame swimmerFrame = new JFrame();

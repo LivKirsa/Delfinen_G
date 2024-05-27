@@ -82,7 +82,7 @@ public class SwingCoach extends SuperSwing {
     }
     public void displayList(DefaultTableModel tableModel){
        super.displayList(tableModel);
-       //addButton("Træner");
+       addButton("", "Se hold");
     
     }    
 }

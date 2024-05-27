@@ -227,7 +227,7 @@ public class SwingChairMan extends SuperSwing {
     
      public void displayList(DefaultTableModel tableModel){
          super.displayList(tableModel);
-         addButton("Knap");
+         addButton("Knap", "Betalt", "I restance");
      }
 }      
 
