@@ -35,9 +35,10 @@ public class Member implements Serializable{
             MemberList.counter++;
         this.registrationDate = LocalDate.now();
         this.nextPayment = LocalDate.now().plusYears(1);
-        this.subPrice = calculateSubPrice(this);
+        
         this.isPaid = true; // Assumes that no new member is created before they have paid for membership
         this.isActiveMembership = isActiveMembership;
+        this.subPrice = calculateSubPrice(this);
         this.isCompetitiveSwimmer = isCompetitiveSwimmer;
         this.isJuniorMembership = getIsJuniorMembership(this);
         this.isMan = isMan;
@@ -190,15 +191,14 @@ public class Member implements Serializable{
     
     // Method for calculating subscription price
     public int calculateSubPrice(Member member) {
-       int membershipType;
-       
-       if (member.getIsActiveMembership() == true & member.getAge() >= 18 & member.getAge() <= 60) {
+
+       if (member.getIsActiveMembership() & member.getAge() >= 18 & member.getAge() <= 60) {
          return 1600;
-       } else if (member.getIsActiveMembership() == true & member.getAge() < 18) {
+       } else if (member.getIsActiveMembership() & member.getAge() < 18) {
          return 1000;
-       } else if (member.getIsActiveMembership() == true & member.getAge() > 60) {
+       } else if (member.getIsActiveMembership() & member.getAge() > 60) {
          return 1200;
-       } else if (member.getIsActiveMembership() == false) {
+       } else if (!member.getIsActiveMembership()) {
          return 500;
        } else {
          return 404;

@@ -36,11 +36,10 @@ public class Main{
        
           TeamList.team3.addResult(0,500,"Crawling", 4, 50, 891);
           TeamList.team3.printTeam();
-          SwingUtilities.invokeLater( //dette kører swing 
-         ()->{ 
+          SwingUtilities.invokeLater(() -> { 
             new Login();
          });
          m3.printBestTimesList();
-         m5.printMember();
+         m30.printMember();
      }
 }

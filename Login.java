@@ -72,9 +72,7 @@ public class Login{
        // this is the action to run chairman UI. 
        runChairManButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-         
-            new SwingChairMan();//.setVisible(true);
-            
+         new SwingChairMan();//.setVisible(true);            
          }
        });
        // this is the action to run the accounten UI
