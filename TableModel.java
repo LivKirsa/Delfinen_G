@@ -1,11 +1,14 @@
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import java.awt.event.*;
+import javax.swing.JFrame;
 
 public class TableModel extends DefaultTableModel{
-
-   public TableModel(String[] col, int row){
+   JFrame frame;
+   
+   public TableModel(String[] col, int row, JFrame frame){
       super(col, row);
+      this.frame = frame;
    }
 
    @Override
@@ -16,14 +19,13 @@ public class TableModel extends DefaultTableModel{
 
          button.addActionListener( e ->{
             Member member = MemberList.memberList.get(rowIndex);
-            //System.out.println("table model actionlistener");
             if (member.getIsPaid()){
                member.setIsPaid(false);
             }else{
                member.setIsPaid(true);
             }
             button.setText("" + rowIndex);
-            //SwingChairMan.f.repaint();
+            frame.repaint();
          });
          return button;
       }

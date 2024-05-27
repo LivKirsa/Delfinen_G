@@ -22,7 +22,7 @@ public class SuperSwing extends JPanel {
    Color softBlack = new Color(50, 42, 51);
    
    protected JFrame f; 
-   
+      
    public SuperSwing(boolean visible) {
    f = new JFrame(); 
       setLayout(new BorderLayout());
@@ -106,36 +106,35 @@ public class SuperSwing extends JPanel {
         revalidate();
     }
         
-    public DefaultTableModel addJTable(Object[] list, String[] col){//ArrayList <Object> list, String [] col){
+    public DefaultTableModel addJTable(Object[] list, String[] col){
 
        //DefaultTableModel tableModel = new DefaultTableModel(col, 0);
-       TableModel tableModel = new TableModel(col, 0);
+       TableModel tableModel = new TableModel(col, 0, f);
        tableModel.setColumnIdentifiers(Member.col);
        for (Object o : list){
          if(o instanceof Member){
             Member m = (Member) o;
-            //tableModel.addColumn("Knap");
             Object [] row = m.getMemberInfoAsArray();
 
             tableModel.addRow(m.getMemberInfoAsArray());
-            
-            
+                        
          }else if (o instanceof Team){
 
-            Team t= (Team) o;
+            Team t = (Team) o;
             tableModel.addRow(t.getTeamInfoAsArray());
             tableModel.setColumnIdentifiers(Team.col);
+            
          } else if (o instanceof Result) {
             Result r = (Result) o;
             tableModel.addRow(r.getResultInfoAsArray());
             tableModel.setColumnIdentifiers(Result.col);
          }
-       }
+      }
        
       return tableModel;
-    }     
+   }     
 
- public void swimmerFrame() {
+   public void swimmerFrame() {
         JFrame swimmerFrame = new JFrame();
         swimmerFrame.setVisible(true);
         swimmerFrame.setSize(300, 300);
@@ -251,6 +250,9 @@ public class SuperSwing extends JPanel {
             }
          });
     } // This ends swimmerFrame
-       
+    
+    public JFrame getF(){
+      return f;
+    }
 }       
 
