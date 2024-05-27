@@ -5,12 +5,21 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class SwingCoach extends SuperSwing {
-   JFrame f = new JFrame(); 
+   private JFrame f; 
    
     public SwingCoach(boolean visible) {
     super(true);
+    f = new JFrame();  
+    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    f.setLayout(new BorderLayout());
     //SwingCoach.buttonPanel();
     f.setTitle("Sub Coach uwu");
+            f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setLayout(new BorderLayout());
+        f.setSize(800, 600); // Example size, adjust as needed
+        f.setVisible(visible);
+    
+    /*
     /*  setLayout(new BorderLayout());
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
@@ -183,4 +192,5 @@ public class SwingCoach extends SuperSwing {
 
       return tableModel;
     }  
+    
 }
