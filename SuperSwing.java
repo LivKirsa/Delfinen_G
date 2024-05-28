@@ -270,7 +270,7 @@ JTable table;
     } // This ends swimmerFrame
 
      public void resultFrame() {
-        JFrame resultFrame = new JFrame();
+        JFrame resultFrame = new JFrame("Tilføj nyt Resultat");
         resultFrame.setVisible(true);
         resultFrame.setSize(350, 400);
         resultFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -289,10 +289,14 @@ JTable table;
         enableTextFieldCheckBox.setForeground(softBlack);
         JTextField textFieldComp = new JTextField(10);
         JLabel labelLoca = new JLabel("Lokation for stævnet: ");
+        labelLoca.setVisible(false);
         JTextField textFieldRank = new JTextField(5);
         JLabel labelRank = new JLabel("Placering: ");
+        labelRank.setVisible(false);
         textFieldComp.setEnabled(false); // Initially disable the text field
+        textFieldComp.setVisible(false); // Initially hide the text field
         textFieldRank.setEnabled(false);
+        textFieldRank.setVisible(false);
         
         JTextField text1Field = new JTextField(5);
         JTextField text2Field = new JTextField(30);
@@ -301,10 +305,10 @@ JTable table;
         JTextField text5Field = new JTextField(5);
         JLabel label0 = new JLabel("Medlem: ");
         JLabel label1 = new JLabel("Meter: ");
-        JLabel label2 = new JLabel("Discipline: ");
-        JLabel labelS = new JLabel("Minutes: ");
-        JLabel labelM = new JLabel("Seconds: ");
-        JLabel labelMS = new JLabel("Milliseconds: ");
+        JLabel label2 = new JLabel("Disciplin: ");
+        JLabel labelS = new JLabel("Minutter: ");
+        JLabel labelM = new JLabel("Sekunder: ");
+        JLabel labelMS = new JLabel("Millisekunder: ");
 
         //this just places it around found online. 
         gbc.gridx = 0;
@@ -396,9 +400,15 @@ JTable table;
          @Override
             public void actionPerformed(ActionEvent e) {
                textFieldComp.setEnabled(enableTextFieldCheckBox.isSelected());
+               textFieldComp.setVisible(enableTextFieldCheckBox.isSelected());
                textFieldRank.setEnabled(enableTextFieldCheckBox.isSelected());
+               textFieldRank.setVisible(enableTextFieldCheckBox.isSelected());
+               labelRank.setVisible(enableTextFieldCheckBox.isSelected());
+               labelLoca.setVisible(enableTextFieldCheckBox.isSelected());
             }
-         });
+         });     
+        
+        final boolean isCompetitiveBoxChecked = enableTextFieldCheckBox.isSelected();
         
         // Adding the Done button
         JButton doneButton = new JButton("Tilføj");
@@ -418,15 +428,21 @@ JTable table;
                int m = Integer.parseInt(text3Field.getText());
                int s = Integer.parseInt(text4Field.getText());
                int ms = Integer.parseInt(text5Field.getText());
+               String location = textFieldComp.getText();
+               int placement = Integer.parseInt(textFieldRank.getText());
                
                // Extraction of Member Team index IDs and stuff from different lists so the methods work together seamlessly, idk, it works
                Team team = TeamList.teamList.get(selectedMember.getTeamNumber()-1);
-               team.addResult(team.teamMemberList.indexOf(selectedMember), length, swimmingStyle, m, s, ms);
+               if (isCompetitiveBoxChecked) {
+                  ((CompTeam)team).addResult(team.teamMemberList.indexOf(selectedMember), length, swimmingStyle, m, s, ms, location, placement);
+               } else {
+                  team.addResult(team.teamMemberList.indexOf(selectedMember), length, swimmingStyle, m, s, ms);
+               }
                resultFrame.dispose();
+               
                }
             
             }); // Done button action listener ends here
-        
         
             text1Field.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

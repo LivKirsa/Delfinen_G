@@ -26,7 +26,6 @@ public class SwingCoach extends SuperSwing {
         return b1;
     }
     
-    
         protected JButton Button2() {
         JButton b2 = new JButton("Nyt Resultat"); 
         b2.setBackground(blue);
@@ -34,7 +33,7 @@ public class SwingCoach extends SuperSwing {
         b2.addActionListener(new ActionListener() {
         //action for button 2
             public void actionPerformed(ActionEvent e) {
-            resultFrame()  ;
+            resultFrame();
             }
         });
         return b2;
