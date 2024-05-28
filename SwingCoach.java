@@ -6,10 +6,15 @@ import javax.swing.table.DefaultTableModel;
 
 public class SwingCoach extends SuperSwing {
    
+    static JPanel teamPanel;
+    
     public SwingCoach(boolean visible) {
-    super(visible);
-    f.setTitle("Sub Coach uwu");
-    f.add(this);
+       super(visible);
+       f.setTitle("Sub Coach uwu");
+       f.add(this);
+       
+       teamPanel = new SwingTeam(1);
+       listPanel.add(teamPanel);
     }
 
         protected JButton Button1() {
@@ -83,7 +88,7 @@ public class SwingCoach extends SuperSwing {
     }
     public void displayList(DefaultTableModel tableModel){
        super.displayList(tableModel);
-       addButton("", "Se hold");
+       addButton("Hold", "Se hold");
     
     }    
 }

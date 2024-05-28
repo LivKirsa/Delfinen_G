@@ -22,6 +22,7 @@ public class SuperSwing extends JPanel {
    Color softBlack = new Color(50, 42, 51);
    
    protected JFrame f; 
+   protected JPanel listPanel;
       
    public SuperSwing(boolean visible) {
    f = new JFrame(); 
@@ -35,6 +36,10 @@ public class SuperSwing extends JPanel {
         //f.add(this);
         // size of the window 
        f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
+       
+       listPanel = new JPanel();
+       add(listPanel, BorderLayout.CENTER);
+       listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.Y_AXIS));
        buttonPanel();
       }
       
@@ -107,7 +112,7 @@ JTable table;
 
         JScrollPane scrollpane = new JScrollPane(table); 
         scrollpane.setVisible(true);      
-        add(scrollpane, BorderLayout.CENTER);
+        listPanel.add(scrollpane);
         
         revalidate();
     }

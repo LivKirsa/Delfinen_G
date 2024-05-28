@@ -27,22 +27,26 @@ public class TableModel extends DefaultTableModel{
          columnName = getColumnName(columnNumber);
          
          JButton button = new JButton();
-         button.addActionListener( new PaidButtonListener(rowIndex));/* ->{
-         
-           // switch(columnName){
-             //  case "Knap":
-                  Member member = MemberList.memberList.get(rowIndex);
-                  if (member.getIsPaid()){
-                     member.setIsPaid(false);
-                  }else{
-                     member.setIsPaid(true);
-                  }
-                 // break,
-              //case "Hold":
+         button.addActionListener( e ->{
+         switch(columnName){
+            case "Knap":
+               Member member = MemberList.memberList.get(rowIndex);
+         if (member.getIsPaid()){
+            member.setIsPaid(false);
+         }else{
+            member.setIsPaid(true);
+         }
+
+               break;
+            case "Hold":
+               SwingCoach.teamPanel = new SwingTeam(rowIndex);
+               System.out.println(rowIndex);
+               break;
                
-           // }
-            frame.repaint();
-         });*/
+         }
+
+         frame.repaint();
+         });
          return button;
       }//end of if statement
       return value;
@@ -57,15 +61,7 @@ public class TableModel extends DefaultTableModel{
       
       @Override
       public void actionPerformed(ActionEvent e){
-         switch(columnName){
-            case "Knap":
-               isPaid();
-               break;
-            case "Hold":
-               
-         }
 
-         frame.repaint();
       }
       
       public void isPaid(){
