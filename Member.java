@@ -21,7 +21,7 @@ public class Member implements Serializable{
     private int teamNumber;
     ArrayList<Result> bestTimesList = new ArrayList<Result>();
     
-    static String[] col ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv", "Konkurrencesvømmer", "Køn(Mand?)", "Hold"};
+    static String[] col ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv", "Konkurrencesvømmer", "Køn(Mand?)", "Hold", "Knap"};
     static String[] accCol ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv"};
     static String[] couchCol ={"ID", "navn", "Fødselsdag", "Alder", "Køn(Mand?)"};
 

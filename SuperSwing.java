@@ -121,7 +121,10 @@ JTable table;
     public void addButton(String columnName, String buttonText, String buttonText2){
         table.addMouseListener(new JTableButtonMouseListener(table));
         ((TableModel)table.getModel()).columnNumber = table.getColumn(columnName).getModelIndex();
-        
+        /*
+        System.out.println(((TableModel)table.getModel()).columnNumber);
+        System.out.println(table.getColumn(columnName).getModelIndex());
+        */
         ButtonRenderer buttonRenderer = new ButtonRenderer(buttonText, buttonText2, turkis1, turkis2);
         table.getColumn(columnName).setCellRenderer(buttonRenderer);
     }
