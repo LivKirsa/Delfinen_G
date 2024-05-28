@@ -196,7 +196,7 @@ public class SwingChairMan extends SuperSwing {
             boolean isActiveMembership = checkBox1.isSelected();
             boolean isCompetitiveSwimmer = checkBox2.isSelected();
             boolean isMan = checkBox3.isSelected();
-            
+            fileHandling.writeFile();
             LocalDate birthday;
             try {
                birthday = LocalDate.parse(birthdayString);

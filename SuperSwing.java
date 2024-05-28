@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.Period;
@@ -22,13 +23,14 @@ public class SuperSwing extends JPanel {
    Color softBlack = new Color(50, 42, 51);
    
    protected JFrame f; 
+   FileHandling fileHandling = new FileHandling();
       
    public SuperSwing(boolean visible) {
    f = new JFrame(); 
       setLayout(new BorderLayout());
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
-        f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
+        f.setDefaultCloseOperation(f.DO_NOTHING_ON_CLOSE);
         f.setLayout(new BorderLayout());
         f.setTitle("SuperSwing");
         f.setVisible(visible);
@@ -36,7 +38,29 @@ public class SuperSwing extends JPanel {
         // size of the window 
        f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
        buttonPanel();
-      }
+        f.addWindowListener(new WindowAdapter() {
+            //@Override
+            public void windowClosing(WindowEvent e) {
+                // Perform the action here
+                
+                int confirmed = JOptionPane.showConfirmDialog(
+                    f,
+                    "er du sikker på du vil afslutte?",
+                    "Exit",
+                    JOptionPane.YES_NO_OPTION
+                );
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    // Perform any cleanup operations here
+                    fileHandling.writeFile();
+
+                    // Exit the application
+                    f.dispose();
+                }
+            }
+        });
+    }
+      
       
       public void buttonPanel(){
         JPanel buttonPanel = new JPanel(new GridLayout(30,1)); 
@@ -452,7 +476,9 @@ JTable table;
             public void actionPerformed(ActionEvent e) {
             }
         });
-    } // This ends resultFrame      
+    } // This ends resultFrame 
+    
+         
 
 }       
 
