@@ -39,6 +39,7 @@ public class SuperSwing extends JPanel {
        
        listPanel = new JPanel();
        add(listPanel, BorderLayout.CENTER);
+       //listPanel.setLayout(new BorderLayout());
        listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.Y_AXIS));
        buttonPanel();
       }

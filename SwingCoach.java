@@ -14,6 +14,7 @@ public class SwingCoach extends SuperSwing {
        f.add(this);
        
        teamPanel = new SwingTeam(1);
+       displayList(addTableModel(TeamList.teamList, Team.col));
        listPanel.add(teamPanel);
     }
 

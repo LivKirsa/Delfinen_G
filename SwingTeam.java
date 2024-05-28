@@ -7,6 +7,7 @@ public class SwingTeam extends SuperSwing{//class to be added to Couch class.
    public SwingTeam(int teamNumber){
       super(false);
       setVisible(true);
+      f.setSize(300,300);
       //setButtons();
      // super.Button1().setText("Se discipliner");
       //b2.setText("Se Medlemmer");
