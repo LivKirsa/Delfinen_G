@@ -9,11 +9,13 @@ public class SwingCoach extends SuperSwing {
     public SwingCoach(boolean visible) {
     super(visible);
     f.setTitle("Sub Coach uwu");
+
     }
     
         protected JButton Button1() {
-        JButton b1 = new JButton("Se Holdlister");
-        b1.setBackground(Color.PINK);
+        JButton b1 = new JButton("Se Holdmedlemmer");
+        b1.setBackground(pink);
+        b1.setForeground(softBlack);
         b1.addActionListener(new ActionListener() {
         //action for button 1
             public void actionPerformed(ActionEvent e) {
@@ -25,8 +27,9 @@ public class SwingCoach extends SuperSwing {
     
     
         protected JButton Button2() {
-        JButton b2 = new JButton("Se hurtigste svømmere");
-        b2.setBackground(Color.GREEN);
+        JButton b2 = new JButton("Nyt Resultat"); 
+        b2.setBackground(blue);
+        b2.setForeground(softBlack);
         b2.addActionListener(new ActionListener() {
         //action for button 2
             public void actionPerformed(ActionEvent e) {
@@ -36,8 +39,9 @@ public class SwingCoach extends SuperSwing {
         return b2;
     }
         protected JButton Button3() {
-        JButton b3 = new JButton("opret resultater");
-        b3.setBackground(Color.ORANGE);
+        JButton b3 = new JButton("Se alle Hold");
+        b3.setBackground(pink);
+        b3.setForeground(softBlack);
         b3.addActionListener(new ActionListener() {
         //action for button 3
             public void actionPerformed(ActionEvent e) {
