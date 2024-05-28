@@ -109,7 +109,7 @@ JTable table;
         
         table = new JTable(tableModel);
         table.setColumnSelectionAllowed(false);
-         
+        //table.setBackground(Color.WHITE); 
         // addButton("Knap");
          
          table.setFillsViewportHeight(true);

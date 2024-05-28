@@ -6,7 +6,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class SwingCoach extends SuperSwing {
    
-    static JPanel teamPanel;
+    static JPanel teamPanel;// = new JPanel();
     
     public SwingCoach(boolean visible) {
        super(visible);
@@ -18,7 +18,7 @@ public class SwingCoach extends SuperSwing {
        //listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.Y_AXIS));
        displayList(addTableModel(TeamList.teamList, Team.col));
        teamPanel = new SwingTeam(1);
-       
+       teamPanel.setBackground(Color.PINK);
        //displayList(addTableModel(TeamList.teamList, Team.col));
        
        listPanel.add(teamPanel);

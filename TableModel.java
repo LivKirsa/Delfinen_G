@@ -3,16 +3,25 @@ import javax.swing.JButton;
 import java.awt.event.*;
 import javax.swing.JFrame;
 import java.util.ArrayList;
+import java.awt.Color;
+import javax.swing.JPanel;
 
 public class TableModel extends DefaultTableModel{
    JFrame frame;
    //ArrayList <Integer> columnNumber = new ArrayList <Integer>();
    int columnNumber = - 1;
    String columnName;
+   JPanel couchPanel;
    
    public TableModel(String[] col, int row, JFrame frame){
       super(col, row);
       this.frame = frame;
+   }
+   
+   public TableModel(String[] col, int row, JFrame frame, JPanel panel){
+      super(col, row);
+      this.frame = frame;
+      couchPanel = panel;
    }
    
    @Override
@@ -42,6 +51,7 @@ public class TableModel extends DefaultTableModel{
             case "Hold":
                SwingCoach.teamPanel = new SwingTeam(rowIndex);
                System.out.println(rowIndex);
+               couchPanel.setBackground(Color.PINK);
                SwingCoach.teamPanel.repaint();
                break;
                

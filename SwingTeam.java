@@ -9,6 +9,7 @@ public class SwingTeam extends SuperSwing{//class to be added to Couch class.
    public SwingTeam(int teamNumber){
       super(false);
       setVisible(true);
+      setBackground(Color.BLACK);
       f.setSize(300,300);
       displayList(addTableModel(TeamList.teamList.get(teamNumber).teamMemberList, Member.couchCol));
       //setButtons();
@@ -42,7 +43,7 @@ public class SwingTeam extends SuperSwing{//class to be added to Couch class.
    
    @Override
    public DefaultTableModel addTableModel(ArrayList<?> list, String[] col){
-      DefaultTableModel tableModel = new TableModel(col, 0, f);
+      DefaultTableModel tableModel = new TableModel(col, 0, f, this);
       Object [] row = {};
       tableModel.setColumnIdentifiers(col);
       /*
