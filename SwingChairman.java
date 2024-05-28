@@ -19,9 +19,9 @@ public class SwingChairMan extends SuperSwing {
       
         //Tabs work start here 
         JTabbedPane tabbedPane = new JTabbedPane();
-        tabbedPane.addTab("Medlemmer",openChairman());
-        tabbedPane.addTab("Hold", openCoach());//openCoach());
-        tabbedPane.addTab("Kontingent",openAcc());
+        tabbedPane.addTab("Chairman",openChairman());
+        tabbedPane.addTab("Couch", openCoach());//openCoach());
+        tabbedPane.addTab("Accountant",openAcc());
         f.add(tabbedPane, BorderLayout.CENTER);
         
         
@@ -31,7 +31,7 @@ public class SwingChairMan extends SuperSwing {
         //setLayout(new BorderLayout());
         }
         protected JButton Button1() {
-        JButton b1 = new JButton("Nyt medlem");
+        JButton b1 = new JButton("Se medlemer");
                         b1.setBackground(pink);
                         b1.setForeground(softBlack);
         b1.addActionListener(new ActionListener() {
@@ -44,33 +44,31 @@ public class SwingChairMan extends SuperSwing {
         return b1;
     }
         protected JButton Button2() {
-        JButton b2 = new JButton("Se Medlemmer");
+        JButton b2 = new JButton("Se hurtigste svømmere");
                 b2.setBackground(blue);
         b2.setForeground(softBlack);
         b2.addActionListener(new ActionListener() {
         //action for button 2
             public void actionPerformed(ActionEvent e) {
-                        displayList(addTableModel(MemberList.memberList, Member.col));
+                        displayList(MemberList.memberList);
 
             }
         });
         return b2;
-    }/*
+    }
         protected JButton Button3() {
-        JButton b3 = new JButton("Se Hold");
+        JButton b3 = new JButton("opret resultater");
                 b3.setBackground(pink);
         b3.setForeground(softBlack);
         b3.addActionListener(new ActionListener() {
         //action for button 3
             public void actionPerformed(ActionEvent e) {
-                           displayList(addTableModel(TeamList.teamList, Team.col));
+                           displayList(TeamList.teamList);
             }
         });
         return b3;
-    }*/
-
- 
-    
+    }
+  
         private JPanel openChairman() {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(new Color(255, 200, 200));
@@ -217,17 +215,5 @@ public class SwingChairMan extends SuperSwing {
             }
         });
     } // This ends swimmerFrame
-    
-    /*
-    public DefaultTableModel addTableModel(ArrayList <?> list, String[] col){
-      DefaultTableModel tableModel = (TableModel)super.addTableModel(list, col);
-      addButton("Knap");
-      return tableModel;
-    }*/
-    
-     public void displayList(DefaultTableModel tableModel){
-         super.displayList(tableModel);
-         addButton("Knap", "Betalt", "I restance");
-     }
 }      
 

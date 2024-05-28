@@ -22,7 +22,7 @@ public class SuperSwing extends JPanel {
    Color softBlack = new Color(50, 42, 51);
    
    protected JFrame f; 
-      
+   
    public SuperSwing(boolean visible) {
    f = new JFrame(); 
       setLayout(new BorderLayout());
@@ -47,7 +47,7 @@ public class SuperSwing extends JPanel {
         
         buttonPanel.add(b1);
         buttonPanel.add(b2);
-        //buttonPanel.add(b3);
+        buttonPanel.add(b3);
  //add Buttonpanel til WEST
        add(buttonPanel, BorderLayout.WEST);
 }
@@ -87,68 +87,56 @@ public class SuperSwing extends JPanel {
     } 
     //stays here just in case, but will be replaced if Signes method works
 
-/*
-displayList(addJTable(list, col));
 
-DefaultTableModel tableModel = addJTable(list, col);
-displayList(tableModel);*/
-
-JTable table;
-    public void displayList(DefaultTableModel tableModel){//ArrayList<?> list, String[]col) {        
+    public void displayList(ArrayList<?> list) {        
+        Object[] tempArr = list.toArray();
+        String[] col = Member.col;
+        DefaultTableModel tableModel = addJTable(tempArr, col);
         
-        //DefaultTableModel tableModel = addJTable(tempArr, col, rowList);
-        
-        table = new JTable(tableModel);
+        JTable table = new JTable(tableModel);
+        //table.setBackground(Color.WHITE);
         table.setColumnSelectionAllowed(false);
-         
-        // addButton("Knap");
+        table.addMouseListener(new JTableButtonMouseListener(table));
+        
+        ButtonRenderer buttonRenderer = new ButtonRenderer();
+        //table.getColumn("Knap").setCellRenderer(buttonRenderer);
+        
         JScrollPane scrollpane = new JScrollPane(table); 
         scrollpane.setVisible(true);      
         add(scrollpane, BorderLayout.CENTER);
-        
+        //setBackground(Color.WHITE);
         revalidate();
     }
-    
-    public void addButton(String columnName, String buttonText){
-        table.addMouseListener(new JTableButtonMouseListener(table));
-        ((TableModel)table.getModel()).columnNumber = table.getColumn(columnName).getModelIndex();
         
-        ButtonRenderer buttonRenderer = new ButtonRenderer(buttonText, blue);
-        table.getColumn(columnName).setCellRenderer(buttonRenderer);
-    }
-    
-    public void addButton(String columnName, String buttonText, String buttonText2){
-        table.addMouseListener(new JTableButtonMouseListener(table));
-        ((TableModel)table.getModel()).columnNumber = table.getColumn(columnName).getModelIndex();
-        
-        ButtonRenderer buttonRenderer = new ButtonRenderer(buttonText, buttonText2, turkis1, turkis2);
-        table.getColumn(columnName).setCellRenderer(buttonRenderer);
-    }
-    
-    //making a tablemodel
-    public DefaultTableModel addTableModel(ArrayList <?> list, String[] col){
+    public DefaultTableModel addJTable(Object[] list, String[] col){//ArrayList <Object> list, String [] col){
 
-      DefaultTableModel tableModel = new TableModel(col, 0, f);
-      Object [] row = {};
-      tableModel.setColumnIdentifiers(col);
-       
-      for (Object o : list){
+       //DefaultTableModel tableModel = new DefaultTableModel(col, 0);
+       TableModel tableModel = new TableModel(col, 0);
+       for (Object o : list){
          if(o instanceof Member){
-            row = ((Member)o).getMemberInfoAsArray();
-         }else if (o instanceof Team){
-            row = ((Team)o).getTeamInfoAsArray();
-         }else if (o instanceof Result){
-            row = ((Result)o).getResultInfoAsArray();
-         }
-         
-         tableModel.addRow(row);
-      }//end of for each loop
-      
-      return tableModel;
-   }   
-   
+            Member m = (Member) o;
+            //tableModel.addColumn("Knap");
+            Object [] row = m.getMemberInfoAsArray();
 
-   public void swimmerFrame() {
+            tableModel.addRow(m.getMemberInfoAsArray());
+            tableModel.setColumnIdentifiers(Member.col);
+            
+         }else if (o instanceof Team){
+
+            Team t= (Team) o;
+            tableModel.addRow(t.getTeamInfoAsArray());
+            tableModel.setColumnIdentifiers(Team.col);
+         } else if (o instanceof Result) {
+            Result r = (Result) o;
+            tableModel.addRow(r.getResultInfoAsArray());
+            tableModel.setColumnIdentifiers(Result.col);
+         }
+       }
+       
+      return tableModel;
+    }     
+
+ public void swimmerFrame() {
         JFrame swimmerFrame = new JFrame();
         swimmerFrame.setVisible(true);
         swimmerFrame.setSize(300, 300);
@@ -264,5 +252,6 @@ JTable table;
             }
          });
     } // This ends swimmerFrame
+       
 }       
 
