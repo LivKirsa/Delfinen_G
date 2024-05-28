@@ -31,7 +31,7 @@ public class SwingChairMan extends SuperSwing {
         //setLayout(new BorderLayout());
         }
         protected JButton Button1() {
-        JButton b1 = new JButton("Se medlemer");
+         JButton b1 = new JButton("Tilføj nyt Medlem");
                         b1.setBackground(pink);
                         b1.setForeground(softBlack);
         b1.addActionListener(new ActionListener() {
@@ -44,7 +44,7 @@ public class SwingChairMan extends SuperSwing {
         return b1;
     }
         protected JButton Button2() {
-        JButton b2 = new JButton("Se hurtigste svømmere");
+         JButton b2 = new JButton("Se Medlemmer");
                 b2.setBackground(blue);
         b2.setForeground(softBlack);
         b2.addActionListener(new ActionListener() {
@@ -57,7 +57,7 @@ public class SwingChairMan extends SuperSwing {
         return b2;
     }
         protected JButton Button3() {
-        JButton b3 = new JButton("opret resultater");
+         JButton b3 = new JButton("Tilføj Træner");
                 b3.setBackground(pink);
         b3.setForeground(softBlack);
         b3.addActionListener(new ActionListener() {
@@ -68,7 +68,8 @@ public class SwingChairMan extends SuperSwing {
         });
         return b3;
     }
-  
+       //buttonPanel.setBackground(turkis2);
+        
         private JPanel openChairman() {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(new Color(255, 200, 200));
