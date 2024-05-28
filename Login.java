@@ -20,7 +20,7 @@ FileHandling fileHandling = new FileHandling();
    public void runCouchUI(){
    }
    
-   static boolean isFrameOpen = false;
+         static boolean isFrameOpen = false;
 
    public void RunLoginUI(){ 
    JFrame frame = new JFrame("Login"); 
@@ -73,10 +73,10 @@ FileHandling fileHandling = new FileHandling();
        // this is the action to run chairman UI. 
        runChairManButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-
             new SwingChairMan(true);//.setVisible(true);
             frame.dispose();
-                     }
+            
+         }
        });
        // this is the action to run the accounten UI
        runAccButton.addActionListener(new ActionListener() {
