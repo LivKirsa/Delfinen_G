@@ -13,8 +13,14 @@ public class SwingCoach extends SuperSwing {
        f.setTitle("Sub Coach uwu");
        f.add(this);
        
-       teamPanel = new SwingTeam(1);
+       
+       //listPanel.setLayout();
+       //listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.Y_AXIS));
        displayList(addTableModel(TeamList.teamList, Team.col));
+       teamPanel = new SwingTeam(1);
+       
+       //displayList(addTableModel(TeamList.teamList, Team.col));
+       
        listPanel.add(teamPanel);
     }
 
@@ -25,7 +31,7 @@ public class SwingCoach extends SuperSwing {
         b1.addActionListener(new ActionListener() {
         //action for button 1
             public void actionPerformed(ActionEvent e) {
-               displayList(addTableModel(TeamList.teamList, Team.col));
+               
             }
         });
         

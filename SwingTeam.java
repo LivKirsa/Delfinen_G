@@ -8,6 +8,7 @@ public class SwingTeam extends SuperSwing{//class to be added to Couch class.
       super(false);
       setVisible(true);
       f.setSize(300,300);
+      displayList(addTableModel(TeamList.teamList.get(teamNumber).teamMemberList, Member.couchCol));
       //setButtons();
      // super.Button1().setText("Se discipliner");
       //b2.setText("Se Medlemmer");

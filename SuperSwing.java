@@ -35,12 +35,13 @@ public class SuperSwing extends JPanel {
         f.setVisible(visible);
         //f.add(this);
         // size of the window 
-       f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
+       //f.setExtendedState(f.getExtendedState() | f.MAXIMIZED_BOTH);
        
        listPanel = new JPanel();
        add(listPanel, BorderLayout.CENTER);
        //listPanel.setLayout(new BorderLayout());
-       listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.Y_AXIS));
+       //listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.Y_AXIS));
+       listPanel.setLayout(new GridLayout(2, 1));
        buttonPanel();
       }
       
@@ -110,10 +111,12 @@ JTable table;
         table.setColumnSelectionAllowed(false);
          
         // addButton("Knap");
-
+         
+         table.setFillsViewportHeight(true);
         JScrollPane scrollpane = new JScrollPane(table); 
         scrollpane.setVisible(true);      
         listPanel.add(scrollpane);
+        //listPanel.pack();
         
         revalidate();
     }
