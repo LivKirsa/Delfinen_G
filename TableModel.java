@@ -50,8 +50,8 @@ public class TableModel extends DefaultTableModel{
                
             case "Hold":
                SwingCoach.teamPanel = new SwingTeam(rowIndex);
-               System.out.println(rowIndex);
-               couchPanel.setBackground(Color.PINK);
+               //System.out.println(rowIndex);
+               //couchPanel.setBackground(Color.PINK);
                SwingCoach.teamPanel.repaint();
                break;
                
