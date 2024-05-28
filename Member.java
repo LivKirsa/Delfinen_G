@@ -21,7 +21,7 @@ public class Member implements Serializable{
     private int teamNumber;
     ArrayList<Result> bestTimesList = new ArrayList<Result>();
     
-    static String[] col ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv", "Konkurrencesvømmer", "Køn(Mand?)", "Hold", "Knap"};
+    static String[] col ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv", "Konkurrencesvømmer", "Køn(Mand?)", "Hold"};
     static String[] accCol ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv"};
     static String[] couchCol ={"ID", "navn", "Fødselsdag", "Alder", "Køn(Mand?)"};
     
@@ -55,7 +55,7 @@ public class Member implements Serializable{
       name + "\n Age: " + age + "\n Birthday: " + birthday + "\n Active Membership?: " + 
       isActiveMembership + "\n Junior Membership?: " + isJuniorMembership + 
       "\n Competitive Swimmer?: " + isCompetitiveSwimmer + "\n Man?: " + isMan + 
-      "\n Paid?: " + isPaid + "\n Next payment due: " + nextPayment);
+      "\n Paid?: " + isPaid + "\n Next payment due: " + nextPayment + "\nTeam: " + teamNumber);
       }
       
       // Method for printing memberName
@@ -168,6 +168,11 @@ public class Member implements Serializable{
       return nextPayment;
     }
     
+    // Getter for teamNumber
+    public int getTeamNumber(){
+      return teamNumber;
+    }
+    
     // Method to renew membership
     public void renewMembership() {
     this.isPaid = true;
@@ -177,16 +182,14 @@ public class Member implements Serializable{
     public void printBestTimesList(){
       System.out.println("\nBedste tider for " + name + ":");
        for (Result r: bestTimesList){
-
             r.printResult();
-
        }//end of for loop.
     }
     
 
     
-    public Object[] getMemberInfoAsArray(){
-      Object[] row = {"" + memberID, name, "" + birthday, "" + age, "" + registrationDate, "" + nextPayment, ""+ isPaid, "" + isJuniorMembership, "" + isActiveMembership, "" + isCompetitiveSwimmer, "" + isMan, "" + teamNumber};
+    public String[] getMemberInfoAsArray(){
+      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + registrationDate, "" + nextPayment, ""+ isPaid, "" + isJuniorMembership, "" + isActiveMembership, "" + isCompetitiveSwimmer, "" + isMan, "" + teamNumber};
       return row;
     }
     
@@ -198,6 +201,10 @@ public class Member implements Serializable{
     public String [] getMemberCouchInfoAsArray(){
       String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + isMan};
       return row;
-
     }
+    
+    @Override
+  public String toString() {
+    return "[" + memberID + "] " + this.getName() + " (Team " + this.getTeamNumber() + ")"; // Customize display format
+  }
 }

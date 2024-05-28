@@ -11,7 +11,6 @@ public class SwingCoach extends SuperSwing {
     f.setTitle("Sub Coach uwu");
     }
     
-    @Override
         protected JButton Button1() {
         JButton b1 = new JButton("Se Holdlister");
         b1.setBackground(Color.PINK);
