@@ -9,9 +9,11 @@ public class Team implements Serializable{
    int teamNumber;
    String couchName;
    Result result;
-   static ArrayList<Member> teamMemberList = new ArrayList<Member>(); // This was made static to make removeMember method work
 
-   static String[] col = {"Holdnavn", "Holdnummber", "Træner"};
+   ArrayList<Member> teamMemberList = new ArrayList<Member>(); // This was made static to make removeMember method work
+   
+    static String[] col = {"Holdnavn", "Holdnummber", "Træner", "Hold"};
+    
 
    // Constructor for constructing teams
    
@@ -26,6 +28,7 @@ public class Team implements Serializable{
    public void addResult(int memberNumber, int length, String swimmingStyle, int m, int s, int ms){//, LocalDateTime date){//(ikke CompResult).
       result = new Result(length, swimmingStyle, m, s, ms);
       result.memberID = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
+      result.name = teamMemberList.get(memberNumber).getName();//setting Result.name
       comparePersonalResult(memberNumber);
    }
    
@@ -62,7 +65,7 @@ public class Team implements Serializable{
       System.out.print("Ny disciplin oprettet: ");
       result.printResult();
       list.add(result);
-      //System.out.println("Result added.");
+
    }
    
    // Setter for couchName
@@ -79,11 +82,9 @@ public class Team implements Serializable{
          member.printMemberName();
       }
    }
-   
-  
-   
-   public String[] getTeamInfoAsArray(){
-      String[] row = {teamName, ""+ teamNumber, couchName};
+
+   public Object[] getTeamInfoAsArray(){
+      Object[] row = {teamName, teamNumber, couchName, "Se Hold"};
       return row;
    }
 }

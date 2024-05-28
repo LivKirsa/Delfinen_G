@@ -1,7 +1,5 @@
 import javax.swing.*;
-public class Main{
- // static Member luise = new Member("Luise Jensen","1915-01-20",false, true, false);
-   
+public class Main{   
    public static void main (String [] args){
        Member m1 = new Member("Kenney Jensen", "2008-12-12", true, true, true);
        Member m2 = new Member("Alice Smith", "1985-06-15",false, true, false);
@@ -34,9 +32,11 @@ public class Main{
        Member m29 = new Member("Brian Perez", "1982-03-27", false, true, true);
        Member m30 = new Member("Chloe Evans", "1990-09-14", true, false, true);
        
-          TeamList.team3.addResult(0,500,"Crawling", 4, 50, 891);
-          TeamList.team3.printTeam();
-          SwingUtilities.invokeLater(() -> { 
+
+          /*TeamList.team3.addResult(0,500,"Crawling", 4, 50, 891);
+   TeamList.team3.printTeam(); */
+    SwingUtilities.invokeLater( //dette kører swing 
+         ()->{ 
             new Login();
          });
          m1.printBestTimesList();

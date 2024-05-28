@@ -2,9 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 public class Login{
 
-   JFrame [] holdFrame = new JFrame[1];
+FileHandling fileHandling = new FileHandling();
    
    public Login(){
       RunLoginUI();
@@ -19,10 +20,11 @@ public class Login{
    public void runCouchUI(){
    }
    
-         static boolean isFrameOpen = false;
+   static boolean isFrameOpen = false;
 
    public void RunLoginUI(){ 
    JFrame frame = new JFrame("Login"); 
+   fileHandling.readFile();
    frame.setSize(475, 550);
    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    Color turkis1 = new Color(199, 237, 231);
@@ -35,19 +37,18 @@ public class Login{
    Color softWhite = new Color(241, 234, 231);
    Color darkBlue = new Color(61, 133, 198);
 
-   holdFrame[0] = frame;
    JPanel panel = new JPanel(new BorderLayout());
    JPanel dolphinPanel = new JPanel();
    
-   // Create a JLabel to hold the image
+   // Creates a JLabel to hold the image
   JLabel dolphinLabel = new JLabel();
   dolphinPanel.add(dolphinLabel);
 
-  // Load the image (replace "image.png" with your actual image path)
+  // Load the image 
   ImageIcon dolphin = new ImageIcon("textdolphin.png");
   dolphinLabel.setIcon(dolphin);
 
-  // Add the picture label to the panel
+  // Adds the picture to the panel
    
       JButton runChairManButton = new JButton("Chairman");
       runChairManButton.setBackground(blue);
@@ -72,15 +73,19 @@ public class Login{
        // this is the action to run chairman UI. 
        runChairManButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-         new SwingChairMan();//.setVisible(true);            
-         }
+
+            new SwingChairMan(true);//.setVisible(true);
+            frame.dispose();
+                     }
        });
        // this is the action to run the accounten UI
        runAccButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             //if (!isFrameOpen){
             //holdFrame[0] = new SwingAcc();
-            new SwingAcc(true);  
+            new SwingAcc(true); 
+            frame.dispose();
+             
             }
                   
        });
@@ -89,11 +94,10 @@ public class Login{
             runCouchButton.addActionListener(new ActionListener() {
                public void actionPerformed(ActionEvent e) {
                //holdFrame[0] = new SwingCoach();
-                  new SwingCoach(true);//.setVisible(true);
+               new SwingCoach(true);//.setVisible(true);
+               frame.dispose();
          }
        });
-                  holdFrame[0].setVisible(true);
-
        }
        //Method to set the window in the middle of the screen. 
        public static void centerFrameOnScreen(JFrame frame){

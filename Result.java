@@ -10,6 +10,8 @@ public class Result implements Serializable{
    Duration time;
    LocalDate date;
    int memberID;
+   String name;
+   
    static String[] col = {"navn", "disciplin", "distance", "Tid"};
 
    // Constructor for Result Objects
@@ -33,15 +35,15 @@ public class Result implements Serializable{
       return Duration.ofMinutes(m).plusSeconds(s).plusMillis(ms);
    }
 
-   public String[] getResultInfoAsArray(){
-      String name = "";
-      for (Member m : MemberList.memberList){
+   public Object[] getResultInfoAsArray(){
+      /*String name = "";
+      for (Member m : MemberList.memberList){//finding Member.memberID in MemberList.memberList.
          if (m.getMemberID() == memberID){
             name = m.getName();
             break;
          }
-      }
-      String[] row = {name, swimmingStyle, length + " m.", time + " sek"};
+      }*/
+      Object[] row = {name, swimmingStyle, length, time};
       return row;
    }
 }

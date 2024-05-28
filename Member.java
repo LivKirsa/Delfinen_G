@@ -22,9 +22,11 @@ public class Member implements Serializable{
     private int teamNumber;
     ArrayList<Result> bestTimesList = new ArrayList<Result>();
     
-    static String[] col ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv", "Konkurrencesvømmer", "Køn(Mand?)", "Hold"};
+    static String[] col ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv", "Konkurrencesvømmer", "Køn(Mand?)", "Hold", "Knap"};
     static String[] accCol ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv"};
     static String[] couchCol ={"ID", "navn", "Fødselsdag", "Alder", "Køn(Mand?)"};
+
+
     
     // Constructor for Member Objects
     public Member(String name, String birthday, boolean isActiveMembership, boolean isCompetitiveSwimmer, boolean isMan){
@@ -45,13 +47,7 @@ public class Member implements Serializable{
         MemberList.addMember(this); // Adds the new Member to memberList automatically
         this.teamNumber = TeamList.autoAssignToTeam(this); // Automatically adds the new Member to the appropriate team  
     }
-        // Method for removing Member from all lists
-        public void removeMember(Member member) {
-        MemberList.memberList.remove(member); 
-        for (Team team : TeamList.teamList) {
-            Team.teamMemberList.remove(member); 
-        }
-    }
+
     // Method for printing Member
     public void printMember(){
       System.out.println("(" + memberID + ") " +
@@ -151,7 +147,7 @@ public class Member implements Serializable{
         return isCompetitiveSwimmer;
     }
     
-    // Setter for isActiveMembership
+    // Setter for isCompetitiveSwimmer
     public void setIsCompetitiveSwimmer(boolean isCompetitiveSwimmer){
         this.isCompetitiveSwimmer = isCompetitiveSwimmer;
     }
@@ -189,6 +185,7 @@ public class Member implements Serializable{
        }//end of for loop.
     }
     
+
     // Method for calculating subscription price
     public int calculateSubPrice(Member member) {
 
@@ -203,30 +200,31 @@ public class Member implements Serializable{
        } else {
          return 404;
        }
+
     }
-    
+
     // Getter for membership price
     public int getSubPrice() {
       return subPrice;
     }
-  
-    public String[] getMemberInfoAsArray(){
-      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + registrationDate, "" + nextPayment, ""+ isPaid, "" + isJuniorMembership, "" + isActiveMembership, "" + isCompetitiveSwimmer, "" + isMan, "" + teamNumber};
+    
+    public Object[] getMemberInfoAsArray(){
+      Object[] row = {memberID, name, birthday, age, registrationDate, nextPayment, isPaid, isJuniorMembership, isActiveMembership, isCompetitiveSwimmer, isMan, teamNumber};
       return row;
     }
     
-    public String[] getMemberAccInfoAsArray(){
-      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + registrationDate, "" + nextPayment, "" + isPaid, "" + isJuniorMembership, "" + isActiveMembership};
+    public Object[] getMemberAccInfoAsArray(){
+      Object[] row = {memberID, name,birthday,  age,  registrationDate,  nextPayment, isPaid, isJuniorMembership,  isActiveMembership};
       return row;
     }
     
-    public String [] getMemberCouchInfoAsArray(){
-      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + isMan};
+    public Object [] getMemberCouchInfoAsArray(){
+      Object[] row = {memberID, name,birthday, age,  isMan};
       return row;
     }
     
     @Override
   public String toString() {
-    return "[" + memberID + "] " + this.getName() + " (Team " + this.getTeamNumber() + ")"; // Customize display format
+    return "[" + memberID + "] " + this.getName() + " (Team " + this.getTeamNumber() + ")"; 
   }
 }
