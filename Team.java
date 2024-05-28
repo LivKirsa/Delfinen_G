@@ -19,6 +19,7 @@ public class Team implements Serializable{
       this.teamName = teamName;
       this.teamNumber = teamNumber;
       this.couchName = couchName;
+      //this.teamMemberList = teamMemberList;
       TeamList.addTeam(this);
    }
    
@@ -85,3 +86,4 @@ public class Team implements Serializable{
       return row;
    }
 }
+

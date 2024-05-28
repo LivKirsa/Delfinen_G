@@ -34,7 +34,10 @@ public class TeamList implements Serializable{
       }
       
    } // End of method for adding members to team
-
+   
+   
+   public static void updateTeamList(){
+   }
    
    public static void assignCoachToTeam(int teamNumber, String coachName){ // The setter setCoach (String coachName) exixts in Team.class
    
