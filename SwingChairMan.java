@@ -23,22 +23,19 @@ public class SwingChairMan extends SuperSwing {
         tabbedPane.addTab("Hold", openCoach());//openCoach());
         tabbedPane.addTab("Kontingent",openAcc());
         f.add(tabbedPane, BorderLayout.CENTER);
-        
-        
         f.setLocationRelativeTo(null);
         f.setVisible(true);
         setBackground(turkis1);
-        //setLayout(new BorderLayout());
         }
+        
         protected JButton Button1() {
         JButton b1 = new JButton("Nyt medlem");
-                        b1.setBackground(pink);
-                        b1.setForeground(softBlack);
+            b1.setBackground(pink);
+             b1.setForeground(softBlack);
         b1.addActionListener(new ActionListener() {
         //action for button 1
             public void actionPerformed(ActionEvent e) {
-                            swimmerFrame();
-
+               swimmerFrame();
             }
         });
         return b1;
@@ -51,7 +48,6 @@ public class SwingChairMan extends SuperSwing {
         //action for button 2
             public void actionPerformed(ActionEvent e) {
                         displayList(addTableModel(MemberList.memberList, Member.col));
-
             }
         });
         return b2;
@@ -64,7 +60,7 @@ public class SwingChairMan extends SuperSwing {
         b3.addActionListener(new ActionListener() {
         //action for button 3
             public void actionPerformed(ActionEvent e) {
-                           displayList(addTableModel(TeamList.teamList, Team.col));
+               displayList(addTableModel(TeamList.teamList, Team.col));
             }
         });
         return b3;
@@ -93,6 +89,7 @@ public class SwingChairMan extends SuperSwing {
         return panel;
         }
             
+<<<<<<< HEAD
  public void swimmerFrame() {
         JFrame swimmerFrame = new JFrame();
         swimmerFrame.setVisible(true);
@@ -217,6 +214,8 @@ public class SwingChairMan extends SuperSwing {
             }
         });
     } // This ends swimmerFrame
+=======
+>>>>>>> 707a741d3f78a0dcb3d9a10013ba02da994c60ff
     
     /*
     public DefaultTableModel addTableModel(ArrayList <?> list, String[] col){
