@@ -19,7 +19,7 @@ public class CompTeam extends Team{
    // Overload
    public void addResult(int memberNumber, int length, String swimmingStyle, int m, int s, int ms, String location, int placement){
       result = new CompResult(length, swimmingStyle, m, s, ms, location, placement);
-      result.memberID = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
+      result.memberID = memberNumber;//teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
       comparePersonalResult(memberNumber);
       compareTeamResult(teamMemberList.get(memberNumber).getIsMan());
    }
