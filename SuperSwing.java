@@ -62,6 +62,8 @@ public class SuperSwing extends JPanel {
             }
         });
         return b1;
+        
+        
     }
       protected JButton Button2() {
         JButton b2 = new JButton("Knap2");
@@ -128,6 +130,16 @@ JTable table;
         ButtonRenderer buttonRenderer = new ButtonRenderer(buttonText, buttonText2, turkis1, turkis2);
         table.getColumn(columnName).setCellRenderer(buttonRenderer);
     }
+    
+    /*
+    public ActionEvent actionListener(){
+      ActionEvent actionEvent = new ActionEvent(e ->{
+         System.out.println("hej");
+      });
+      return actionEvent; 
+    }*/
+    
+  
     
     //making a tablemodel
     public DefaultTableModel addTableModel(ArrayList <?> list, String[] col){

@@ -27,10 +27,10 @@ public class TableModel extends DefaultTableModel{
          columnName = getColumnName(columnNumber);
          
          JButton button = new JButton();
-         button.addActionListener( e ->{
+         button.addActionListener( new PaidButtonListener(rowIndex));/* ->{
          
            // switch(columnName){
-             //  Case "Knap":
+             //  case "Knap":
                   Member member = MemberList.memberList.get(rowIndex);
                   if (member.getIsPaid()){
                      member.setIsPaid(false);
@@ -42,9 +42,51 @@ public class TableModel extends DefaultTableModel{
                
            // }
             frame.repaint();
-         });
+         });*/
          return button;
       }//end of if statement
       return value;
    }
+   
+   public class PaidButtonListener implements ActionListener{
+      int rowIndex;
+      
+      public PaidButtonListener(int rowIndex){
+         this.rowIndex = rowIndex;
+      }
+      
+      @Override
+      public void actionPerformed(ActionEvent e){
+         switch(columnName){
+            case "Knap":
+               isPaid();
+               break;
+            case "Hold":
+               
+         }
+
+         frame.repaint();
+      }
+      
+      public void isPaid(){
+         
+         Member member = MemberList.memberList.get(rowIndex);
+         if (member.getIsPaid()){
+            member.setIsPaid(false);
+         }else{
+            member.setIsPaid(true);
+         }
+      }
+      
+      public void viewTeam(int teamNumber){
+         System.out.println("Se Hold");
+         //TeamList.teamList.get(teamNumber);
+      }
+      
+      public void setCouch(){
+         //skip for now
+      }
+      
+      //public void
+    }
 }
