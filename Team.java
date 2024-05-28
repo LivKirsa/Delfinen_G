@@ -27,7 +27,7 @@ public class Team implements Serializable{
    
    public void addResult(int memberNumber, int length, String swimmingStyle, int m, int s, int ms){//, LocalDateTime date){//(ikke CompResult).
       result = new Result(length, swimmingStyle, m, s, ms);
-      result.memberID = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
+      result.memberID = memberNumber;//teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
       result.name = teamMemberList.get(memberNumber).getName();//setting Result.name
       comparePersonalResult(memberNumber);
    }

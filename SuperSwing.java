@@ -442,17 +442,18 @@ public class SuperSwing extends JPanel {
                 int s = Integer.parseInt(text4Field.getText());
                 int ms = Integer.parseInt(text5Field.getText());
 
-                System.out.println(selectedMember.getTeamNumber() - 1);
+                //System.out.println(selectedMember.getTeamNumber() - 1  + ". Navn: " + selectedMember.getName() + ". Memberlist: " + memberNumber);
+                
                 Team team = TeamList.teamList.get(teamNumber - 1);//get Member team number
                 int teamMemberNumber = team.teamMemberList.indexOf(selectedMember);
-                System.out.println(teamMemberNumber);
+                //System.out.println(teamMemberNumber);
                 
                 if (isCompetitiveBoxChecked) {
                                 String location = textFieldComp.getText();
                 int placement = Integer.parseInt(textFieldRank.getText());
-                    ((CompTeam)team).addResult(teamMemberNumber, length, swimmingStyle, m, s, ms, location, placement);
+                    ((CompTeam)team).addResult(memberNumber, length, swimmingStyle, m, s, ms, location, placement);
                 } else {
-                    team.addResult(teamMemberNumber, length, swimmingStyle, m, s, ms);
+                    team.addResult(memberNumber, length, swimmingStyle, m, s, ms);
                     //team.teamMemberList.indexOf(selectedMember)
                 }
                 resultFrame.dispose();
