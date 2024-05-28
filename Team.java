@@ -63,7 +63,7 @@ public class Team implements Serializable{
       System.out.print("Ny disciplin oprettet: ");
       result.printResult();
       list.add(result);
-      //System.out.println("Result added.");
+
    }
    
    // Setter for couchName
@@ -80,9 +80,7 @@ public class Team implements Serializable{
          member.printMemberName();
       }
    }
-   
-  
-   
+
    public Object[] getTeamInfoAsArray(){
       Object[] row = {teamName, teamNumber, couchName, "Se Hold"};
       return row;
