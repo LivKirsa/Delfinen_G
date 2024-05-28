@@ -134,7 +134,13 @@ public class SuperSwing extends JPanel {
        }
        
       return tableModel;
-    }     
+    }    
+    
+    public ActionEvent addActionEvent(){
+    ActionEvent actionEvent = new ActionEvent(e ->{
+      System.out.println("Action event");
+     });
+    }
 
  public void swimmerFrame() {
         JFrame swimmerFrame = new JFrame();
