@@ -9,6 +9,7 @@ public class SwingCoach extends SuperSwing {
     public SwingCoach(boolean visible) {
     super(visible);
     f.setTitle("Sub Coach uwu");
+    f.add(this);
 
     }
     
@@ -33,7 +34,7 @@ public class SwingCoach extends SuperSwing {
         b2.addActionListener(new ActionListener() {
         //action for button 2
             public void actionPerformed(ActionEvent e) {
-
+            resultFrame()  ;
             }
         });
         return b2;
