@@ -10,9 +10,8 @@ public class SwingCoach extends SuperSwing {
     super(visible);
     f.setTitle("Sub Coach uwu");
     f.add(this);
-
     }
-    
+
         protected JButton Button1() {
         JButton b1 = new JButton("Se Holdmedlemmer");
         b1.setBackground(pink);
@@ -23,6 +22,7 @@ public class SwingCoach extends SuperSwing {
                displayList(addTableModel(TeamList.teamList, Team.col));
             }
         });
+        
         return b1;
     }
     
@@ -61,7 +61,6 @@ public class SwingCoach extends SuperSwing {
             JPanel rowPanel = new JPanel(new BorderLayout());
             JLabel label = new JLabel("     " + item.toString() + "\n");
             rowPanel.add(label, BorderLayout.WEST);
-
             JButton button = new JButton("Add Time");
             button.setPreferredSize(new Dimension(100, button.getPreferredSize().height));
             button.addActionListener(e -> System.out.println("Button clicked for " + item));
