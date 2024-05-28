@@ -8,7 +8,6 @@ public class Login{
 FileHandling fileHandling = new FileHandling();
    
    public Login(){
-      //SuperSwing superswing = new SuperSwing(false);
       RunLoginUI();
    }
    
@@ -41,15 +40,15 @@ FileHandling fileHandling = new FileHandling();
    JPanel panel = new JPanel(new BorderLayout());
    JPanel dolphinPanel = new JPanel();
    
-   // Create a JLabel to hold the image
+   // Creates a JLabel to hold the image
   JLabel dolphinLabel = new JLabel();
   dolphinPanel.add(dolphinLabel);
 
-  // Load the image (replace "image.png" with your actual image path)
+  // Load the image 
   ImageIcon dolphin = new ImageIcon("textdolphin.png");
   dolphinLabel.setIcon(dolphin);
 
-  // Add the picture label to the panel
+  // Adds the picture to the panel
    
       JButton runChairManButton = new JButton("Chairman");
       runChairManButton.setBackground(blue);
