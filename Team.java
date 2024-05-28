@@ -9,7 +9,7 @@ public class Team implements Serializable{
    int teamNumber;
    String couchName;
    Result result;
-   static ArrayList<Member> teamMemberList = new ArrayList<Member>(); // This was made static to make removeMember method work
+   ArrayList<Member> teamMemberList = new ArrayList<Member>(); // This was made static to make removeMember method work
    
     static String[] col = {"Holdnavn", "Holdnummber", "Træner", "Hold"};
     

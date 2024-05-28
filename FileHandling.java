@@ -48,7 +48,7 @@ public class FileHandling {
       Object tObj = F.loadObject("Teamlist save file");
       readMemberList(mObj);
       readTeamList(tObj);
-      reconstructTeamLists();
+      //reconstructTeamLists();
    }
    
    public void readMemberList(Object obj){   

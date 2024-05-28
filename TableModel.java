@@ -38,9 +38,11 @@ public class TableModel extends DefaultTableModel{
          }
 
                break;
+               
             case "Hold":
                SwingCoach.teamPanel = new SwingTeam(rowIndex);
                System.out.println(rowIndex);
+               SwingCoach.teamPanel.repaint();
                break;
                
          }

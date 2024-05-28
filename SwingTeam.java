@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import javax.swing.table.*;
 
 public class SwingTeam extends SuperSwing{//class to be added to Couch class.
    JButton b1, b2;
@@ -37,5 +39,30 @@ public class SwingTeam extends SuperSwing{//class to be added to Couch class.
    
    
    //add jtable
+   
+   @Override
+   public DefaultTableModel addTableModel(ArrayList<?> list, String[] col){
+      DefaultTableModel tableModel = new TableModel(col, 0, f);
+      Object [] row = {};
+      tableModel.setColumnIdentifiers(col);
+      /*
+      System.out.println(TeamList.teamList.get(2).teamMemberList.size());
+      System.out.println(TeamList.team2.teamMemberList.size());
+      
+      System.out.println("Medlemmer i list: " + list.size());
+      int i = 0;*/
+         for(Object o : list){
+            if (o instanceof Member){
+               //i++;
+               Member m = (Member) o;
+               row = m.getMemberCouchInfoAsArray();
+               tableModel.addRow(row);
+            }
+         }
+         
+         //System.out.println(i);
+         
+      return tableModel;
+   }
 
 }
