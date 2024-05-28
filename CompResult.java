@@ -18,13 +18,15 @@ public class CompResult extends Result implements Serializable{
    }
    
    @Override
-   public String[] getResultInfoAsArray(){
-      String [] superRow = super.getResultInfoAsArray();
-      String [] row = new String [superRow.length + 1];
-      for (int i = 0; i < superRow.length; i++){
+   public Object[] getResultInfoAsArray(){
+      Object [] superRow = super.getResultInfoAsArray();//temp array from super class.
+      Object [] row = new String [superRow.length + 2];
+      for (int i = 0; i < superRow.length; i++){//adding old items to new array.
          row[i] = superRow[i];
       }
-      row[superRow.length] = location;
+      row[row.length - 2] = location;
+      row[row.length - 1] = placement;
+      
       return row;
    }
 }

@@ -24,6 +24,8 @@ public class Member implements Serializable{
     static String[] col ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv", "Konkurrencesvømmer", "Køn(Mand?)", "Hold"};
     static String[] accCol ={"ID", "navn", "Fødselsdag", "Alder", "Medlem siden:", "Kontingent betales inden:", "Kontingent betalt", "Junior", "Aktiv"};
     static String[] couchCol ={"ID", "navn", "Fødselsdag", "Alder", "Køn(Mand?)"};
+
+
     
     // Constructor for Member Objects
     public Member(String name, String birthday, boolean isActiveMembership, boolean isCompetitiveSwimmer, boolean isMan){
@@ -185,24 +187,20 @@ public class Member implements Serializable{
             r.printResult();
        }//end of for loop.
     }
-    
-
-    
-    public String[] getMemberInfoAsArray(){
-      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + registrationDate, "" + nextPayment, ""+ isPaid, "" + isJuniorMembership, "" + isActiveMembership, "" + isCompetitiveSwimmer, "" + isMan, "" + teamNumber};
+    public Object[] getMemberInfoAsArray(){
+      Object[] row = {memberID, name, birthday, age, registrationDate, nextPayment, isPaid, isJuniorMembership, isActiveMembership, isCompetitiveSwimmer, isMan, teamNumber};
       return row;
     }
     
-    public String[] getMemberAccInfoAsArray(){
-      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + registrationDate, "" + nextPayment, "" + isPaid, "" + isJuniorMembership, "" + isActiveMembership};
+    public Object[] getMemberAccInfoAsArray(){
+      Object[] row = {memberID, name,birthday,  age,  registrationDate,  nextPayment, isPaid, isJuniorMembership,  isActiveMembership};
       return row;
     }
     
-    public String [] getMemberCouchInfoAsArray(){
-      String[] row = {"" + memberID, name, "" + birthday, "" + age, "" + isMan};
+    public Object [] getMemberCouchInfoAsArray(){
+      Object[] row = {memberID, name,birthday, age,  isMan};
       return row;
     }
-    
     @Override
   public String toString() {
     return "[" + memberID + "] " + this.getName() + " (Team " + this.getTeamNumber() + ")"; // Customize display format

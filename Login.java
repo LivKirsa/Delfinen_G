@@ -2,13 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-public class Login{
 
-   JFrame [] holdFrame = new JFrame[1];
-   
+public class Login{
    
    public Login(){
-      SuperSwing superswing = new SuperSwing(false);
+      //SuperSwing superswing = new SuperSwing(false);
       RunLoginUI();
    }
    
@@ -37,7 +35,6 @@ public class Login{
    Color softWhite = new Color(241, 234, 231);
    Color darkBlue = new Color(61, 133, 198);
 
-   holdFrame[0] = frame;
    JPanel panel = new JPanel(new BorderLayout());
    JPanel dolphinPanel = new JPanel();
    
@@ -74,8 +71,7 @@ public class Login{
        // this is the action to run chairman UI. 
        runChairManButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
-         
-           new SwingChairMan(true);//.setVisible(true);
+            new SwingChairMan(true);//.setVisible(true);
             
          }
        });
@@ -96,8 +92,6 @@ public class Login{
                   new SwingCoach(true);//.setVisible(true);
          }
        });
-                  holdFrame[0].setVisible(true);
-
        }
        //Method to set the window in the middle of the screen. 
        public static void centerFrameOnScreen(JFrame frame){

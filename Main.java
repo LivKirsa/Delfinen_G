@@ -32,8 +32,8 @@ public class Main{
        Member m29 = new Member("Brian Perez", "1982-03-27", false, true, true);
        Member m30 = new Member("Chloe Evans", "1990-09-14", true, false, true);
        
-          TeamList.team3.addResult(0,500,"Crawling", 4, 50, 891);
-   TeamList.team3.printTeam(); 
+          /*TeamList.team3.addResult(0,500,"Crawling", 4, 50, 891);
+   TeamList.team3.printTeam(); */
     SwingUtilities.invokeLater( //dette kører swing 
          ()->{ 
             new Login();
