@@ -4,9 +4,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Login{
+
+FileHandling fileHandling = new FileHandling();
    
    public Login(){
-      //SuperSwing superswing = new SuperSwing(false);
       RunLoginUI();
    }
    
@@ -23,6 +24,7 @@ public class Login{
 
    public void RunLoginUI(){ 
    JFrame frame = new JFrame("Login"); 
+   fileHandling.readFile();
    frame.setSize(475, 550);
    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    Color turkis1 = new Color(199, 237, 231);
@@ -38,15 +40,15 @@ public class Login{
    JPanel panel = new JPanel(new BorderLayout());
    JPanel dolphinPanel = new JPanel();
    
-   // Create a JLabel to hold the image
+   // Creates a JLabel to hold the image
   JLabel dolphinLabel = new JLabel();
   dolphinPanel.add(dolphinLabel);
 
-  // Load the image (replace "image.png" with your actual image path)
+  // Load the image 
   ImageIcon dolphin = new ImageIcon("textdolphin.png");
   dolphinLabel.setIcon(dolphin);
 
-  // Add the picture label to the panel
+  // Adds the picture to the panel
    
       JButton runChairManButton = new JButton("Chairman");
       runChairManButton.setBackground(blue);
@@ -72,6 +74,7 @@ public class Login{
        runChairManButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
             new SwingChairMan(true);//.setVisible(true);
+            frame.dispose();
             
          }
        });
@@ -80,7 +83,9 @@ public class Login{
          public void actionPerformed(ActionEvent e) {
             //if (!isFrameOpen){
             //holdFrame[0] = new SwingAcc();
-            new SwingAcc(true);  
+            new SwingAcc(true); 
+            frame.dispose();
+             
             }
                   
        });
@@ -89,7 +94,8 @@ public class Login{
             runCouchButton.addActionListener(new ActionListener() {
                public void actionPerformed(ActionEvent e) {
                //holdFrame[0] = new SwingCoach();
-                  new SwingCoach(true);//.setVisible(true);
+               new SwingCoach(true);//.setVisible(true);
+               frame.dispose();
          }
        });
        }
