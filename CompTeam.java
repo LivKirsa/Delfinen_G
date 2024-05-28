@@ -12,7 +12,6 @@ public class CompTeam extends Team{
    @Override
    public void addResult(int memberNumber, int length, String swimmingStyle, int m, int s, int ms){
       super.addResult(memberNumber, length, swimmingStyle, m, s, ms);
-      
       compareTeamResult();
    }
          
@@ -21,7 +20,6 @@ public class CompTeam extends Team{
       result = new CompResult(length, swimmingStyle, m, s, ms, location, placement);
       result.memberID = teamMemberList.get(memberNumber).getMemberID();//assign memberID to result
       comparePersonalResult(memberNumber);
-      
       compareTeamResult();
    }
    

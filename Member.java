@@ -17,6 +17,7 @@ public class Member implements Serializable{
     private boolean isJuniorMembership;
     private boolean isCompetitiveSwimmer;
     private boolean isMan;
+    private int subPrice;
     private LocalDate now = LocalDate.now();
     private int teamNumber;
     ArrayList<Result> bestTimesList = new ArrayList<Result>();
@@ -38,6 +39,7 @@ public class Member implements Serializable{
         this.nextPayment = LocalDate.now().plusYears(1);
         this.isPaid = true; // Assumes that no new member is created before they have paid for membership
         this.isActiveMembership = isActiveMembership;
+        this.subPrice = calculateSubPrice(this);
         this.isCompetitiveSwimmer = isCompetitiveSwimmer;
         this.isJuniorMembership = getIsJuniorMembership(this);
         this.isMan = isMan;
@@ -57,7 +59,7 @@ public class Member implements Serializable{
       name + "\n Age: " + age + "\n Birthday: " + birthday + "\n Active Membership?: " + 
       isActiveMembership + "\n Junior Membership?: " + isJuniorMembership + 
       "\n Competitive Swimmer?: " + isCompetitiveSwimmer + "\n Man?: " + isMan + 
-      "\n Paid?: " + isPaid + "\n Next payment due: " + nextPayment + "\nTeam: " + teamNumber);
+      "\n Paid?: " + isPaid + "\n Next payment due: " + nextPayment + "\nMembership price: " + subPrice + "\nTeam: " + teamNumber);
       }
       
       // Method for printing memberName
@@ -150,7 +152,7 @@ public class Member implements Serializable{
         return isCompetitiveSwimmer;
     }
     
-    // Setter for isActiveMembership
+    // Setter for isCompetitiveSwimmer
     public void setIsCompetitiveSwimmer(boolean isCompetitiveSwimmer){
         this.isCompetitiveSwimmer = isCompetitiveSwimmer;
     }
@@ -187,6 +189,28 @@ public class Member implements Serializable{
             r.printResult();
        }//end of for loop.
     }
+    
+     // Method for calculating subscription price
+    public int calculateSubPrice(Member member) {
+
+       if (member.getIsActiveMembership() & member.getAge() >= 18 & member.getAge() <= 60) {
+         return 1600;
+       } else if (member.getIsActiveMembership() & member.getAge() < 18) {
+         return 1000;
+       } else if (member.getIsActiveMembership() & member.getAge() > 60) {
+         return 1200;
+       } else if (!member.getIsActiveMembership()) {
+         return 500;
+       } else {
+         return 404;
+       }
+    }
+
+    // Getter for membership price
+    public int getSubPrice() {
+      return subPrice;
+    }
+    
     public Object[] getMemberInfoAsArray(){
       Object[] row = {memberID, name, birthday, age, registrationDate, nextPayment, isPaid, isJuniorMembership, isActiveMembership, isCompetitiveSwimmer, isMan, teamNumber};
       return row;
@@ -201,8 +225,9 @@ public class Member implements Serializable{
       Object[] row = {memberID, name,birthday, age,  isMan};
       return row;
     }
+    
     @Override
   public String toString() {
-    return "[" + memberID + "] " + this.getName() + " (Team " + this.getTeamNumber() + ")"; // Customize display format
+    return "[" + memberID + "] " + this.getName() + " (Team " + this.getTeamNumber() + ")"; 
   }
 }
