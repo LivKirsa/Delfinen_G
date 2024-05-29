@@ -3,6 +3,19 @@ import java.util.ArrayList;
 
 public class Main{   
    public static void main (String [] args){
+      //addMembers();
+      //TeamList.team3.addResult(0,500,"Crawling", 4, 50, 891);
+      
+      //*
+      SwingUtilities.invokeLater( //dette kører swing 
+         ()->{ 
+            new Login();
+         });//*/        
+          
+      //new TextUI();
+   }     
+     
+   public static void addMembers(){
        Member m1 = new Member("Kenney Jensen", "2008-12-12", true, true, true);
        Member m2 = new Member("Alice Smith", "1985-06-15",false, true, false);
        Member m3 = new Member("Bob Johnson", "1978-03-22", true, false, true);
@@ -33,6 +46,7 @@ public class Main{
        Member m28 = new Member("Amy Carter", "1978-06-18", true, true, true);
        Member m29 = new Member("Brian Perez", "1982-03-27", false, true, true);
        Member m30 = new Member("Chloe Evans", "1990-09-14", true, false, true);
+<<<<<<< Updated upstream
        
 
           /*TeamList.team3.addResult(0,500,"Crawling", 4, 50, 891);
@@ -60,4 +74,7 @@ public class Main{
          return memberIndex;
      }*/
      
+=======
+   }
+>>>>>>> Stashed changes
 }
