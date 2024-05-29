@@ -69,9 +69,9 @@ public class FileHandling {
    }
    
    public void reconstructTeamLists(){
-   System.out.println();
+   //System.out.println();
       for (Member m : MemberList.memberList){
-         TeamList.autoAssignToTeam(m);
+         //TeamList.autoAssignToTeam(m);
          //System.out.println(m.getName() + ", " + m.getAge() + ", aktiv:" + m.getIsActiveMembership() + ", comp:" + m.getIsCompetitiveSwimmer() + ", junior: " + m.getIsJuniorMembership());
       }
    }

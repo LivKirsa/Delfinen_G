@@ -76,15 +76,15 @@ public class CompTeam extends Team{
    }
    
    public void printDiscTop5List(){
-      System.out.println(printTeamResultList());
+     // System.out.println(printTeamResultList());
    }
    
-   public String printTeamResultList(){
+   public String printTeamResultList(ArrayList<ArrayList<Result>> list){
       String string = "\n";
-      for (ArrayList<Result> dList : womensTop5List){
+      for (ArrayList<Result> dList : list){
          string += ("\n" + dList.get(0).swimmingStyle + ", " + dList.get(0).length + " m:\n");
          for (Result r: dList){
-             string += (r.memberID + ", " + teamMemberList.get(r.memberID).getName());//hmm probably need a for each loop with members to find right member from memberID.
+             string += (r.memberID + ", " + MemberList.memberList.get(r.memberID).getName());
              string += (r.time + " sek");
              if (r instanceof CompResult){
                string += (", " + ((CompResult)r).location);

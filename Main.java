@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.util.ArrayList;
+
 public class Main{   
    public static void main (String [] args){
        Member m1 = new Member("Kenney Jensen", "2008-12-12", true, true, true);
@@ -35,11 +37,28 @@ public class Main{
 
           /*TeamList.team3.addResult(0,500,"Crawling", 4, 50, 891);
    TeamList.team3.printTeam(); */
+   /*
+    
     SwingUtilities.invokeLater( //dette kører swing 
          ()->{ 
             new Login();
-         });
-         m1.printBestTimesList();
-         m1.printMember();
+         });*/
+         
+         //m1.printBestTimesList();
+         //m1.printMember();
+         
+                  new TextUI();
      }
+     
+     /*
+     public int getTeamMemberIndex(Member m){
+         int memberIndex = TeamList.teamList.indexOf(m);
+         return memberIndex;
+     }
+     
+      public int getMemberIndex(){
+         int memberIndex = MemberList.memberList.indexOf(m);
+         return memberIndex;
+     }*/
+     
 }

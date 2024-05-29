@@ -87,5 +87,9 @@ public class Team implements Serializable{
       Object[] row = {teamName, teamNumber, couchName, "Se Hold"};
       return row;
    }
+   
+   public void printTeamInfo(){
+      System.out.print(teamName + ", HoldNr: " + teamNumber + ", Træner: " + couchName);
+   }
 }
 
