@@ -89,7 +89,7 @@ public class SwingChairMan extends SuperSwing {
         return panel;
         }
             
-<<<<<<< HEAD
+
  public void swimmerFrame() {
         JFrame swimmerFrame = new JFrame();
         swimmerFrame.setVisible(true);
@@ -221,8 +221,6 @@ public class SwingChairMan extends SuperSwing {
             }
         });
     } // This ends swimmerFrame
-=======
->>>>>>> 707a741d3f78a0dcb3d9a10013ba02da994c60ff
     
     /*
     public DefaultTableModel addTableModel(ArrayList <?> list, String[] col){
