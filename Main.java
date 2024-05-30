@@ -7,12 +7,12 @@ public class Main{
       //TeamList.team3.addResult(0,500,"Crawling", 4, 50, 891);
       
       //*
-      SwingUtilities.invokeLater( //dette kører swing 
-         ()->{ 
-            new Login();
-         });//*/        
+      //SwingUtilities.invokeLater( //dette kører swing 
+         //()->{ 
+            //new Login();
+         //});     
           
-      //new TextUI();
+      new TextUI();
    }     
      
    public static void addMembers(){
